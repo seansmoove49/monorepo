@@ -1,0 +1,922 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sean Wang</title>
+<meta name="description" content="Sean Wang's personal hub: games, films, TV, anime, books, restaurants, workouts, notes and writing.">
+<link rel="icon" href="data:,">
+<style>
+  :root{
+    --page:#e0e0e0; --box:#e9e9e9; --dash:#b7b7b7; --tile:#e7f2f8; --line:#7cb9d6;
+    --bar:#397ca0; --bar-hi:#8fc4df; --ink:#000; --body:#333; --muted:#666; --rated:#576d7f; --link:#2a7196; --intro-link:#3a6c86;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:27px 0 35px;background:var(--page);color:var(--ink);font:12px/normal Tahoma,Verdana,Arial,Helvetica,sans-serif}
+  a{color:var(--link);text-decoration:none}
+  a:hover{text-decoration:underline}
+  :focus-visible{outline:2px solid #000;outline-offset:1px;box-shadow:0 0 0 1px #fff}
+  h1,h2,h3,p,ul{margin:0;padding:0}
+  ul{list-style:none}
+  svg{display:block}
+  .wrap{width:830px;margin:0 auto}
+  .skip{position:absolute;left:8px;top:-60px;z-index:5;padding:6px 10px;background:#fff;color:#000;border:1px solid #000;font-weight:700}
+  .skip:focus{top:6px}
+  .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+  /* Header: measured columns 249 / 340 / 241 */
+  .head{display:grid;grid-template-columns:249px 340px 241px;height:97px;margin-bottom:0}
+  .logo{display:flex;align-items:flex-start;width:220px;height:72px;color:inherit;font-weight:400}
+  .logo:hover{text-decoration:none}
+  .logo svg{flex:none;margin:3px 0 0 -5px;position:relative;z-index:0}
+  .word{display:block;position:relative;margin-left:-16px;padding-top:5px;width:164px}
+  .word b,.word i{display:block;width:max-content;font:700 39px/26px "Arial Rounded MT Bold","Arial Black",Arial,sans-serif;letter-spacing:-1.5px;color:#3f8fb6;transform-origin:0 50%;transform:scaleX(1.17)}
+  .word i{font-style:normal;margin-left:34px;margin-top:1px}
+  @supports ((-webkit-background-clip:text) or (background-clip:text)){
+    .word b,.word i{color:transparent;-webkit-background-clip:text;background-clip:text;
+      background-image:repeating-linear-gradient(180deg,rgba(255,255,255,0) 0 2px,rgba(255,255,255,.3) 2px 3px),linear-gradient(180deg,#7ab4cf 6%,#4d99be 30%,#366f8e 52%,#478fb3 58%,#6fb2d3 92%);
+      -webkit-text-stroke:.5px rgba(59,131,166,.8);filter:drop-shadow(0 1px 0 rgba(54,107,133,.45))}
+  }
+  .tag{position:absolute;left:11px;top:60px;font:700 9.5px/1 Arial,Helvetica,sans-serif;letter-spacing:0;color:#566464;white-space:nowrap;text-transform:uppercase}
+
+  .nav{padding-top:1px}
+  .nav ul{display:flex}
+  .nav .r1{height:37px}
+  .nav .r2{height:34px;margin-left:45px}
+  .nav li{position:relative;width:var(--w)}
+  .pill{position:relative;display:block;height:28px;margin:5px 0 0 15px;padding:7px 6px 0 27px;border-radius:14px;
+    color:#fff;font:700 12px/14px Arial,Helvetica,sans-serif;text-align:center;text-shadow:0 1px 1px rgba(20,50,70,.65);white-space:nowrap;
+    background:linear-gradient(180deg,#e3ebef 0,#8fb8cd 1.5px,#5e91ad 4px,#47799a 7px,#47799a 21px,#6d9db6 23px,#a5c4d3 26px,#c4d6df 28px);
+    box-shadow:0 0 3px rgba(107,155,181,.75)}
+  .r2 .pill{margin-top:3px}
+  .pill:hover{text-decoration:none;background:linear-gradient(180deg,#e3ebef 0,#8fb8cd 1.5px,#4f84a1 4px,#3a6d8c 7px,#3a6d8c 21px,#6d9db6 23px,#a5c4d3 26px,#c4d6df 28px)}
+  .nav svg{position:absolute;left:0;top:1px;z-index:1;filter:drop-shadow(0 1px 1px rgba(0,0,0,.4));transition:transform .12s ease-out;pointer-events:none}
+  .r2 svg{top:-2px}
+  .nav li:hover svg{transform:translateY(-1px)}
+
+  .search{padding:18px 0 0 0;margin-left:-1px}
+  .search label{display:block;font:700 11px/12px Arial,Helvetica,sans-serif;color:#626262;margin-bottom:4px}
+  .search .row{display:flex;align-items:center;gap:6px}
+  .search input{width:120px;height:19px;padding:1px 2px;border:1px solid #c8c8c8;background:#f0f0f0;font:12px Arial,Helvetica,sans-serif;color:#626262;border-radius:0}
+  .search button{width:27px;height:21px;padding:0;border:1px solid #afafaf;border-radius:3px;background:linear-gradient(180deg,#bdbdbd,#d3d3d3);font:700 11px/1 Arial,Helvetica,sans-serif;color:#333;cursor:pointer;box-shadow:0 1px 0 #9e9e9e}
+
+  /* Intro boxes: measured 327x80 and 482x80, 8px apart, 21px above first section */
+  .intros{display:flex;gap:8px;height:80px;margin:0 0 21px;font:11px/13px Tahoma,Verdana,Arial,sans-serif;color:var(--muted)}
+  .intro{background:var(--box);border:1px dashed var(--dash)}
+  .about{width:327px;display:flex;padding:9px 6px 5px 15px}
+  .about .txt{width:162px;flex:none}
+  .about h2{font:700 14px/16px Arial,Helvetica,sans-serif;color:var(--muted);margin:2px 0 3px 3px}
+  .about ul{columns:2;column-gap:4px;width:138px;margin-left:2px;padding-top:2px;text-align:center}
+  .about li{break-inside:avoid;line-height:12px;margin-bottom:0}
+  .about a{font:700 10px/12px Tahoma,Verdana,Arial,sans-serif;color:var(--intro-link)}
+  .now{width:482px;display:flex;padding:7px 8px 5px 8px}
+  .stamp{width:152px;flex:none;padding-top:13px;text-align:center;font:700 10px/13px Tahoma,Verdana,Arial,sans-serif;color:var(--muted)}
+  .stamp svg{margin:0 auto 3px}
+  .now h2{font:400 17px/20px Verdana,Tahoma,Arial,sans-serif;letter-spacing:-.6px;color:#5f5f5f;margin:2px 0 1px 3px}
+  .now ul li{position:relative;padding-left:14px;font:11px/14.5px Tahoma,Verdana,Arial,sans-serif}
+  .now ul li::before{content:"";position:absolute;left:4px;top:5px;width:5px;height:5px;border-radius:50%;background:#a9a9a9}
+
+  /* Section: border #7cb9d6, 1px white gaps */
+  .maintable{border:1px solid var(--line);background:#fff;padding:1px;margin:0 0 21px;scroll-margin-top:6px}
+  .bar{display:flex;align-items:baseline;gap:9px;min-height:29px;padding:3px 10px;color:#fff;
+    background-color:var(--bar);
+    background-image:linear-gradient(180deg,var(--bar-hi) 0,#75b5d7 2px,#5a9dc2 4px,var(--bar) 6px,var(--bar) 25px,#5a9dc2 27px,#75b5d7 29px)}
+  .bar h2{font:400 20px/23px Arial,Helvetica,sans-serif;letter-spacing:-1px;color:#fff}
+  .viewall{font:700 11px/12px Arial,Helvetica,sans-serif;color:#fff;text-decoration:underline}
+  .viewall:hover{text-decoration:none;color:#fff}
+  .bar :focus-visible{outline-color:#fff;box-shadow:0 0 0 1px #000}
+  .grid{display:flex;flex-wrap:wrap;gap:1px;margin-top:1px}
+  .cell{flex:1 1 calc(20% - 1px);background:var(--tile);padding:3px 4px 4px;text-align:center;min-width:0;font:11px/13px Tahoma,Verdana,Arial,sans-serif}
+  .thumb{display:block;width:100%;max-width:156px;margin:0 auto;padding:6px 5px 6px}
+  .cover{position:relative;display:block;width:100%;aspect-ratio:1;border:2px solid #fff;border-radius:2px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.45);overflow:hidden}
+  .cover:has(svg)::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,rgba(0,0,0,.045) 0 1px,rgba(0,0,0,0) 1px 3px),radial-gradient(circle at 50% 40%,rgba(0,0,0,0) 55%,rgba(0,0,0,.2))}
+  .cover svg,.cover img{display:block;width:100%;height:100%;object-fit:cover}
+  .meta{display:flex;justify-content:center;align-items:flex-start;gap:5px;min-height:14px;margin-top:0}
+  .marks{position:relative;display:block;flex:none;width:62px;height:14px;margin-top:0;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 58 13'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%237fb0cb'/%3E%3Cstop offset='.5' stop-color='%235f9cbc'/%3E%3Cstop offset='.5' stop-color='%234d8aab'/%3E%3Cstop offset='1' stop-color='%236ea3c0'/%3E%3C/linearGradient%3E%3Cpath id='s' d='M5.8-.6l2 4.1 4.6.6-3.3 3.2.8 4.7-4.1-2.2L1.700 12l.8-4.700L-.8 4.100l4.6-.6z' fill='url(%23g)' transform='translate(0 .6)'/%3E%3C/defs%3E%3Cuse href='%23s' x='.2'/%3E%3Cuse href='%23s' x='11.8'/%3E%3Cuse href='%23s' x='23.4'/%3E%3Cuse href='%23s' x='35'/%3E%3Cuse href='%23s' x='46.6'/%3E%3C/svg%3E") left top/62px 14px no-repeat}
+  .marks::after{content:"";position:absolute;inset:0;width:calc(var(--fill,0)*20%);
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 58 13'%3E%3Cdefs%3E%3Cpath id='s' d='M5.8-.6l2 4.1 4.6.6-3.3 3.2.8 4.7-4.1-2.2L1.700 12l.8-4.700L-.8 4.100l4.6-.6z' fill='%232a6f96' transform='translate(0 .6)'/%3E%3C/defs%3E%3Cuse href='%23s' x='.2'/%3E%3Cuse href='%23s' x='11.8'/%3E%3Cuse href='%23s' x='23.4'/%3E%3Cuse href='%23s' x='35'/%3E%3Cuse href='%23s' x='46.6'/%3E%3C/svg%3E") left top/62px 14px no-repeat}
+  .rated{font:700 11px/13px Tahoma,Verdana,Arial,sans-serif;color:var(--rated);white-space:nowrap}
+  .title{font:700 11px/13px Tahoma,Verdana,Arial,sans-serif;padding-top:5px}
+  .title a{color:#000}
+  .title a:hover{color:#000}
+  .desc{padding:1px;color:var(--body)}
+  .desc a{color:var(--link);text-decoration:underline}
+
+  footer{margin-top:-6px;text-align:center;font:11px/15px Tahoma,Verdana,Arial,sans-serif;color:#5f5f5f}
+  #nomatch:empty{display:none}
+  #nomatch{margin:0 0 12px;font:700 11px/14px Tahoma,Verdana,Arial,sans-serif;color:#5f5f5f}
+
+  /* Below 862px the fixed column no longer fits, so it becomes fluid with a 16px gutter. */
+  @media (max-width:861px){
+    body{margin-top:16px}
+    .wrap{width:auto;margin:0 16px}
+    .head{display:block;height:auto;margin-bottom:14px}
+    .logo{margin:0 0 12px}
+    .nav .r1,.nav .r2{height:auto;margin-left:0;flex-wrap:wrap}
+    .pill,.r2 .pill{margin-top:5px}
+    .search{padding-top:12px;margin-left:0}
+    .search input{width:auto;flex:1;min-width:0;height:28px;font-size:16px}
+    .search button{width:44px;height:28px}
+    .intros{display:block;height:auto}
+    .intro{width:auto;margin-bottom:8px}
+    .about ul{flex:1;width:auto}
+    .about a{display:inline-block;padding:3px 0;font-size:11px;line-height:13px}
+    .now ul li{padding-top:1px;padding-bottom:1px}
+    .cell{flex-basis:calc(25% - 1px)}
+    .bar{flex-wrap:wrap;row-gap:0;align-items:center}
+    .viewall{padding:6px 0}
+  }
+  /* Phone: single column of pills, 2-across cells */
+  @media (max-width:600px){
+    .nav .r1,.nav .r2{display:block}
+    .nav li{width:auto;margin-bottom:8px}
+    .pill,.r2 .pill{margin:0 0 0 18px;height:32px;padding-top:9px;border-radius:16px;font-size:13px;
+      background:linear-gradient(180deg,#e3ebef 0,#8fb8cd 1.5px,#5e91ad 4px,#47799a 7px,#47799a 25px,#6d9db6 27px,#a5c4d3 30px,#c4d6df 32px)}
+    .nav svg,.r2 svg{top:-5px}
+    .now{display:block;padding:8px 10px}
+    .stamp{display:none}
+    .about{display:block;padding:8px 10px}
+    .about .txt{width:auto;margin-bottom:6px}
+    .about h2{margin-left:0}
+    .about ul{margin-left:0}
+    .cell{flex-basis:calc(50% - 1px)}
+    .desc,.title a{overflow-wrap:anywhere}
+    .meta{flex-wrap:wrap;gap:1px 5px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+    .nav li:hover svg{transform:none}
+  }
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+  <header class="head">
+    <h1>
+      <a class="logo" href="#top" aria-label="Sean Wang, home">
+        <svg viewBox="0 0 68 66" width="68" height="66" focusable="false" aria-hidden="true">
+          <defs>
+            <radialGradient id="lb" cx=".36" cy=".3" r=".8"><stop offset="0" stop-color="#e6f4fb"/><stop offset=".38" stop-color="#75b5d7"/><stop offset="1" stop-color="#2a5f7e"/></radialGradient>
+            <linearGradient id="lt" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#55626b"/><stop offset=".5" stop-color="#b9c3c9"/><stop offset="1" stop-color="#4b5860"/></linearGradient>
+            <linearGradient id="lc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f6f7"/><stop offset="1" stop-color="#bcc6cc"/></linearGradient>
+            <linearGradient id="ls" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8b98a0"/><stop offset="1" stop-color="#55626b"/></linearGradient>
+          </defs>
+          <path d="M6 45 34 33l28 12-28 15z" fill="url(#lc)" stroke="#8b98a0"/>
+          <path d="M6 45v8l28 13 28-13v-8L34 60z" fill="url(#ls)"/>
+          <path d="M31 21h6l1 26q-4 3-8 0z" fill="url(#lt)"/>
+          <circle cx="34" cy="15" r="14" fill="url(#lb)"/>
+          <ellipse cx="29" cy="9" rx="5" ry="3" fill="#fff" opacity=".85"/>
+          <ellipse cx="50" cy="50" rx="4" ry="2" fill="#4a95bb"/>
+        </svg>
+        <span class="word"><b>Sean</b><i>Wang</i><span class="tag">Personal hub</span></span>
+      </a>
+    </h1>
+    <nav class="nav" aria-label="Main">
+      <!-- CONTENT: nav pills. Original icons are inline SVG. -->
+      <ul class="r1">
+        <li style="--w:105px"><svg viewBox="0 0 42 42" width="38" height="38" focusable="false" aria-hidden="true"><path d="M8 20v18h26V20z" fill="#e8f3f9" stroke="#14191d" stroke-width="2"/><path d="M2 22 21 5l19 17-4 4L21 12 6 26z" fill="#55626b" stroke="#14191d" stroke-width="2" stroke-linejoin="round"/><path d="M17 26h9v12h-9z" fill="#4a95bb" stroke="#14191d" stroke-width="2"/></svg><a class="pill" href="#top">frontpage</a></li>
+        <li style="--w:109px"><svg viewBox="0 0 42 42" width="38" height="38" focusable="false" aria-hidden="true"><circle cx="21" cy="21" r="18" fill="#75b5d7" stroke="#14191d" stroke-width="2"/><circle cx="21" cy="21" r="13" fill="#fff" stroke="#14191d" stroke-width="1.5"/><path d="M21 12v9l7 5" fill="none" stroke="#14191d" stroke-width="3" stroke-linecap="round"/><path d="M8 13q5-7 12-8" fill="none" stroke="#e8f3f9" stroke-width="2.5" stroke-linecap="round"/></svg><a class="pill" href="#latest">latest</a></li>
+        <li style="--w:109px"><svg viewBox="0 0 42 42" width="38" height="38" focusable="false" aria-hidden="true"><path d="M9 11h24q7 0 8 10l1 9q0 6-5 6-4 0-7-6H14q-3 6-7 6-5 0-5-6l1-9q1-10 6-10z" transform="translate(-1 -1)" fill="#d7dde1" stroke="#14191d" stroke-width="2"/><path d="M9 19h4v-4h4v4h4v4h-4v4h-4v-4H9z" transform="translate(-1 -1)" fill="#14191d"/><circle cx="29" cy="17" r="2.6" fill="#2a5f7e"/><circle cx="33" cy="22" r="2.6" fill="#4a95bb"/></svg><a class="pill" href="#flash-games">games</a></li>
+      </ul>
+      <ul class="r2">
+        <li style="--w:115px"><svg viewBox="0 0 42 42" width="38" height="38" focusable="false" aria-hidden="true"><path d="M3 18h35v21H3z" fill="#fff" stroke="#14191d" stroke-width="2"/><path d="M3 18h35v7H3z" fill="#14191d"/><path d="m2 9 34-7 2 8-34 7z" fill="#14191d" stroke="#14191d" stroke-width="2" stroke-linejoin="round"/><path d="m9 8 4 7 5-1-4-7zm10-2 4 7 5-1-4-7z" fill="#fff"/><path d="M9 29h24M9 34h15" stroke="#4a95bb" stroke-width="2.5"/></svg><a class="pill" href="#films">films</a></li>
+        <li style="--w:109px"><svg viewBox="0 0 42 42" width="38" height="38" focusable="false" aria-hidden="true"><path d="m28 3 11 11-23 23-13 3 3-13z" fill="#75b5d7" stroke="#14191d" stroke-width="2" stroke-linejoin="round"/><path d="m28 3 11 11-5 5-11-11z" fill="#d7dde1" stroke="#14191d" stroke-width="2" stroke-linejoin="round"/><path d="m6 27 9 9-12 4z" fill="#fff" stroke="#14191d" stroke-width="2" stroke-linejoin="round"/><path d="m3 40 1-5 4 4z" fill="#14191d"/></svg><a class="pill" href="#writing">writing</a></li>
+      </ul>
+    </nav>
+    <form class="search" role="search" action="" method="get" id="searchform">
+      <label for="q">Site search:</label>
+      <div class="row"><input id="q" name="q" type="search" maxlength="255" autocomplete="off"><button type="submit">Go</button></div>
+    </form>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="intros">
+      <section class="intro about" aria-labelledby="about-h">
+        <!-- CONTENT: intro. Replace the [bracket] with Sean's own words. -->
+        <div class="txt">
+          <h2 id="about-h">Sean's Hub</h2>
+          <p>[Intro: two or three short lines on who I am and what this page collects.]</p>
+        </div>
+        <ul aria-label="Sections">
+          <li><a href="#latest">Latest</a></li>
+          <li><a href="#flash-games">Flash Games</a></li>
+          <li><a href="#films">Films</a></li>
+          <li><a href="#tv">TV</a></li>
+          <li><a href="#anime">Anime</a></li>
+          <li><a href="#books">Books</a></li>
+          <li><a href="#restaurants">Restaurants</a></li>
+          <li><a href="#workouts">Workouts</a></li>
+          <li><a href="#notes">Notes</a></li>
+          <li><a href="#writing">Writing</a></li>
+        </ul>
+      </section>
+      <section class="intro now" aria-labelledby="now-h">
+        <!-- CONTENT: Now box. Keep it to three short bullets. -->
+        <p class="stamp">
+          <svg viewBox="0 0 26 26" width="26" height="26" focusable="false" aria-hidden="true"><circle cx="13" cy="13" r="11.5" fill="#fff" stroke="#8b98a0" stroke-width="2"/><path d="M13 6v7l5 3" fill="none" stroke="#55626b" stroke-width="2" stroke-linecap="round"/></svg>
+          Updated<br>[Date]
+        </p>
+        <div>
+          <h2 id="now-h">Now</h2>
+          <ul>
+            <li>[Now playing: game title and where I am in it.]</li>
+            <li>[Now watching or reading: title and a short note.]</li>
+            <li>[Now working on: project and what is next.]</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <p id="nomatch" role="status"></p>
+
+    <!-- Section: Latest Additions -->
+    <section class="maintable" id="latest" aria-labelledby="latest-h">
+      <div class="bar">
+        <h2 id="latest-h">Latest Additions</h2>
+        <!-- CONTENT: point this link at the real listing page or profile URL -->
+        <a class="viewall" href="#latest">View All Latest</a>
+      </div>
+      <ul class="grid">
+        <!-- CONTENT: Latest Additions item 1. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#latest" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: game cover. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#d7dde1"/><circle cx="92" cy="66" r="44" fill="#fff"/><circle cx="92" cy="66" r="33" fill="#4a95bb"/><circle cx="92" cy="66" r="22" fill="#fff"/><circle cx="92" cy="66" r="11" fill="#2a5f7e"/><path d="M12 120L90 68" fill="none" stroke="#14191d" stroke-width="3"/><path d="M86 62l10 3-4 9z" fill="#14191d"/><rect x="0" y="126" width="142" height="16" fill="#8b98a0"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#latest">[Game title]</a></h3>
+          <p class="desc">Flash Games, added [Date]. [One-line reason.]</p>
+        </li>
+        <!-- CONTENT: Latest Additions item 2. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#latest" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: film poster. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#1c3a4d"/><circle cx="104" cy="36" r="18" fill="#c4e2f1"/><circle cx="112" cy="30" r="16" fill="#1c3a4d"/><rect x="0" y="80" width="19" height="80" fill="#0f2230"/><rect x="21" y="43" width="19" height="80" fill="#14191d"/><rect x="42" y="50" width="19" height="80" fill="#0f2230"/><rect x="63" y="57" width="19" height="80" fill="#14191d"/><rect x="84" y="64" width="19" height="80" fill="#0f2230"/><rect x="105" y="71" width="19" height="80" fill="#14191d"/><rect x="126" y="78" width="19" height="80" fill="#0f2230"/><rect x="6" y="86" width="3" height="4" fill="#75b5d7"/><rect x="23" y="97" width="3" height="4" fill="#75b5d7"/><rect x="40" y="108" width="3" height="4" fill="#75b5d7"/><rect x="57" y="119" width="3" height="4" fill="#75b5d7"/><rect x="74" y="90" width="3" height="4" fill="#75b5d7"/><rect x="91" y="101" width="3" height="4" fill="#75b5d7"/><rect x="108" y="112" width="3" height="4" fill="#75b5d7"/><rect x="125" y="123" width="3" height="4" fill="#75b5d7"/><rect x="12" y="94" width="3" height="4" fill="#75b5d7"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#latest">[Film title]</a></h3>
+          <p class="desc">Letterboxd, added [Date]. [One-line reason.]</p>
+        </li>
+        <!-- CONTENT: Latest Additions item 3. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#latest" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: book cover. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#d7dde1"/><rect x="38" y="16" width="66" height="108" fill="#2a5f7e"/><rect x="38" y="16" width="10" height="108" fill="#14191d"/><rect x="56" y="32" width="38" height="6" fill="#fff"/><rect x="56" y="44" width="26" height="4" fill="#c4e2f1"/><circle cx="75" cy="88" r="14" fill="#c4e2f1"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#latest">[Book title]</a></h3>
+          <p class="desc">Goodreads, added [Date]. [One-line reason.]</p>
+        </li>
+        <!-- CONTENT: Latest Additions item 4. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#latest" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: note image. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#d7dde1"/><rect x="30" y="16" width="82" height="110" fill="#fff" rx="2"/><rect x="40" y="38" width="62" height="4" fill="#55626b"/><rect x="40" y="51" width="62" height="4" fill="#8b98a0"/><rect x="40" y="64" width="34" height="4" fill="#55626b"/><rect x="40" y="77" width="62" height="4" fill="#8b98a0"/><rect x="40" y="90" width="62" height="4" fill="#55626b"/><rect x="40" y="103" width="34" height="4" fill="#8b98a0"/><rect x="40" y="22" width="40" height="8" fill="#14191d"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Updated [Date]</span></p>
+          <h3 class="title"><a href="#latest">[Note title]</a></h3>
+          <p class="desc">Notion, added [Date]. [One-line summary.]</p>
+        </li>
+        <!-- CONTENT: Latest Additions item 5. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#latest" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: post image. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#2a5f7e"/><rect x="26" y="22" width="90" height="104" fill="#fff"/><rect x="36" y="44" width="70" height="3" fill="#55626b"/><rect x="36" y="54" width="70" height="3" fill="#55626b"/><rect x="36" y="64" width="70" height="3" fill="#55626b"/><rect x="36" y="74" width="70" height="3" fill="#55626b"/><rect x="36" y="84" width="70" height="3" fill="#55626b"/><rect x="36" y="94" width="70" height="3" fill="#55626b"/><rect x="36" y="104" width="36" height="3" fill="#55626b"/><rect x="36" y="28" width="46" height="8" fill="#14191d"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Posted [Date]</span></p>
+          <h3 class="title"><a href="#latest">[Post title]</a></h3>
+          <p class="desc">Substack, added [Date]. [One-line summary.]</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section: Flash Games -->
+    <section class="maintable" id="flash-games" aria-labelledby="flash-games-h">
+      <div class="bar">
+        <h2 id="flash-games-h">Flash Games</h2>
+        <!-- CONTENT: point this link at the real listing page or profile URL -->
+        <a class="viewall" href="#flash-games">View All Games</a>
+      </div>
+      <ul class="grid">
+        <!-- CONTENT: Flash Games item 1. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#flash-games" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: game cover. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#c4e2f1"/><path d="M0 112q40-30 80-8t62-14v52H0z" fill="#75b5d7"/><rect x="14" y="92" width="20" height="10" fill="#4a95bb"/><rect x="36" y="80" width="20" height="10" fill="#2a5f7e"/><rect x="58" y="68" width="20" height="10" fill="#4a95bb"/><rect x="80" y="56" width="20" height="10" fill="#2a5f7e"/><rect x="102" y="44" width="20" height="10" fill="#4a95bb"/><circle cx="112" cy="34" r="10" fill="#14191d"/><circle cx="109" cy="31" r="3" fill="#fff"/><rect x="0" y="128" width="142" height="14" fill="#2a5f7e"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#flash-games">[Game title]</a></h3>
+          <p class="desc">[Creator], [Year]. [One-line reason it earns a spot.]</p>
+        </li>
+        <!-- CONTENT: Flash Games item 2. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#flash-games" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: game cover. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#14191d"/><path d="M12 12h118v118H12zM34 12v40h30M100 12v30H76v24M12 76h34v30M64 130v-40h40M130 66H100v24M34 108h14" fill="none" stroke="#75b5d7" stroke-width="6"/><circle cx="24" cy="120" r="3" fill="#fff"/><circle cx="43" cy="106" r="3" fill="#fff"/><circle cx="62" cy="92" r="3" fill="#fff"/><circle cx="81" cy="78" r="3" fill="#fff"/><circle cx="100" cy="64" r="3" fill="#fff"/><circle cx="119" cy="50" r="3" fill="#fff"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#flash-games">[Game title]</a></h3>
+          <p class="desc">[Creator], [Year]. [One-line reason it earns a spot.]</p>
+        </li>
+        <!-- CONTENT: Flash Games item 3. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#flash-games" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: game cover. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#2a5f7e"/><circle cx="0" cy="0" r="1.2" fill="#fff"/><circle cx="37" cy="23" r="1.2" fill="#fff"/><circle cx="74" cy="46" r="1.2" fill="#fff"/><circle cx="111" cy="69" r="1.2" fill="#fff"/><circle cx="6" cy="12" r="1.2" fill="#fff"/><circle cx="43" cy="35" r="1.2" fill="#fff"/><circle cx="80" cy="58" r="1.2" fill="#fff"/><circle cx="117" cy="1" r="1.2" fill="#fff"/><circle cx="12" cy="24" r="1.2" fill="#fff"/><circle cx="49" cy="47" r="1.2" fill="#fff"/><circle cx="86" cy="70" r="1.2" fill="#fff"/><circle cx="123" cy="13" r="1.2" fill="#fff"/><circle cx="18" cy="36" r="1.2" fill="#fff"/><circle cx="55" cy="59" r="1.2" fill="#fff"/><path d="M0 120l24-18 22 10 26-26 24 20 22-12 24 16v32H0z" fill="#d7dde1"/><path d="M64 38h14l6 20H58zM60 58l-8 12M82 58l8 12" fill="#fff" stroke="#fff" stroke-width="2"/><path d="M67 60h8l-4 14z" fill="#75b5d7"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#flash-games">[Game title]</a></h3>
+          <p class="desc">[Creator], [Year]. [One-line reason it earns a spot.]</p>
+        </li>
+        <!-- CONTENT: Flash Games item 4. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#flash-games" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: game cover. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#14191d"/><rect x="8" y="14" width="19" height="9" fill="#75b5d7"/><rect x="29" y="14" width="19" height="9" fill="#75b5d7"/><rect x="50" y="14" width="19" height="9" fill="#75b5d7"/><rect x="71" y="14" width="19" height="9" fill="#75b5d7"/><rect x="92" y="14" width="19" height="9" fill="#75b5d7"/><rect x="113" y="14" width="19" height="9" fill="#75b5d7"/><rect x="8" y="25" width="19" height="9" fill="#c4e2f1"/><rect x="29" y="25" width="19" height="9" fill="#c4e2f1"/><rect x="50" y="25" width="19" height="9" fill="#c4e2f1"/><rect x="71" y="25" width="19" height="9" fill="#c4e2f1"/><rect x="92" y="25" width="19" height="9" fill="#c4e2f1"/><rect x="113" y="25" width="19" height="9" fill="#c4e2f1"/><rect x="8" y="36" width="19" height="9" fill="#4a95bb"/><rect x="29" y="36" width="19" height="9" fill="#4a95bb"/><rect x="50" y="36" width="19" height="9" fill="#4a95bb"/><rect x="71" y="36" width="19" height="9" fill="#4a95bb"/><rect x="92" y="36" width="19" height="9" fill="#4a95bb"/><rect x="113" y="36" width="19" height="9" fill="#4a95bb"/><rect x="8" y="47" width="19" height="9" fill="#fff"/><rect x="29" y="47" width="19" height="9" fill="#fff"/><rect x="50" y="47" width="19" height="9" fill="#fff"/><rect x="71" y="47" width="19" height="9" fill="#fff"/><rect x="92" y="47" width="19" height="9" fill="#fff"/><rect x="113" y="47" width="19" height="9" fill="#fff"/><rect x="48" y="120" width="46" height="8" fill="#d7dde1"/><circle cx="84" cy="92" r="5" fill="#fff"/><path d="M84 92L60 120" fill="none" stroke="#8b98a0" stroke-width="1"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#flash-games">[Game title]</a></h3>
+          <p class="desc">[Creator], [Year]. [One-line reason it earns a spot.]</p>
+        </li>
+        <!-- CONTENT: Flash Games item 5. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#flash-games" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: game cover. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#75b5d7"/><path d="M0 112q70-26 142 0v30H0z" fill="#2a5f7e"/><rect x="26" y="56" width="28" height="62" fill="#d7dde1"/><rect x="24" y="46" width="8" height="12" fill="#d7dde1"/><rect x="36" y="46" width="8" height="12" fill="#d7dde1"/><rect x="48" y="46" width="8" height="12" fill="#d7dde1"/><rect x="36" y="74" width="8" height="14" fill="#14191d"/><path d="M56 60Q90 16 124 92" fill="none" stroke="#fff" stroke-width="2"/><circle cx="124" cy="94" r="6" fill="#14191d"/><path d="M112 104l12-10 12 10z" fill="#14191d"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#flash-games">[Game title]</a></h3>
+          <p class="desc">[Creator], [Year]. [One-line reason it earns a spot.]</p>
+        </li>
+        <!-- CONTENT: Flash Games item 6. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#flash-games" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: game cover. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#c4e2f1"/><circle cx="112" cy="30" r="14" fill="#fff"/><path d="M0 94L46 58l30 24 26-18 40 30v48H0z" fill="#8b98a0"/><rect x="0" y="100" width="142" height="42" fill="#55626b"/><rect x="4" y="118" width="18" height="4" fill="#fff"/><rect x="34" y="118" width="18" height="4" fill="#fff"/><rect x="64" y="118" width="18" height="4" fill="#fff"/><rect x="94" y="118" width="18" height="4" fill="#fff"/><rect x="124" y="118" width="18" height="4" fill="#fff"/><path d="M36 104q2-16 18-16h20q12 0 18 16h10v8H26v-8z" fill="#75b5d7"/><rect x="50" y="92" width="16" height="10" fill="#14191d"/><circle cx="44" cy="112" r="7" fill="#14191d"/><circle cx="88" cy="112" r="7" fill="#14191d"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#flash-games">[Game title]</a></h3>
+          <p class="desc">[Creator], [Year]. [One-line reason it earns a spot.]</p>
+        </li>
+        <!-- CONTENT: Flash Games item 7. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#flash-games" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: game cover. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#0f1419"/><circle cx="0" cy="0" r="1" fill="#fff"/><circle cx="53" cy="31" r="1" fill="#8b98a0"/><circle cx="106" cy="62" r="1" fill="#8b98a0"/><circle cx="17" cy="93" r="1" fill="#fff"/><circle cx="70" cy="124" r="1" fill="#8b98a0"/><circle cx="123" cy="13" r="1" fill="#8b98a0"/><circle cx="34" cy="44" r="1" fill="#fff"/><circle cx="87" cy="75" r="1" fill="#8b98a0"/><circle cx="140" cy="106" r="1" fill="#8b98a0"/><circle cx="51" cy="137" r="1" fill="#fff"/><circle cx="104" cy="26" r="1" fill="#8b98a0"/><circle cx="15" cy="57" r="1" fill="#8b98a0"/><circle cx="68" cy="88" r="1" fill="#fff"/><circle cx="121" cy="119" r="1" fill="#8b98a0"/><circle cx="32" cy="8" r="1" fill="#8b98a0"/><circle cx="85" cy="39" r="1" fill="#fff"/><circle cx="138" cy="70" r="1" fill="#8b98a0"/><circle cx="49" cy="101" r="1" fill="#8b98a0"/><circle cx="102" cy="132" r="1" fill="#fff"/><circle cx="13" cy="21" r="1" fill="#8b98a0"/><path d="M71 94l14 28-14-8-14 8z" fill="#75b5d7"/><path d="M71 90V30" fill="none" stroke="#fff" stroke-width="2"/><circle cx="24" cy="20" r="7" fill="#4a95bb"/><circle cx="48" cy="36" r="7" fill="#c4e2f1"/><circle cx="72" cy="20" r="7" fill="#4a95bb"/><circle cx="96" cy="36" r="7" fill="#c4e2f1"/><circle cx="120" cy="20" r="7" fill="#4a95bb"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#flash-games">[Game title]</a></h3>
+          <p class="desc">[Creator], [Year]. [One-line reason it earns a spot.]</p>
+        </li>
+        <!-- CONTENT: Flash Games item 8. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#flash-games" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: game cover. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#d7dde1"/><circle cx="92" cy="66" r="44" fill="#fff"/><circle cx="92" cy="66" r="33" fill="#4a95bb"/><circle cx="92" cy="66" r="22" fill="#fff"/><circle cx="92" cy="66" r="11" fill="#2a5f7e"/><path d="M12 120L90 68" fill="none" stroke="#14191d" stroke-width="3"/><path d="M86 62l10 3-4 9z" fill="#14191d"/><rect x="0" y="126" width="142" height="16" fill="#8b98a0"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#flash-games">[Game title]</a></h3>
+          <p class="desc">[Creator], [Year]. [One-line reason it earns a spot.]</p>
+        </li>
+        <!-- CONTENT: Flash Games item 9. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#flash-games" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: game cover. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#4a95bb"/><circle cx="30" cy="30" r="16" fill="#c4e2f1"/><path d="M0 118h142v24H0z" fill="#14191d"/><rect x="44" y="62" width="54" height="58" fill="#d7dde1"/><rect x="44" y="52" width="10" height="12" fill="#d7dde1"/><rect x="60" y="52" width="10" height="12" fill="#d7dde1"/><rect x="76" y="52" width="10" height="12" fill="#d7dde1"/><rect x="92" y="52" width="10" height="12" fill="#d7dde1"/><rect x="62" y="92" width="18" height="28" fill="#14191d"/><rect x="30" y="44" width="16" height="76" fill="#8b98a0"/><rect x="96" y="44" width="16" height="76" fill="#8b98a0"/><rect x="50" y="72" width="8" height="10" fill="#2a5f7e"/><rect x="84" y="72" width="8" height="10" fill="#2a5f7e"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#flash-games">[Game title]</a></h3>
+          <p class="desc">[Creator], [Year]. [One-line reason it earns a spot.]</p>
+        </li>
+        <!-- CONTENT: Flash Games item 10. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#flash-games" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: game cover. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#2a5f7e"/><rect x="0" y="28" width="112" height="8" fill="#c4e2f1"/><rect x="30" y="58" width="112" height="8" fill="#c4e2f1"/><rect x="0" y="88" width="112" height="8" fill="#c4e2f1"/><rect x="30" y="118" width="112" height="8" fill="#c4e2f1"/><rect x="110" y="36" width="10" height="22" fill="#fff"/><rect x="22" y="66" width="10" height="22" fill="#fff"/><rect x="110" y="96" width="10" height="22" fill="#fff"/><circle cx="36" cy="20" r="8" fill="#fff"/><circle cx="112" cy="110" r="7" fill="#14191d"/><rect x="0" y="134" width="142" height="8" fill="#14191d"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#flash-games">[Game title]</a></h3>
+          <p class="desc">[Creator], [Year]. [One-line reason it earns a spot.]</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section: Films -->
+    <section class="maintable" id="films" aria-labelledby="films-h">
+      <div class="bar">
+        <h2 id="films-h">Films</h2>
+        <!-- CONTENT: point this link at the real listing page or profile URL -->
+        <a class="viewall" href="#films">View All on Letterboxd</a>
+      </div>
+      <ul class="grid">
+        <!-- CONTENT: Films item 1. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#films" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: film poster. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#c4e2f1"/><rect x="26" y="58" width="90" height="60" fill="#14191d"/><path d="M24 36l92-14 4 22-92 14z" fill="#14191d"/><path d="M36 34l14-2 10 20-14 2z" fill="#fff"/><path d="M58 31l14-2 10 20-14 2z" fill="#fff"/><path d="M80 28l14-2 10 20-14 2z" fill="#fff"/><path d="M102 25l14-2 10 20-14 2z" fill="#fff"/><rect x="38" y="74" width="66" height="4" fill="#d7dde1"/><rect x="38" y="88" width="44" height="4" fill="#d7dde1"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#films">[Film title]</a></h3>
+          <p class="desc">[Director], [Year]. [One-line reason.] From Letterboxd.</p>
+        </li>
+        <!-- CONTENT: Films item 2. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#films" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: film poster. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#2a5f7e"/><path d="M46 0h50v142H46z" fill="#14191d"/><rect x="50" y="4" width="6" height="10" fill="#fff"/><rect x="86" y="4" width="6" height="10" fill="#fff"/><rect x="50" y="24" width="6" height="10" fill="#fff"/><rect x="86" y="24" width="6" height="10" fill="#fff"/><rect x="50" y="44" width="6" height="10" fill="#fff"/><rect x="86" y="44" width="6" height="10" fill="#fff"/><rect x="50" y="64" width="6" height="10" fill="#fff"/><rect x="86" y="64" width="6" height="10" fill="#fff"/><rect x="50" y="84" width="6" height="10" fill="#fff"/><rect x="86" y="84" width="6" height="10" fill="#fff"/><rect x="50" y="104" width="6" height="10" fill="#fff"/><rect x="86" y="104" width="6" height="10" fill="#fff"/><rect x="50" y="124" width="6" height="10" fill="#fff"/><rect x="86" y="124" width="6" height="10" fill="#fff"/><rect x="60" y="8" width="22" height="36" fill="#75b5d7"/><rect x="60" y="52" width="22" height="36" fill="#c4e2f1"/><rect x="60" y="96" width="22" height="36" fill="#4a95bb"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#films">[Film title]</a></h3>
+          <p class="desc">[Director], [Year]. [One-line reason.] From Letterboxd.</p>
+        </li>
+        <!-- CONTENT: Films item 3. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#films" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: film poster. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#14191d"/><path d="M16 0l50 142H0V60z" fill="#75b5d7" opacity=".5"/><path d="M126 0L76 142h66V60z" fill="#c4e2f1" opacity=".5"/><path d="M0 118q71-22 142 0v24H0z" fill="#8b98a0"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#films">[Film title]</a></h3>
+          <p class="desc">[Director], [Year]. [One-line reason.] From Letterboxd.</p>
+        </li>
+        <!-- CONTENT: Films item 4. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#films" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: film poster. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#1c3a4d"/><circle cx="104" cy="36" r="18" fill="#c4e2f1"/><circle cx="112" cy="30" r="16" fill="#1c3a4d"/><rect x="0" y="80" width="19" height="80" fill="#0f2230"/><rect x="21" y="43" width="19" height="80" fill="#14191d"/><rect x="42" y="50" width="19" height="80" fill="#0f2230"/><rect x="63" y="57" width="19" height="80" fill="#14191d"/><rect x="84" y="64" width="19" height="80" fill="#0f2230"/><rect x="105" y="71" width="19" height="80" fill="#14191d"/><rect x="126" y="78" width="19" height="80" fill="#0f2230"/><rect x="6" y="86" width="3" height="4" fill="#75b5d7"/><rect x="23" y="97" width="3" height="4" fill="#75b5d7"/><rect x="40" y="108" width="3" height="4" fill="#75b5d7"/><rect x="57" y="119" width="3" height="4" fill="#75b5d7"/><rect x="74" y="90" width="3" height="4" fill="#75b5d7"/><rect x="91" y="101" width="3" height="4" fill="#75b5d7"/><rect x="108" y="112" width="3" height="4" fill="#75b5d7"/><rect x="125" y="123" width="3" height="4" fill="#75b5d7"/><rect x="12" y="94" width="3" height="4" fill="#75b5d7"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#films">[Film title]</a></h3>
+          <p class="desc">[Director], [Year]. [One-line reason.] From Letterboxd.</p>
+        </li>
+        <!-- CONTENT: Films item 5. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#films" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: film poster. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#14191d"/><rect x="20" y="16" width="102" height="52" fill="#fff"/><path d="M34 54l18-24 14 16 12-10 22 18z" fill="#75b5d7"/><rect x="6" y="86" width="23" height="20" fill="#2a5f7e"/><rect x="6" y="110" width="23" height="20" fill="#4a95bb"/><rect x="33" y="86" width="23" height="20" fill="#2a5f7e"/><rect x="33" y="110" width="23" height="20" fill="#4a95bb"/><rect x="60" y="86" width="23" height="20" fill="#2a5f7e"/><rect x="60" y="110" width="23" height="20" fill="#4a95bb"/><rect x="87" y="86" width="23" height="20" fill="#2a5f7e"/><rect x="87" y="110" width="23" height="20" fill="#4a95bb"/><rect x="114" y="86" width="23" height="20" fill="#2a5f7e"/><rect x="114" y="110" width="23" height="20" fill="#4a95bb"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#films">[Film title]</a></h3>
+          <p class="desc">[Director], [Year]. [One-line reason.] From Letterboxd.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section: TV -->
+    <section class="maintable" id="tv" aria-labelledby="tv-h">
+      <div class="bar">
+        <h2 id="tv-h">TV</h2>
+        <!-- CONTENT: point this link at the real listing page or profile URL -->
+        <a class="viewall" href="#tv">View All on [TV source]</a>
+      </div>
+      <ul class="grid">
+        <!-- CONTENT: TV item 1. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#tv" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: show poster. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#c4e2f1"/><path d="M52 34L38 14M76 34l14-20" fill="none" stroke="#14191d" stroke-width="3"/><rect x="18" y="32" width="106" height="74" fill="#55626b"/><rect x="30" y="40" width="68" height="56" fill="#75b5d7"/><circle cx="64" cy="60" r="12" fill="#fff"/><path d="M30 96q34-26 68 0z" fill="#2a5f7e"/><circle cx="110" cy="50" r="5" fill="#d7dde1"/><circle cx="110" cy="66" r="5" fill="#d7dde1"/><rect x="30" y="106" width="14" height="8" fill="#14191d"/><rect x="98" y="106" width="14" height="8" fill="#14191d"/><rect x="0" y="114" width="142" height="28" fill="#8b98a0"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#tv">[Show title]</a></h3>
+          <p class="desc">[Network], [Years]. [One-line reason.] From [TV source].</p>
+        </li>
+        <!-- CONTENT: TV item 2. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#tv" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: show poster. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#2a5f7e"/><path d="M52 34L38 14M76 34l14-20" fill="none" stroke="#14191d" stroke-width="3"/><rect x="18" y="32" width="106" height="74" fill="#55626b"/><rect x="30" y="40" width="11.4" height="56" fill="#fff"/><rect x="41.4" y="40" width="11.4" height="56" fill="#d7dde1"/><rect x="52.8" y="40" width="11.4" height="56" fill="#c4e2f1"/><rect x="64.2" y="40" width="11.4" height="56" fill="#75b5d7"/><rect x="75.6" y="40" width="11.4" height="56" fill="#4a95bb"/><rect x="87" y="40" width="11.4" height="56" fill="#2a5f7e"/><circle cx="110" cy="50" r="5" fill="#d7dde1"/><circle cx="110" cy="66" r="5" fill="#d7dde1"/><rect x="30" y="106" width="14" height="8" fill="#14191d"/><rect x="98" y="106" width="14" height="8" fill="#14191d"/><rect x="0" y="114" width="142" height="28" fill="#14191d"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#tv">[Show title]</a></h3>
+          <p class="desc">[Network], [Years]. [One-line reason.] From [TV source].</p>
+        </li>
+        <!-- CONTENT: TV item 3. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#tv" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: show poster. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#d7dde1"/><path d="M52 34L38 14M76 34l14-20" fill="none" stroke="#14191d" stroke-width="3"/><rect x="18" y="32" width="106" height="74" fill="#55626b"/><rect x="30" y="40" width="68" height="56" fill="#14191d"/><rect x="30" y="40" width="3" height="2" fill="#8b98a0"/><rect x="59" y="57" width="3" height="2" fill="#fff"/><rect x="88" y="74" width="3" height="2" fill="#8b98a0"/><rect x="51" y="91" width="3" height="2" fill="#fff"/><rect x="80" y="54" width="3" height="2" fill="#8b98a0"/><rect x="43" y="71" width="3" height="2" fill="#fff"/><rect x="72" y="88" width="3" height="2" fill="#8b98a0"/><rect x="35" y="51" width="3" height="2" fill="#fff"/><rect x="64" y="68" width="3" height="2" fill="#8b98a0"/><rect x="93" y="85" width="3" height="2" fill="#fff"/><rect x="56" y="48" width="3" height="2" fill="#8b98a0"/><rect x="85" y="65" width="3" height="2" fill="#fff"/><rect x="48" y="82" width="3" height="2" fill="#8b98a0"/><rect x="77" y="45" width="3" height="2" fill="#fff"/><rect x="40" y="62" width="3" height="2" fill="#8b98a0"/><rect x="69" y="79" width="3" height="2" fill="#fff"/><rect x="32" y="42" width="3" height="2" fill="#8b98a0"/><rect x="61" y="59" width="3" height="2" fill="#fff"/><rect x="90" y="76" width="3" height="2" fill="#8b98a0"/><rect x="53" y="93" width="3" height="2" fill="#fff"/><rect x="82" y="56" width="3" height="2" fill="#8b98a0"/><rect x="45" y="73" width="3" height="2" fill="#fff"/><rect x="74" y="90" width="3" height="2" fill="#8b98a0"/><rect x="37" y="53" width="3" height="2" fill="#fff"/><rect x="66" y="70" width="3" height="2" fill="#8b98a0"/><rect x="95" y="87" width="3" height="2" fill="#fff"/><rect x="58" y="50" width="3" height="2" fill="#8b98a0"/><rect x="87" y="67" width="3" height="2" fill="#fff"/><rect x="50" y="84" width="3" height="2" fill="#8b98a0"/><rect x="79" y="47" width="3" height="2" fill="#fff"/><rect x="42" y="64" width="3" height="2" fill="#8b98a0"/><rect x="71" y="81" width="3" height="2" fill="#fff"/><rect x="34" y="44" width="3" height="2" fill="#8b98a0"/><rect x="63" y="61" width="3" height="2" fill="#fff"/><rect x="92" y="78" width="3" height="2" fill="#8b98a0"/><rect x="55" y="41" width="3" height="2" fill="#fff"/><rect x="84" y="58" width="3" height="2" fill="#8b98a0"/><rect x="47" y="75" width="3" height="2" fill="#fff"/><rect x="76" y="92" width="3" height="2" fill="#8b98a0"/><rect x="39" y="55" width="3" height="2" fill="#fff"/><circle cx="110" cy="50" r="5" fill="#d7dde1"/><circle cx="110" cy="66" r="5" fill="#d7dde1"/><rect x="30" y="106" width="14" height="8" fill="#14191d"/><rect x="98" y="106" width="14" height="8" fill="#14191d"/><rect x="0" y="114" width="142" height="28" fill="#8b98a0"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#tv">[Show title]</a></h3>
+          <p class="desc">[Network], [Years]. [One-line reason.] From [TV source].</p>
+        </li>
+        <!-- CONTENT: TV item 4. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#tv" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: show poster. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#14191d"/><path d="M52 34L38 14M76 34l14-20" fill="none" stroke="#d7dde1" stroke-width="3"/><rect x="18" y="32" width="106" height="74" fill="#55626b"/><rect x="30" y="40" width="68" height="56" fill="#c4e2f1"/><rect x="42" y="60" width="20" height="36" fill="#14191d"/><circle cx="52" cy="52" r="8" fill="#14191d"/><rect x="70" y="70" width="18" height="26" fill="#2a5f7e"/><circle cx="79" cy="62" r="7" fill="#2a5f7e"/><circle cx="110" cy="50" r="5" fill="#d7dde1"/><circle cx="110" cy="66" r="5" fill="#d7dde1"/><rect x="30" y="106" width="14" height="8" fill="#14191d"/><rect x="98" y="106" width="14" height="8" fill="#14191d"/><rect x="0" y="114" width="142" height="28" fill="#8b98a0"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#tv">[Show title]</a></h3>
+          <p class="desc">[Network], [Years]. [One-line reason.] From [TV source].</p>
+        </li>
+        <!-- CONTENT: TV item 5. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#tv" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: show poster. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#75b5d7"/><path d="M52 34L38 14M76 34l14-20" fill="none" stroke="#14191d" stroke-width="3"/><rect x="18" y="32" width="106" height="74" fill="#55626b"/><rect x="30" y="40" width="68" height="56" fill="#2a5f7e"/><rect x="36" y="47" width="40" height="4" fill="#c4e2f1"/><rect x="36" y="56" width="56" height="4" fill="#c4e2f1"/><rect x="36" y="65" width="40" height="4" fill="#c4e2f1"/><rect x="36" y="74" width="56" height="4" fill="#c4e2f1"/><rect x="36" y="83" width="40" height="4" fill="#c4e2f1"/><circle cx="110" cy="50" r="5" fill="#d7dde1"/><circle cx="110" cy="66" r="5" fill="#d7dde1"/><rect x="30" y="106" width="14" height="8" fill="#14191d"/><rect x="98" y="106" width="14" height="8" fill="#14191d"/><rect x="0" y="114" width="142" height="28" fill="#8b98a0"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#tv">[Show title]</a></h3>
+          <p class="desc">[Network], [Years]. [One-line reason.] From [TV source].</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section: Anime -->
+    <section class="maintable" id="anime" aria-labelledby="anime-h">
+      <div class="bar">
+        <h2 id="anime-h">Anime</h2>
+        <!-- CONTENT: point this link at the real listing page or profile URL -->
+        <a class="viewall" href="#anime">View All on MyAnimeList</a>
+      </div>
+      <ul class="grid">
+        <!-- CONTENT: Anime item 1. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#anime" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: anime poster. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#fff"/><path d="M101 71L181 71" fill="none" stroke="#2a5f7e" stroke-width="4"/><path d="M98.7163859753386 82.4805029709527L172.62674857624154 113.09517756015987" fill="none" stroke="#14191d" stroke-width="2"/><path d="M92.21320343559643 92.21320343559643L148.78174593052023 148.78174593052023" fill="none" stroke="#2a5f7e" stroke-width="4"/><path d="M82.4805029709527 98.7163859753386L113.09517756015988 172.62674857624154" fill="none" stroke="#14191d" stroke-width="2"/><path d="M71 101L71 181" fill="none" stroke="#2a5f7e" stroke-width="4"/><path d="M59.51949702904731 98.7163859753386L28.90482243984013 172.62674857624154" fill="none" stroke="#14191d" stroke-width="2"/><path d="M49.78679656440357 92.21320343559643L-6.781745930520216 148.78174593052023" fill="none" stroke="#2a5f7e" stroke-width="4"/><path d="M43.2836140246614 82.4805029709527L-30.62674857624154 113.0951775601599" fill="none" stroke="#14191d" stroke-width="2"/><path d="M41 71L-39 71.00000000000001" fill="none" stroke="#2a5f7e" stroke-width="4"/><path d="M43.28361402466139 59.519497029047315L-30.626748576241553 28.904822439840146" fill="none" stroke="#14191d" stroke-width="2"/><path d="M49.78679656440357 49.78679656440357L-6.781745930520245 -6.781745930520216" fill="none" stroke="#2a5f7e" stroke-width="4"/><path d="M59.51949702904729 43.283614024661404L28.90482243984006 -30.62674857624151" fill="none" stroke="#14191d" stroke-width="2"/><path d="M71 41L70.99999999999999 -39" fill="none" stroke="#2a5f7e" stroke-width="4"/><path d="M82.4805029709527 43.283614024661404L113.0951775601599 -30.626748576241525" fill="none" stroke="#14191d" stroke-width="2"/><path d="M92.21320343559643 49.78679656440357L148.7817459305202 -6.781745930520245" fill="none" stroke="#2a5f7e" stroke-width="4"/><path d="M98.7163859753386 59.51949702904729L172.6267485762415 28.904822439840054" fill="none" stroke="#14191d" stroke-width="2"/><path d="M71 40l9 21 22 2-17 14 6 22-20-12-20 12 6-22-17-14 22-2z" fill="#75b5d7" stroke="#14191d" stroke-width="2"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#anime">[Anime title]</a></h3>
+          <p class="desc">[Studio], [Year]. [One-line reason.] From MyAnimeList.</p>
+        </li>
+        <!-- CONTENT: Anime item 2. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#anime" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: anime poster. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#4a95bb"/><path d="M71 14l12 26H59z" fill="#fff"/><rect x="36" y="40" width="70" height="58" fill="#d7dde1"/><rect x="36" y="40" width="70" height="14" fill="#8b98a0"/><rect x="46" y="62" width="20" height="12" fill="#14191d"/><rect x="76" y="62" width="20" height="12" fill="#14191d"/><rect x="52" y="65" width="8" height="6" fill="#75b5d7"/><rect x="82" y="65" width="8" height="6" fill="#75b5d7"/><rect x="56" y="84" width="30" height="6" fill="#14191d"/><rect x="22" y="54" width="14" height="30" fill="#2a5f7e"/><rect x="106" y="54" width="14" height="30" fill="#2a5f7e"/><rect x="50" y="98" width="42" height="44" fill="#55626b"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#anime">[Anime title]</a></h3>
+          <p class="desc">[Studio], [Year]. [One-line reason.] From MyAnimeList.</p>
+        </li>
+        <!-- CONTENT: Anime item 3. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#anime" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: anime poster. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#c4e2f1"/><circle cx="110" cy="32" r="16" fill="#fff"/><path d="M0 92q26-62 64-44 12 6 6 18-12-8-20-2 14 8 40 16t52 2v60H0z" fill="#2a5f7e"/><path d="M0 112q36-20 72-4t70-8v42H0z" fill="#4a95bb"/><circle cx="12" cy="104" r="3" fill="#fff"/><circle cx="36" cy="98" r="3" fill="#fff"/><circle cx="60" cy="104" r="3" fill="#fff"/><circle cx="84" cy="98" r="3" fill="#fff"/><circle cx="108" cy="104" r="3" fill="#fff"/><circle cx="132" cy="98" r="3" fill="#fff"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#anime">[Anime title]</a></h3>
+          <p class="desc">[Studio], [Year]. [One-line reason.] From MyAnimeList.</p>
+        </li>
+        <!-- CONTENT: Anime item 4. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#anime" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: anime poster. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#75b5d7"/><path d="M10 24q10-10 20 0t16 6H6z" fill="#fff"/><path d="M52 38q10-10 20 0t16 6H48z" fill="#fff"/><path d="M94 24q10-10 20 0t16 6H90z" fill="#fff"/><path d="M34 72h76l-14 24-16 4-8 22-10-20-14-4z" fill="#55626b"/><path d="M30 66q42-16 82 0v8H30z" fill="#2a5f7e"/><rect x="66" y="44" width="8" height="24" fill="#14191d"/><circle cx="70" cy="40" r="14" fill="#14191d"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#anime">[Anime title]</a></h3>
+          <p class="desc">[Studio], [Year]. [One-line reason.] From MyAnimeList.</p>
+        </li>
+        <!-- CONTENT: Anime item 5. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#anime" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: anime poster. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#0f2230"/><circle cx="30" cy="28" r="12" fill="#d7dde1"/><rect x="0" y="76" width="22" height="70" fill="#14191d"/><rect x="24" y="47" width="22" height="70" fill="#2a5f7e"/><rect x="48" y="54" width="22" height="70" fill="#14191d"/><rect x="72" y="61" width="22" height="70" fill="#2a5f7e"/><rect x="96" y="68" width="22" height="70" fill="#14191d"/><rect x="120" y="75" width="22" height="70" fill="#2a5f7e"/><rect x="0" y="104" width="142" height="6" fill="#d7dde1"/><rect x="0" y="110" width="3" height="32" fill="#8b98a0"/><rect x="18" y="110" width="3" height="32" fill="#8b98a0"/><rect x="36" y="110" width="3" height="32" fill="#8b98a0"/><rect x="54" y="110" width="3" height="32" fill="#8b98a0"/><rect x="72" y="110" width="3" height="32" fill="#8b98a0"/><rect x="90" y="110" width="3" height="32" fill="#8b98a0"/><rect x="108" y="110" width="3" height="32" fill="#8b98a0"/><rect x="126" y="110" width="3" height="32" fill="#8b98a0"/><rect x="48" y="88" width="50" height="16" fill="#75b5d7"/><rect x="54" y="92" width="10" height="6" fill="#14191d"/><rect x="70" y="92" width="10" height="6" fill="#14191d"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#anime">[Anime title]</a></h3>
+          <p class="desc">[Studio], [Year]. [One-line reason.] From MyAnimeList.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section: Books -->
+    <section class="maintable" id="books" aria-labelledby="books-h">
+      <div class="bar">
+        <h2 id="books-h">Books</h2>
+        <!-- CONTENT: point this link at the real listing page or profile URL -->
+        <a class="viewall" href="#books">View All on Goodreads</a>
+      </div>
+      <ul class="grid">
+        <!-- CONTENT: Books item 1. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#books" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: book cover. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#d7dde1"/><rect x="38" y="16" width="66" height="108" fill="#2a5f7e"/><rect x="38" y="16" width="10" height="108" fill="#14191d"/><rect x="56" y="32" width="38" height="6" fill="#fff"/><rect x="56" y="44" width="26" height="4" fill="#c4e2f1"/><circle cx="75" cy="88" r="14" fill="#c4e2f1"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#books">[Book title]</a></h3>
+          <p class="desc">[Author], [Year]. [One-line reason.] From Goodreads.</p>
+        </li>
+        <!-- CONTENT: Books item 2. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#books" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: book cover. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#2a5f7e"/><rect x="16" y="28" width="100" height="18" fill="#c4e2f1"/><rect x="26" y="48" width="86" height="18" fill="#fff"/><rect x="16" y="68" width="72" height="18" fill="#75b5d7"/><rect x="26" y="88" width="100" height="18" fill="#d7dde1"/><rect x="16" y="108" width="86" height="18" fill="#4a95bb"/><rect x="26" y="34" width="20" height="5" fill="#14191d"/><rect x="36" y="54" width="20" height="5" fill="#14191d"/><rect x="26" y="74" width="20" height="5" fill="#14191d"/><rect x="36" y="94" width="20" height="5" fill="#14191d"/><rect x="26" y="114" width="20" height="5" fill="#14191d"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#books">[Book title]</a></h3>
+          <p class="desc">[Author], [Year]. [One-line reason.] From Goodreads.</p>
+        </li>
+        <!-- CONTENT: Books item 3. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#books" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: book cover. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#c4e2f1"/><path d="M71 44C56 30 32 30 14 36v76c18-6 42-6 57 8 15-14 39-14 57-8V36c-18-6-42-6-57 8z" fill="#fff" stroke="#14191d" stroke-width="3"/><path d="M71 44v76" fill="none" stroke="#14191d" stroke-width="3"/><path d="M26 54q18-5 34 2M82 56q16-7 34-2" fill="none" stroke="#8b98a0" stroke-width="2"/><path d="M26 66q18-5 34 2M82 68q16-7 34-2" fill="none" stroke="#8b98a0" stroke-width="2"/><path d="M26 78q18-5 34 2M82 80q16-7 34-2" fill="none" stroke="#8b98a0" stroke-width="2"/><path d="M26 90q18-5 34 2M82 92q16-7 34-2" fill="none" stroke="#8b98a0" stroke-width="2"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#books">[Book title]</a></h3>
+          <p class="desc">[Author], [Year]. [One-line reason.] From Goodreads.</p>
+        </li>
+        <!-- CONTENT: Books item 4. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#books" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: book cover. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#14191d"/><rect x="14" y="34" width="16" height="108" fill="#75b5d7"/><rect x="34" y="47" width="16" height="108" fill="#d7dde1"/><rect x="54" y="36" width="16" height="108" fill="#4a95bb"/><rect x="74" y="49" width="16" height="108" fill="#fff"/><rect x="94" y="38" width="16" height="108" fill="#8b98a0"/><rect x="114" y="51" width="16" height="108" fill="#c4e2f1"/><rect x="0" y="26" width="142" height="6" fill="#55626b"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#books">[Book title]</a></h3>
+          <p class="desc">[Author], [Year]. [One-line reason.] From Goodreads.</p>
+        </li>
+        <!-- CONTENT: Books item 5. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#books" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: book cover. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#75b5d7"/><rect x="34" y="18" width="74" height="106" fill="#fff"/><rect x="40" y="24" width="62" height="94" fill="#14191d"/><path d="M40 90l20-26 14 18 10-10 18 22v24H40z" fill="#4a95bb"/><circle cx="84" cy="44" r="8" fill="#c4e2f1"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Rated [n]</span></p>
+          <h3 class="title"><a href="#books">[Book title]</a></h3>
+          <p class="desc">[Author], [Year]. [One-line reason.] From Goodreads.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section: Restaurants -->
+    <section class="maintable" id="restaurants" aria-labelledby="restaurants-h">
+      <div class="bar">
+        <h2 id="restaurants-h">Restaurants</h2>
+        <!-- CONTENT: point this link at the real listing page or profile URL -->
+        <a class="viewall" href="#restaurants">View All on Beli</a>
+      </div>
+      <ul class="grid">
+        <!-- CONTENT: Restaurants item 1. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#restaurants" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: restaurant photo. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#c4e2f1"/><circle cx="71" cy="71" r="44" fill="#fff" stroke="#8b98a0" stroke-width="2"/><circle cx="71" cy="71" r="30" fill="#d7dde1"/><circle cx="62" cy="66" r="9" fill="#2a5f7e"/><circle cx="80" cy="76" r="10" fill="#4a95bb"/><rect x="10" y="34" width="5" height="74" fill="#55626b"/><rect x="127" y="34" width="5" height="74" fill="#55626b"/><path d="M127 34h5v28h-5z" fill="#14191d"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Ranked [n]</span></p>
+          <h3 class="title"><a href="#restaurants">[Restaurant name]</a></h3>
+          <p class="desc">[City], [Cuisine]. [One-line reason.] Ranked on Beli.</p>
+        </li>
+        <!-- CONTENT: Restaurants item 2. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#restaurants" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: restaurant photo. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#2a5f7e"/><path d="M26 74h90q0 40-30 46H56q-30-6-30-46z" fill="#fff"/><path d="M26 74q45-18 90 0z" fill="#c4e2f1"/><path d="M84 62l34-48M94 66l34-46" fill="none" stroke="#14191d" stroke-width="4"/><path d="M56 52q-8-10 0-20t0-20M72 50q-8-10 0-20" fill="none" stroke="#d7dde1" stroke-width="2"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Ranked [n]</span></p>
+          <h3 class="title"><a href="#restaurants">[Restaurant name]</a></h3>
+          <p class="desc">[City], [Cuisine]. [One-line reason.] Ranked on Beli.</p>
+        </li>
+        <!-- CONTENT: Restaurants item 3. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#restaurants" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: restaurant photo. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#d7dde1"/><rect x="44" y="50" width="44" height="62" fill="#fff" stroke="#14191d" stroke-width="3"/><rect x="44" y="50" width="44" height="16" fill="#75b5d7"/><path d="M88 62q24 2 22 20t-22 18" fill="none" stroke="#14191d" stroke-width="5"/><rect x="28" y="112" width="76" height="8" fill="#55626b"/><path d="M58 40q-6-8 0-16M72 40q-6-8 0-16" fill="none" stroke="#8b98a0" stroke-width="3"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Ranked [n]</span></p>
+          <h3 class="title"><a href="#restaurants">[Restaurant name]</a></h3>
+          <p class="desc">[City], [Cuisine]. [One-line reason.] Ranked on Beli.</p>
+        </li>
+        <!-- CONTENT: Restaurants item 4. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#restaurants" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: restaurant photo. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#14191d"/><path d="M30 96h82q6 0 4 8-10 14-45 14t-45-14q-2-8 4-8z" fill="#fff"/><rect x="38" y="70" width="20" height="26" fill="#75b5d7" rx="4"/><rect x="62" y="70" width="20" height="26" fill="#c4e2f1" rx="4"/><rect x="86" y="70" width="20" height="26" fill="#4a95bb" rx="4"/><rect x="38" y="80" width="20" height="6" fill="#2a5f7e"/><rect x="62" y="80" width="20" height="6" fill="#2a5f7e"/><rect x="86" y="80" width="20" height="6" fill="#2a5f7e"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Ranked [n]</span></p>
+          <h3 class="title"><a href="#restaurants">[Restaurant name]</a></h3>
+          <p class="desc">[City], [Cuisine]. [One-line reason.] Ranked on Beli.</p>
+        </li>
+        <!-- CONTENT: Restaurants item 5. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#restaurants" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: restaurant photo. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#4a95bb"/><path d="M71 18q30 0 34 34L71 124 37 52q4-34 34-34z" fill="#c4e2f1"/><circle cx="58" cy="38" r="4" fill="#2a5f7e"/><circle cx="77" cy="50" r="4" fill="#2a5f7e"/><circle cx="66" cy="62" r="4" fill="#2a5f7e"/><circle cx="85" cy="74" r="4" fill="#2a5f7e"/><circle cx="74" cy="86" r="4" fill="#2a5f7e"/><path d="M38 48q33-14 66 0-33 10-66 0z" fill="#fff"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Ranked [n]</span></p>
+          <h3 class="title"><a href="#restaurants">[Restaurant name]</a></h3>
+          <p class="desc">[City], [Cuisine]. [One-line reason.] Ranked on Beli.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section: Workouts -->
+    <section class="maintable" id="workouts" aria-labelledby="workouts-h">
+      <div class="bar">
+        <h2 id="workouts-h">Workouts</h2>
+        <!-- CONTENT: point this link at the real listing page or profile URL -->
+        <a class="viewall" href="#workouts">View All on Hevy</a>
+      </div>
+      <ul class="grid">
+        <!-- CONTENT: Workouts item 1. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#workouts" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: workout image. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#d7dde1"/><rect x="26" y="66" width="90" height="10" fill="#55626b"/><rect x="14" y="44" width="14" height="54" fill="#14191d"/><rect x="2" y="52" width="12" height="38" fill="#2a5f7e"/><rect x="114" y="44" width="14" height="54" fill="#14191d"/><rect x="128" y="52" width="12" height="38" fill="#2a5f7e"/><rect x="0" y="120" width="142" height="22" fill="#8b98a0"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">PR [Weight]</span></p>
+          <h3 class="title"><a href="#workouts">[Deadlift PR]</a></h3>
+          <p class="desc">Set [Date]. Personal record from Hevy.</p>
+        </li>
+        <!-- CONTENT: Workouts item 2. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#workouts" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: workout image. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#2a5f7e"/><rect x="48" y="64" width="46" height="12" fill="#d7dde1"/><rect x="34" y="50" width="14" height="40" fill="#14191d"/><rect x="94" y="50" width="14" height="40" fill="#14191d"/><rect x="24" y="56" width="10" height="28" fill="#75b5d7"/><rect x="108" y="56" width="10" height="28" fill="#75b5d7"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">PR [Weight]</span></p>
+          <h3 class="title"><a href="#workouts">[Squat PR]</a></h3>
+          <p class="desc">Set [Date]. Personal record from Hevy.</p>
+        </li>
+        <!-- CONTENT: Workouts item 3. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#workouts" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: workout image. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#c4e2f1"/><circle cx="71" cy="88" r="34" fill="#14191d"/><path d="M50 62Q50 28 71 28t21 34" fill="none" stroke="#14191d" stroke-width="11"/><circle cx="60" cy="80" r="5" fill="#8b98a0"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">PR [Weight]</span></p>
+          <h3 class="title"><a href="#workouts">[Bench PR]</a></h3>
+          <p class="desc">Set [Date]. Personal record from Hevy.</p>
+        </li>
+        <!-- CONTENT: Workouts item 4. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#workouts" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: workout image. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#14191d"/><rect x="20" y="28" width="6" height="114" fill="#8b98a0"/><rect x="116" y="28" width="6" height="114" fill="#8b98a0"/><rect x="8" y="50" width="126" height="6" fill="#d7dde1"/><rect x="2" y="34" width="12" height="38" fill="#75b5d7"/><rect x="128" y="34" width="12" height="38" fill="#75b5d7"/><rect x="44" y="112" width="54" height="8" fill="#4a95bb"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Total [Number]</span></p>
+          <h3 class="title"><a href="#workouts">[Total workouts]</a></h3>
+          <p class="desc">Since [Date]. Running total from Hevy.</p>
+        </li>
+        <!-- CONTENT: Workouts item 5. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#workouts" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: workout image. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#75b5d7"/><rect x="24" y="100" width="18" height="24" fill="#fff"/><rect x="50" y="80" width="18" height="44" fill="#fff"/><rect x="76" y="60" width="18" height="64" fill="#fff"/><rect x="102" y="36" width="18" height="88" fill="#fff"/><path d="M18 84L58 60l26-20 36-26" fill="none" stroke="#14191d" stroke-width="3"/><rect x="0" y="124" width="142" height="18" fill="#2a5f7e"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Total [Number]</span></p>
+          <h3 class="title"><a href="#workouts">[Total volume]</a></h3>
+          <p class="desc">Since [Date]. Running total from Hevy.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section: Notes -->
+    <section class="maintable" id="notes" aria-labelledby="notes-h">
+      <div class="bar">
+        <h2 id="notes-h">Notes</h2>
+        <!-- CONTENT: point this link at the real listing page or profile URL -->
+        <a class="viewall" href="#notes">View All on Notion</a>
+      </div>
+      <ul class="grid">
+        <!-- CONTENT: Notes item 1. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#notes" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: note image. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#d7dde1"/><rect x="30" y="16" width="82" height="110" fill="#fff" rx="2"/><rect x="40" y="38" width="62" height="4" fill="#55626b"/><rect x="40" y="51" width="62" height="4" fill="#8b98a0"/><rect x="40" y="64" width="34" height="4" fill="#55626b"/><rect x="40" y="77" width="62" height="4" fill="#8b98a0"/><rect x="40" y="90" width="62" height="4" fill="#55626b"/><rect x="40" y="103" width="34" height="4" fill="#8b98a0"/><rect x="40" y="22" width="40" height="8" fill="#14191d"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Updated [Date]</span></p>
+          <h3 class="title"><a href="#notes">[Note title]</a></h3>
+          <p class="desc">[Topic]. [One-line summary.] From Notion.</p>
+        </li>
+        <!-- CONTENT: Notes item 2. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#notes" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: note image. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#c4e2f1"/><rect x="30" y="16" width="82" height="110" fill="#fff" rx="2"/><rect x="40" y="38" width="62" height="4" fill="#55626b"/><rect x="40" y="51" width="62" height="4" fill="#8b98a0"/><rect x="40" y="64" width="34" height="4" fill="#55626b"/><rect x="40" y="77" width="62" height="4" fill="#8b98a0"/><rect x="40" y="90" width="62" height="4" fill="#55626b"/><rect x="40" y="103" width="34" height="4" fill="#8b98a0"/><path d="M86 16h26v26z" fill="#d7dde1"/><rect x="40" y="22" width="30" height="8" fill="#2a5f7e"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Updated [Date]</span></p>
+          <h3 class="title"><a href="#notes">[Note title]</a></h3>
+          <p class="desc">[Topic]. [One-line summary.] From Notion.</p>
+        </li>
+        <!-- CONTENT: Notes item 3. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#notes" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: note image. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#2a5f7e"/><rect x="30" y="16" width="82" height="110" fill="#fff" rx="2"/><rect x="40" y="38" width="62" height="4" fill="#55626b"/><rect x="40" y="51" width="62" height="4" fill="#8b98a0"/><rect x="40" y="64" width="34" height="4" fill="#55626b"/><rect x="40" y="77" width="62" height="4" fill="#8b98a0"/><rect x="40" y="90" width="62" height="4" fill="#55626b"/><rect x="40" y="103" width="34" height="4" fill="#8b98a0"/><circle cx="44" cy="26" r="5" fill="#4a95bb"/><rect x="54" y="22" width="40" height="8" fill="#14191d"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Updated [Date]</span></p>
+          <h3 class="title"><a href="#notes">[Note title]</a></h3>
+          <p class="desc">[Topic]. [One-line summary.] From Notion.</p>
+        </li>
+        <!-- CONTENT: Notes item 4. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#notes" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: note image. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#75b5d7"/><rect x="30" y="16" width="82" height="110" fill="#fff" rx="2"/><rect x="40" y="38" width="62" height="4" fill="#55626b"/><rect x="40" y="51" width="62" height="4" fill="#8b98a0"/><rect x="40" y="64" width="34" height="4" fill="#55626b"/><rect x="40" y="77" width="62" height="4" fill="#8b98a0"/><rect x="40" y="90" width="62" height="4" fill="#55626b"/><rect x="40" y="103" width="34" height="4" fill="#8b98a0"/><rect x="40" y="22" width="10" height="8" fill="#75b5d7"/><rect x="54" y="22" width="10" height="8" fill="#4a95bb"/><rect x="68" y="22" width="10" height="8" fill="#2a5f7e"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Updated [Date]</span></p>
+          <h3 class="title"><a href="#notes">[Note title]</a></h3>
+          <p class="desc">[Topic]. [One-line summary.] From Notion.</p>
+        </li>
+        <!-- CONTENT: Notes item 5. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#notes" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: note image. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#14191d"/><rect x="30" y="16" width="82" height="110" fill="#fff" rx="2"/><rect x="40" y="38" width="62" height="4" fill="#55626b"/><rect x="40" y="51" width="62" height="4" fill="#8b98a0"/><rect x="40" y="64" width="34" height="4" fill="#55626b"/><rect x="40" y="77" width="62" height="4" fill="#8b98a0"/><rect x="40" y="90" width="62" height="4" fill="#55626b"/><rect x="40" y="103" width="34" height="4" fill="#8b98a0"/><rect x="62" y="10" width="18" height="12" fill="#8b98a0"/><rect x="40" y="26" width="40" height="6" fill="#14191d"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Updated [Date]</span></p>
+          <h3 class="title"><a href="#notes">[Note title]</a></h3>
+          <p class="desc">[Topic]. [One-line summary.] From Notion.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section: Writing -->
+    <section class="maintable" id="writing" aria-labelledby="writing-h">
+      <div class="bar">
+        <h2 id="writing-h">Writing</h2>
+        <!-- CONTENT: point this link at the real listing page or profile URL -->
+        <a class="viewall" href="#writing">View All on Substack</a>
+      </div>
+      <ul class="grid">
+        <!-- CONTENT: Writing item 1. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#writing" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: post image. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#c4e2f1"/><path d="M96 18l28 28-66 66-34 6 6-34z" fill="#2a5f7e"/><path d="M96 18l14-8 22 22-8 14z" fill="#14191d"/><path d="M30 84l28 28-34 6z" fill="#fff"/><path d="M18 128h106" fill="none" stroke="#14191d" stroke-width="3"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Posted [Date]</span></p>
+          <h3 class="title"><a href="#writing">[Post title]</a></h3>
+          <p class="desc">[Short excerpt.] <a href="#writing">Read on Substack</a></p>
+        </li>
+        <!-- CONTENT: Writing item 2. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#writing" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: post image. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#2a5f7e"/><rect x="26" y="22" width="90" height="104" fill="#fff"/><rect x="36" y="44" width="70" height="3" fill="#55626b"/><rect x="36" y="54" width="70" height="3" fill="#55626b"/><rect x="36" y="64" width="70" height="3" fill="#55626b"/><rect x="36" y="74" width="70" height="3" fill="#55626b"/><rect x="36" y="84" width="70" height="3" fill="#55626b"/><rect x="36" y="94" width="70" height="3" fill="#55626b"/><rect x="36" y="104" width="36" height="3" fill="#55626b"/><rect x="36" y="28" width="46" height="8" fill="#14191d"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Posted [Date]</span></p>
+          <h3 class="title"><a href="#writing">[Post title]</a></h3>
+          <p class="desc">[Short excerpt.] <a href="#writing">Read on Substack</a></p>
+        </li>
+        <!-- CONTENT: Writing item 3. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#writing" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: post image. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#d7dde1"/><rect x="16" y="44" width="110" height="56" fill="#55626b"/><rect x="26" y="26" width="90" height="30" fill="#fff"/><rect x="34" y="34" width="60" height="3" fill="#14191d"/><rect x="34" y="41" width="46" height="3" fill="#14191d"/><rect x="34" y="48" width="32" height="3" fill="#14191d"/><rect x="26" y="64" width="8" height="5" fill="#14191d"/><rect x="36" y="64" width="8" height="5" fill="#14191d"/><rect x="46" y="64" width="8" height="5" fill="#14191d"/><rect x="56" y="64" width="8" height="5" fill="#14191d"/><rect x="66" y="64" width="8" height="5" fill="#14191d"/><rect x="76" y="64" width="8" height="5" fill="#14191d"/><rect x="86" y="64" width="8" height="5" fill="#14191d"/><rect x="96" y="64" width="8" height="5" fill="#14191d"/><rect x="106" y="64" width="8" height="5" fill="#14191d"/><rect x="26" y="71" width="8" height="5" fill="#14191d"/><rect x="36" y="71" width="8" height="5" fill="#14191d"/><rect x="46" y="71" width="8" height="5" fill="#14191d"/><rect x="56" y="71" width="8" height="5" fill="#14191d"/><rect x="66" y="71" width="8" height="5" fill="#14191d"/><rect x="76" y="71" width="8" height="5" fill="#14191d"/><rect x="86" y="71" width="8" height="5" fill="#14191d"/><rect x="96" y="71" width="8" height="5" fill="#14191d"/><rect x="106" y="71" width="8" height="5" fill="#14191d"/><rect x="26" y="78" width="8" height="5" fill="#14191d"/><rect x="36" y="78" width="8" height="5" fill="#14191d"/><rect x="46" y="78" width="8" height="5" fill="#14191d"/><rect x="56" y="78" width="8" height="5" fill="#14191d"/><rect x="66" y="78" width="8" height="5" fill="#14191d"/><rect x="76" y="78" width="8" height="5" fill="#14191d"/><rect x="86" y="78" width="8" height="5" fill="#14191d"/><rect x="96" y="78" width="8" height="5" fill="#14191d"/><rect x="106" y="78" width="8" height="5" fill="#14191d"/><rect x="26" y="85" width="8" height="5" fill="#14191d"/><rect x="36" y="85" width="8" height="5" fill="#14191d"/><rect x="46" y="85" width="8" height="5" fill="#14191d"/><rect x="56" y="85" width="8" height="5" fill="#14191d"/><rect x="66" y="85" width="8" height="5" fill="#14191d"/><rect x="76" y="85" width="8" height="5" fill="#14191d"/><rect x="86" y="85" width="8" height="5" fill="#14191d"/><rect x="96" y="85" width="8" height="5" fill="#14191d"/><rect x="106" y="85" width="8" height="5" fill="#14191d"/><rect x="16" y="100" width="110" height="8" fill="#14191d"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Posted [Date]</span></p>
+          <h3 class="title"><a href="#writing">[Post title]</a></h3>
+          <p class="desc">[Short excerpt.] <a href="#writing">Read on Substack</a></p>
+        </li>
+        <!-- CONTENT: Writing item 4. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#writing" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: post image. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#14191d"/><path d="M16 38h110v70H16z" fill="#fff"/><path d="M16 38l55 40 55-40" fill="none" stroke="#2a5f7e" stroke-width="4"/><path d="M16 108l40-40M126 108L86 68" fill="none" stroke="#75b5d7" stroke-width="2"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Posted [Date]</span></p>
+          <h3 class="title"><a href="#writing">[Post title]</a></h3>
+          <p class="desc">[Short excerpt.] <a href="#writing">Read on Substack</a></p>
+        </li>
+        <!-- CONTENT: Writing item 5. Replace each [bracket]. Set --fill on .marks (0 to 5) once the real value is known. -->
+        <li class="cell">
+          <a class="thumb" href="#writing" tabindex="-1" aria-hidden="true">
+            <span class="cover"><!-- COVER SLOT: post image. Delete the <svg> below and paste: <img src="[image file]" alt="" width="142" height="142"> -->
+              <svg viewBox="0 0 142 142" width="142" height="142" focusable="false"><rect x="0" y="0" width="142" height="142" fill="#75b5d7"/><rect x="0" y="108" width="142" height="34" fill="#2a5f7e"/><path d="M30 108h82l-10 26H40z" fill="#14191d"/><rect x="68" y="34" width="6" height="76" fill="#fff"/><circle cx="71" cy="26" r="12" fill="#c4e2f1"/><path d="M46 30q8 12 0 22M96 30q-8 12 0 22" fill="none" stroke="#fff" stroke-width="3"/></svg></span>
+          </a>
+          <p class="meta"><span class="marks" style="--fill:0" aria-hidden="true"></span> <span class="rated">Posted [Date]</span></p>
+          <h3 class="title"><a href="#writing">[Post title]</a></h3>
+          <p class="desc">[Short excerpt.] <a href="#writing">Read on Substack</a></p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <!-- CONTENT: footer year -->
+    <p>[Year] Sean Wang. Thumbnails are placeholder art.</p>
+  </footer>
+</div>
+<script>
+/* Filters the cells on this page. With JS off the form just reloads the page. */
+(function(){
+  var f=document.getElementById('searchform'),q=document.getElementById('q'),s=document.getElementById('nomatch');
+  if(!f||!q)return;
+  function run(){
+    var t=q.value.trim().toLowerCase(),n=0;
+    document.querySelectorAll('.maintable').forEach(function(sec){
+      var hit=0;
+      sec.querySelectorAll('.cell').forEach(function(c){
+        var m=!t||c.textContent.toLowerCase().indexOf(t)>-1;
+        c.hidden=!m;if(m)hit++;
+      });
+      sec.hidden=!hit;n+=hit;
+    });
+    s.textContent=t?(n?n+' matching items.':'No matching items.'):'';
+  }
+  f.addEventListener('submit',function(e){e.preventDefault();run();});
+  q.addEventListener('search',run);
+})();
+</script>
+</body>
+</html>

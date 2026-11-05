@@ -1,0 +1,1025 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sean Wang</title>
+<meta name="description" content="Sean Wang lives in New York. His anime, films, TV, books, restaurants, workouts, notes, writing and favorite Flash games, gathered on one page.">
+<meta name="theme-color" content="#16123A">
+
+<!-- CONTENT: replace the bracketed Open Graph values before launch. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sean Wang">
+<meta property="og:description" content="Sean Wang's anime, films, TV, books, restaurants, workouts, notes, writing and favorite Flash games, on one page.">
+<meta property="og:url" content="[Site URL]">
+<meta property="og:image" content="[Share image URL, 1200 by 630]">
+<meta property="og:image:alt" content="[Share image description]">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2316123A'/%3E%3Cpath d='M0 20L32 12V32H0Z' fill='%23B0237F'/%3E%3Ccircle cx='21' cy='13' r='7' fill='%23FFD83D'/%3E%3Cpath d='M0 26h9v-4h7v5h7v-7h9v12H0Z' fill='%2316123A'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+
+<script>document.documentElement.classList.add('js');</script>
+
+<style>
+/* Concept: the homepage is one broadcast episode.
+   Cold open, Previously, Part A, eyecatch, Part B, Next time, end credits.
+   The page starts in dusk and paper-white daylight and crosses to night at the eyecatch. */
+:root {
+  --ink: #16123A;
+  --paper: #F5F6FF;
+  --white: #FFFFFF;
+  --yellow: #FFD83D;
+  --magenta: #B0237F;
+  --violet: #3A1F96;
+  --cobalt: #2230C9;
+  --coral: #FF6B4A;
+  --plum: #6A1FA6;
+  --muted: #47426F;
+  --muted-night: #CFCCF4;
+  --tint-pink: #FFE3EE;
+  --tint-lilac: #E7E3FF;
+  --tint-blue: #D9E6FF;
+  --tint-yellow: #FFF1B8;
+  --sky-w: clamp(852px, 100vw, 1440px);
+  --gutter: clamp(16px, 3vw, 48px);
+  --gap: clamp(10px, 1.2vw, 16px);
+  --display: "Dela Gothic One", "Hiragino Sans", "Yu Gothic", "Arial Black", sans-serif;
+  --text: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 76px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 1.0625rem/1.65 var(--text);
+  overflow-wrap: break-word;
+  overflow-x: clip;
+}
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; line-height: 1.12; }
+a { color: inherit; text-underline-offset: .18em; text-decoration-thickness: 2px; }
+a:hover { text-decoration-thickness: 4px; }
+svg { display: block; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; box-shadow: 0 0 0 2px var(--yellow); }
+.on-dark :focus-visible, .on-dark:focus-visible { outline-color: var(--yellow); box-shadow: 0 0 0 2px var(--ink); }
+
+.skip {
+  position: absolute; left: 16px; top: -80px; z-index: 100;
+  background: var(--yellow); color: var(--ink); padding: 10px 16px; font-weight: 700;
+}
+.skip:focus { top: 8px; }
+
+.wrap { max-width: 1440px; margin-inline: auto; padding-inline: var(--gutter); }
+.jp { font-family: var(--display); }
+.vert { writing-mode: vertical-rl; letter-spacing: .06em; line-height: 1; }
+/* Dela clogs on kanji at label sizes, so small Japanese uses the text face at its heaviest. */
+.jp-small, .prev__kana, .next__kana, .night-head__kana { font-family: var(--text); font-weight: 900; letter-spacing: .1em; }
+
+/* Screentone. Real size-changing dots: a dot lattice multiplied by a ramp, then thresholded.
+   Always decorative, and text never sits directly on it. */
+.tone {
+  --d: 11px;
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(closest-side, #8a8a8a, #fff) 0 0 / var(--d) var(--d),
+    radial-gradient(closest-side, #8a8a8a, #fff) calc(var(--d) / 2) calc(var(--d) / 2) / var(--d) var(--d),
+    linear-gradient(var(--dir, to top), var(--from, #6e6e6e), #fff);
+  background-blend-mode: multiply;
+  filter: contrast(22);
+  mix-blend-mode: multiply;
+}
+
+/* ---------- Top bar ---------- */
+.bar { background: var(--ink); color: var(--paper); z-index: 50; }
+.bar { position: sticky; top: 0; }
+.bar__row { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 58px; }
+.bar__name { font-family: var(--display); font-size: 1.125rem; text-decoration: none; white-space: nowrap; }
+.bar__list { display: flex; flex-wrap: wrap; gap: 2px 4px; }
+.bar__list a { display: block; padding: 6px 10px; font-weight: 500; font-size: .9375rem; text-decoration: none; }
+.bar__list a:hover { text-decoration: underline; }
+.bar__list a[aria-current="true"] { background: var(--yellow); color: var(--ink); }
+.bar__toggle {
+  display: none; font: 700 .9375rem/1 var(--text); color: var(--ink); background: var(--yellow);
+  border: 0; padding: 11px 14px; cursor: pointer; min-height: 40px;
+}
+.seek { height: 4px; background: var(--violet); }
+.seek span { display: block; height: 100%; width: 100%; background: var(--yellow); transform: scaleX(0); transform-origin: left; }
+html:not(.js) .seek { display: none; }
+
+@media (max-width: 1099px) {
+  html:not(.js) .bar { position: static; }
+  html:not(.js) .bar__row { flex-direction: column; align-items: flex-start; gap: 4px; padding-block: 10px; }
+  html:not(.js) .bar__list a { padding: 8px 8px; }
+  .js .bar__toggle { display: block; }
+  .js .bar__nav { display: none; position: absolute; left: 0; right: 0; top: 100%; background: var(--ink); padding: 8px var(--gutter) 18px; border-top: 2px solid var(--violet); }
+  .js .bar__nav.is-open { display: block; }
+  .js .bar__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px 8px; }
+  .js .bar__list a { padding: 11px 10px; }
+}
+
+/* ---------- Cold open / title card ---------- */
+.hero {
+  position: relative; isolation: isolate; overflow: hidden; color: var(--white);
+  min-height: clamp(660px, calc(100svh - 62px), 920px);
+  /* Cel-painted dusk: hard bands, no blending. White type stays above the coral line (67%). */
+  background: linear-gradient(180deg,
+    #211A6B 0 17%, #3A1F96 17% 33%, #6A1FA6 33% 50%, #981C6F 50% 67%,
+    #FF6B4A 67% 78%, #FFA24A 78% 87%, #FFD83D 87% 100%);
+  display: grid; align-content: start;
+}
+.hero::before {
+  content: ""; position: absolute; inset: 0; z-index: -2;
+  background: repeating-conic-gradient(from 2deg at calc(100% - var(--sky-w) * .2) 80%, rgba(255,255,255,.075) 0 2.4deg, transparent 2.4deg 8deg);
+}
+.hero__sun {
+  position: absolute; z-index: -2; right: calc(var(--sky-w) * .2); bottom: 20%; width: clamp(170px, 24vw, 340px); aspect-ratio: 1;
+  transform: translate(50%, 50%); border-radius: 50%;
+  background: linear-gradient(180deg, #FFF3B0 0 44%, var(--yellow) 44% 100%);
+}
+.hero__tone { --dir: to top; --d: 12px; inset: auto 0 0 0; height: 40%; z-index: -1; }
+.sky { position: absolute; right: 0; bottom: 0; display: flex; justify-content: flex-end; z-index: -1; }
+.sky svg { flex: none; width: var(--sky-w); height: calc(var(--sky-w) * .2223); }
+.hero__grid {
+  width: 100%; display: grid; grid-template-columns: minmax(0, auto) minmax(0, 1fr) auto; gap: 0 clamp(20px, 3vw, 56px);
+  align-items: end; padding-block: clamp(28px, 5vh, 56px) clamp(180px, 26vh, 300px);
+}
+.hero__ep { font-family: var(--display); color: var(--yellow); font-size: 1.25rem; grid-column: 1; margin-bottom: 10px; }
+.hero h1 {
+  grid-column: 1; font-size: clamp(5.25rem, min(15.2vw, 24svh), 14rem); line-height: .94; letter-spacing: -.01em;
+  text-shadow: .035em .035em 0 var(--ink);
+}
+.hero h1 span { display: block; }
+.hero h1 span + span { margin-left: .28em; }
+.hero__plate {
+  grid-column: 2; grid-row: 2; align-self: end; justify-self: start; max-width: 30rem;
+  background: var(--ink); color: var(--paper); padding: 20px 22px 22px;
+  box-shadow: 8px 8px 0 var(--yellow);
+}
+.hero__plate p + p { margin-top: 10px; }
+.hero__plate .lead { font-size: 1.1875rem; line-height: 1.5; font-weight: 500; }
+.hero__links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.btn { display: inline-block; padding: 9px 14px; font-weight: 700; text-decoration: none; background: var(--yellow); color: var(--ink); }
+.btn--line { background: transparent; color: var(--paper); box-shadow: inset 0 0 0 2px var(--paper); }
+.btn:hover { text-decoration: underline; }
+.hero__kana { grid-column: 3; grid-row: 1 / span 2; align-self: start; color: var(--yellow); font-size: clamp(1.75rem, 3.6vw, 3rem); text-shadow: 3px 3px 0 var(--ink); }
+@media (prefers-reduced-motion: no-preference) {
+  .hero h1 span { animation: wipe .7s cubic-bezier(.2,.8,.2,1) both; }
+  .hero h1 span + span { animation-delay: .16s; }
+  .hero__kana { animation: wipe-down .8s .3s cubic-bezier(.2,.8,.2,1) both; }
+  .hero__plate { animation: rise .5s .5s ease-out both; }
+}
+@keyframes wipe { from { clip-path: polygon(0 -30%, 0 -30%, -18% 150%, -18% 150%); } to { clip-path: polygon(-5% -30%, 130% -30%, 130% 150%, -5% 150%); } }
+@keyframes wipe-down { from { clip-path: inset(0 -10% 100% -10%); } to { clip-path: inset(0 -10% -2% -10%); } }
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 899px) {
+  .hero__grid { grid-template-columns: minmax(0, 1fr) auto; padding-bottom: 170px; align-items: start; }
+  .hero__ep { grid-column: 1; }
+  .hero h1 { grid-column: 1; font-size: clamp(4.5rem, 22.5vw, 10rem); }
+  .hero__kana { grid-column: 2; grid-row: 1 / span 2; }
+  .hero__plate { grid-column: 1 / -1; grid-row: 3; margin-top: clamp(28px, 6vw, 56px); margin-right: 8px; }
+}
+
+/* ---------- Shared section parts ---------- */
+.src { font-size: .9375rem; font-weight: 500; }
+.src a { font-weight: 700; }
+.src-chip { display: inline-block; background: var(--ink); color: var(--paper); padding: 2px 9px; font-size: .875rem; font-weight: 500; }
+
+/* ---------- Previously ---------- */
+.prev { padding-block: clamp(32px, 5vw, 64px); }
+.prev__grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: var(--gap); }
+.prev__card {
+  position: relative; isolation: isolate; overflow: hidden; background: var(--coral); color: var(--ink);
+  padding: clamp(20px, 2.4vw, 32px); min-height: 260px; display: flex; justify-content: space-between; gap: 16px;
+}
+.prev__card .tone { --dir: to top; z-index: -1; height: 55%; inset: auto 0 0 0; }
+.prev__head { background: var(--paper); align-self: flex-start; padding: 14px 16px 16px; max-width: 19rem; }
+.prev__head h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); margin-bottom: 8px; }
+.prev__head p + p { margin-top: 8px; }
+.prev__kana { font-size: clamp(1.25rem, 2.2vw, 1.875rem); color: var(--ink); background: var(--yellow); padding: 10px 6px; align-self: flex-start; }
+.feed { background: var(--white); }
+.feed li {
+  display: grid; grid-template-columns: 6.5rem minmax(0, 1fr) auto; gap: 4px 16px; align-items: baseline;
+  padding: 13px clamp(16px, 2vw, 24px); border-bottom: 2px solid var(--tint-lilac);
+}
+.feed li:last-child { border-bottom: 0; }
+.feed__when { color: var(--muted); font-size: .9375rem; }
+.feed__what { font-weight: 500; }
+@media (max-width: 899px) {
+  .prev__grid { grid-template-columns: minmax(0, 1fr); }
+  .prev__card { min-height: 210px; }
+  .feed li { grid-template-columns: minmax(0, 1fr) auto; }
+  .feed__what { grid-column: 1 / -1; grid-row: 2; }
+}
+
+/* ---------- Part title ---------- */
+.part-a { padding-bottom: clamp(32px, 5vw, 64px); }
+.part-head { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 8px 22px; margin-bottom: var(--gap); }
+.part-head h2 { font-size: clamp(2.75rem, 7vw, 5.5rem); line-height: 1; }
+.part-head p { font-size: 1.1875rem; font-weight: 500; padding-bottom: .4em; max-width: 34rem; }
+.spread { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gap); }
+
+/* ---------- Now showing ---------- */
+.now {
+  grid-column: 1 / -1; position: relative; isolation: isolate; overflow: hidden;
+  background: var(--cobalt); color: var(--white); padding: clamp(20px, 3vw, 44px);
+}
+.now::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: repeating-conic-gradient(from 0deg at 18% 45%, rgba(255,255,255,.06) 0 2deg, transparent 2deg 7deg);
+}
+.now__top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; margin-bottom: clamp(18px, 2.4vw, 30px); }
+.now__top h3 { font-size: clamp(1.75rem, 3.4vw, 2.75rem); }
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.tabs[hidden] { display: none; }
+.tab {
+  font: 700 1rem/1 var(--text); padding: 11px 16px; min-height: 42px; cursor: pointer;
+  background: transparent; color: var(--white); border: 2px solid var(--white);
+}
+.tab:hover { background: var(--ink); }
+.tab[aria-selected="true"] { background: var(--yellow); color: var(--ink); border-color: var(--yellow); }
+.feature {
+  display: grid; grid-template-columns: clamp(180px, 21vw, 300px) minmax(0, 1fr) auto; gap: clamp(20px, 3.4vw, 56px); align-items: end;
+}
+.feature__kana { font-size: clamp(3.5rem, 8vw, 7.5rem); color: var(--yellow); align-self: start; text-shadow: 5px 5px 0 var(--ink); }
+.feature + .feature { margin-top: 36px; }
+.feature[hidden] { display: none; }
+.feature__body { background: var(--ink); padding: clamp(18px, 2.4vw, 32px); max-width: 46rem; box-shadow: 8px 8px 0 var(--magenta); }
+.feature__state { color: var(--yellow); font-weight: 700; margin-bottom: 8px; }
+.feature__title { font-size: clamp(2rem, 5vw, 4.25rem); margin-bottom: 12px; }
+.feature__by { font-weight: 500; font-size: 1.125rem; }
+.feature__take { margin-top: 12px; max-width: 38rem; font-size: 1.1875rem; line-height: 1.55; }
+.feature__meta { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px 24px; color: var(--muted-night); }
+.feature__meta dt { display: inline; font-weight: 400; }
+.feature__meta dd { display: inline; color: var(--white); font-weight: 700; }
+.feature__meta a { color: var(--white); }
+.feature .cover__frame { box-shadow: 8px 8px 0 var(--ink); border-color: var(--white); }
+@media (max-width: 719px) {
+  .feature { grid-template-columns: minmax(0, 1fr) auto; gap: 24px 16px; }
+  .feature .cover { width: min(100%, 240px); }
+  .feature__body { grid-column: 1 / -1; grid-row: 2; margin-right: 8px; }
+}
+
+/* ---------- COVER COMPONENT ----------
+   .cover             figure, sized by its grid column
+   .cover__frame      fixed 2:3 box with the ink keyline
+   inside the frame   one <svg> placeholder OR one <img>; both fill the box
+   figcaption         title and rating under the art                       */
+.cover__frame {
+  display: block; aspect-ratio: 2 / 3; overflow: hidden; background: var(--ink);
+  border: 3px solid var(--ink); box-shadow: 5px 5px 0 var(--ink);
+}
+.cover__frame > img, .cover__frame > svg { display: block; width: 100%; height: 100%; object-fit: cover; }
+.cover figcaption { margin-top: 12px; line-height: 1.3; }
+.cover__name { display: block; font-weight: 700; font-size: 1rem; }
+.cover__meta { display: block; color: var(--muted); font-size: .9375rem; }
+.f1 { fill: var(--c1); } .f2 { fill: var(--c2); } .f3 { fill: var(--c3); } .fi { fill: var(--c4, #16123A); }
+.s3 { stroke: var(--c3); fill: none; } .si { stroke: var(--c4, #16123A); fill: none; }
+
+/* ---------- Shelves ---------- */
+.shelf { display: grid; gap: clamp(16px, 2vw, 28px); padding: clamp(16px, 2vw, 28px); padding-bottom: clamp(20px, 2.4vw, 32px); }
+.shelf--side { grid-template-columns: 200px minmax(0, 1fr); grid-column: 1 / -1; }
+.shelf--top { grid-column: span 6; grid-template-rows: auto 1fr; }
+.shelf--pink { background: var(--tint-pink); }
+.shelf--lilac { background: var(--tint-lilac); }
+.shelf--blue { background: var(--tint-blue); }
+.shelf--yellow { background: var(--tint-yellow); }
+.card {
+  position: relative; isolation: isolate; overflow: hidden; display: flex; justify-content: space-between; gap: 12px;
+  padding: 16px; color: var(--white); background: var(--ink); min-width: 0;
+}
+.card--magenta { background: var(--magenta); }
+.card--cobalt { background: var(--cobalt); }
+.card--yellow { background: var(--yellow); color: var(--ink); }
+.card h3 { font-size: clamp(1.625rem, 2.6vw, 2.25rem); margin-bottom: 8px; }
+.card__kana { font-size: clamp(1.75rem, 3vw, 2.75rem); align-self: flex-end; }
+.shelf--side .card { flex-direction: column; }
+.shelf--side .card__kana { align-self: flex-end; font-size: clamp(2.5rem, 5vw, 4.25rem); }
+.covers { display: grid; gap: clamp(14px, 1.6vw, 22px) clamp(10px, 1.6vw, 22px); grid-template-columns: repeat(var(--n, 6), minmax(0, 1fr)); }
+.shelf--top .covers { --n: 4; }
+
+/* The cut between Films and TV leans, the way a panel gutter does. */
+@media (min-width: 1100px) {
+  .shelf--lean-r { clip-path: polygon(0 0, 100% 0, calc(100% - 34px) 100%, 0 100%); padding-right: 54px; margin-right: -14px; }
+  .shelf--lean-l { clip-path: polygon(34px 0, 100% 0, 100% 100%, 0 100%); padding-left: 54px; margin-left: -14px; }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .covers .cover__frame { transition: transform .12s ease-out, box-shadow .12s ease-out; }
+  .covers .cover:hover .cover__frame { transform: translate(-3px, -3px); box-shadow: 8px 8px 0 var(--ink); }
+}
+@media (max-width: 1099px) {
+  .shelf--top { grid-column: 1 / -1; }
+  .shelf--side { grid-template-columns: minmax(0, 1fr); }
+  .shelf--side .card { flex-direction: row; }
+  .shelf--side .card__kana { font-size: clamp(1.75rem, 6vw, 2.75rem); align-self: flex-start; }
+  .covers { --n: 6; }
+  .shelf--top .covers { --n: 4; }
+}
+@media (max-width: 719px) {
+  .covers { --n: 3; }
+  .shelf--top .covers { --n: 2; }
+}
+
+/* ---------- Eyecatch: paper turns to night through the screentone ---------- */
+.eyecatch { position: relative; isolation: isolate; overflow: hidden; background: var(--paper); min-height: clamp(380px, 38vw, 520px); display: grid; align-items: center; }
+.eyecatch .tone { --dir: to top; --d: 18px; z-index: -3; }
+.eyecatch::before { content: ""; position: absolute; inset: 0; background: var(--ink); mix-blend-mode: screen; z-index: -2; }
+.eyecatch__moon {
+  position: absolute; z-index: -1; right: 13%; top: 50%; transform: translateY(-50%);
+  width: clamp(180px, 27vw, 380px); aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle at 36% 38%, var(--yellow) 0 66%, var(--coral) 66.2% 100%);
+}
+.eyecatch__inner { width: 100%; padding-block: 40px; }
+.eyecatch__plate { display: inline-block; background: var(--ink); color: var(--paper); padding: clamp(18px, 2.4vw, 32px) clamp(20px, 3vw, 40px); box-shadow: 10px 10px 0 var(--magenta); max-width: 40rem; }
+.eyecatch__plate h2 { font-size: clamp(3.25rem, 9vw, 8rem); line-height: 1; color: var(--yellow); }
+.eyecatch__plate p { font-size: clamp(1.125rem, 1.6vw, 1.375rem); font-weight: 500; margin-top: 10px; }
+.eyecatch__kana { position: absolute; right: var(--gutter); top: 50%; transform: translateY(-50%); font-size: clamp(1.75rem, 4vw, 3.5rem); background: var(--ink); color: var(--paper); padding: 14px 10px; }
+
+/* ---------- Part B, night ---------- */
+.part-b { background: var(--ink); color: var(--paper); padding-block: clamp(16px, 3vw, 40px) clamp(32px, 5vw, 64px); }
+.night-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: clamp(16px, 2vw, 24px); }
+.night-head h3 { font-size: clamp(2rem, 4.6vw, 3.75rem); margin-bottom: 6px; }
+.night-head__kana { font-size: clamp(1.5rem, 3vw, 2.5rem); color: var(--yellow); flex: none; }
+.band { grid-column: 1 / -1; padding: clamp(18px, 2.6vw, 36px); }
+
+/* Restaurants */
+.food { background: var(--violet); }
+@media (min-width: 900px) { .food .night-head__kana { writing-mode: horizontal-tb; } }
+.rank { counter-reset: r; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 0 var(--gap); }
+.rank li { counter-increment: r; display: grid; grid-template-columns: 3.4rem minmax(0, 1fr) auto; gap: 2px 14px; align-items: center; padding: 11px 0; border-bottom: 2px solid #5A3DBA; }
+.rank li::before { content: counter(r); font: 400 2rem/1 var(--display); color: var(--yellow); }
+.rank__name { font-family: var(--display); font-size: clamp(1.0625rem, 1.6vw, 1.375rem); line-height: 1.2; }
+.rank__place { display: block; font-family: var(--text); font-size: .9375rem; line-height: 1.4; color: var(--muted-night); font-weight: 400; margin-top: 2px; }
+.rank__score { font-weight: 700; color: var(--paper); white-space: nowrap; }
+.rank li:first-child {
+  grid-row: 1 / span 6; grid-template-columns: minmax(0, 1fr); align-content: end; align-items: start; position: relative; isolation: isolate; overflow: hidden;
+  background: var(--yellow); color: var(--ink); padding: clamp(18px, 2vw, 28px); border: 0; min-height: 340px;
+}
+.rank li:first-child::before { font-size: clamp(8rem, 17vw, 15rem); color: var(--ink); line-height: .86; }
+.rank li:first-child .tone { --dir: to bottom left; --from: #a0a0a0; z-index: -1; }
+.rank li:first-child > div:not(.tone) { background: var(--yellow); justify-self: start; padding: 6px 10px 6px 0; }
+.rank li:first-child .rank__name { font-size: clamp(1.625rem, 2.8vw, 2.5rem); }
+.rank li:first-child .rank__place, .rank li:first-child .rank__score { color: var(--ink); }
+.rank li:nth-child(2) { padding-top: 0; }
+.rank > li:not(:first-child) { grid-column: 2; }
+@media (max-width: 899px) {
+  .rank { grid-template-columns: minmax(0, 1fr); }
+  .rank > li:not(:first-child) { grid-column: 1; }
+  .rank li:first-child { grid-row: auto; min-height: 300px; margin-bottom: 10px; }
+  .rank li:nth-child(2) { padding-top: 11px; }
+  .rank li { grid-template-columns: 2.6rem minmax(0, 1fr) auto; }
+}
+
+/* Workouts: stat screen */
+.stats { position: relative; background: var(--paper); color: var(--ink); }
+.stats__sub { font-family: var(--text); font-weight: 700; margin: clamp(14px, 2vw, 22px) 0 10px; font-size: 1.0625rem; }
+.stats__grid { display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); gap: var(--gap); }
+.stat { background: var(--ink); color: var(--paper); padding: 14px 16px 16px; clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px)); }
+.stat dt { font-weight: 500; color: var(--muted-night); font-size: .9375rem; }
+.stat dd { font-family: var(--display); color: var(--yellow); line-height: 1.15; font-size: clamp(1.25rem, 2.2vw, 2rem); margin-top: 4px; }
+.stat__note { display: block; font: 400 .9375rem/1.4 var(--text); color: var(--muted-night); margin-top: 4px; }
+.stat--pr { background: var(--magenta); }
+.stat--pr dt { color: var(--white); font-weight: 700; font-size: 1.0625rem; }
+.stat--pr dd { color: var(--white); font-size: clamp(1.375rem, 2.6vw, 2.375rem); }
+.stat--pr .stat__note { color: var(--white); }
+@media (max-width: 899px) {
+  .stats__grid { --n: 2; }
+  .stats__grid--pr { --n: 1; }
+}
+
+/* Reading zone */
+.notes, .writing { background: var(--paper); color: var(--ink); }
+.notes { grid-column: span 5; }
+.writing { grid-column: span 7; }
+.notes .night-head__kana, .writing .night-head__kana { color: var(--magenta); }
+.notes .night-head h3, .writing .night-head h3 { font-size: clamp(1.875rem, 3.4vw, 3rem); }
+.notes li { padding: 13px 0; border-top: 2px solid var(--tint-lilac); }
+.notes li a { font-weight: 700; font-size: 1.125rem; }
+.notes li p { color: var(--muted); font-size: 1rem; max-width: 34rem; }
+.post { padding: 18px 0 20px; border-top: 3px solid var(--ink); }
+.post h4 { font-size: clamp(1.25rem, 2vw, 1.625rem); margin-bottom: 4px; line-height: 1.22; }
+.post__date { color: var(--muted); font-size: .9375rem; }
+.post__text { margin-top: 8px; max-width: 62ch; font-size: 1.125rem; line-height: 1.7; }
+.post__link { display: inline-block; margin-top: 10px; font-weight: 700; color: var(--cobalt); }
+@media (max-width: 899px) { .notes, .writing { grid-column: 1 / -1; } }
+
+/* Flash games */
+.games { background: var(--yellow); color: var(--ink); }
+.games .night-head__kana { color: var(--ink); }
+.games__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(16px, 2.4vw, 36px); }
+.game { padding: 16px 0 20px; border-top: 3px solid var(--ink); }
+.game h4 { font-size: clamp(1.25rem, 2vw, 1.625rem); margin-bottom: 4px; }
+.game__by { font-weight: 700; font-size: 1rem; }
+.game__why { margin-top: 6px; }
+@media (max-width: 899px) { .games__grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- Next time ---------- */
+.next { background: var(--ink); color: var(--paper); padding-bottom: clamp(32px, 5vw, 64px); }
+.next__panel {
+  position: relative; isolation: isolate; overflow: hidden; padding: clamp(18px, 2.6vw, 36px);
+  background: linear-gradient(115deg, #3A1F96 0 30%, #6A1FA6 30% 56%, #B0237F 56% 80%, #FF6B4A 80% 100%);
+}
+.next__panel::before { content: ""; position: absolute; inset: 0; z-index: -1; background: repeating-conic-gradient(from 0deg at 100% 100%, rgba(255,255,255,.07) 0 1.6deg, transparent 1.6deg 5deg); }
+.next__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+.next__head h2 { font-size: clamp(2.5rem, 7vw, 5.5rem); line-height: 1; text-shadow: .04em .04em 0 var(--ink); color: var(--white); }
+.next__kana { font-size: clamp(1.25rem, 2.6vw, 2.25rem); background: var(--ink); color: var(--yellow); padding: 12px 8px; }
+.next__lead { background: var(--ink); display: inline-block; padding: 6px 12px; font-weight: 500; margin-top: 12px; }
+.next__cuts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
+.cut { background: var(--ink); padding: 16px 18px 18px; clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 100%, 0 100%); padding-right: 30px; }
+.cut h3 { font-size: clamp(1.25rem, 2vw, 1.75rem); color: var(--yellow); margin-bottom: 4px; }
+@media (max-width: 719px) { .next__cuts { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- End credits ---------- */
+.credits { position: relative; isolation: isolate; overflow: hidden; background: #211A6B; color: var(--paper); padding-block: clamp(36px, 6vw, 80px) calc(var(--sky-w) * .25); }
+.credits__grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 32px var(--gutter); align-items: start; }
+.credits h2 { font-size: clamp(2rem, 4vw, 3.25rem); margin-bottom: 18px; }
+.roll { display: grid; grid-template-columns: minmax(0, max-content) minmax(0, 1fr); gap: 7px 20px; }
+.roll dt { color: var(--muted-night); text-align: right; }
+.roll dd { font-weight: 700; }
+.credits__end { display: flex; gap: 20px; justify-content: flex-end; align-items: flex-start; }
+.credits__tbc { font-family: var(--display); font-size: clamp(1.5rem, 2.8vw, 2.25rem); line-height: 1.2; text-align: right; }
+.credits__tbc small { display: block; font: 400 1rem/1.5 var(--text); margin-top: 10px; color: var(--muted-night); }
+.credits__kana { font-size: clamp(2.5rem, 5vw, 4.5rem); color: var(--yellow); }
+.credits__moon { position: absolute; z-index: -2; right: calc(var(--sky-w) * .3); bottom: calc(var(--sky-w) * .14); width: clamp(70px, 9vw, 130px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 36% 38%, var(--paper) 0 66%, #A9A5E8 66.2% 100%); }
+@media (max-width: 719px) {
+  .credits__grid { grid-template-columns: minmax(0, 1fr); }
+  .credits__end { justify-content: flex-start; flex-direction: row-reverse; }
+  .credits__tbc { text-align: left; }
+  .roll { grid-template-columns: minmax(0, 7.5rem) minmax(0, 1fr); }
+  .eyecatch { align-items: start; min-height: 460px; }
+  .eyecatch__inner { padding-block: 32px 0; }
+  .eyecatch__kana { top: auto; bottom: 20px; transform: none; right: auto; left: 16px; }
+  .eyecatch__moon { right: 16px; top: auto; bottom: 20px; width: 170px; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- Shared art. Every placeholder cover uses one of these symbols, colored by --c1, --c2, --c3 on its frame. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="art-moon" viewBox="0 0 200 300"><rect class="f1" width="200" height="300"/><circle class="f3" cx="128" cy="96" r="56"/><path class="f1" d="M128 40a56 56 0 0 1 0 112 72 72 0 0 0 0-112Z" opacity=".35"/><rect class="f2" y="178" width="200" height="122"/><rect class="f3" x="102" y="178" width="52" height="7"/><rect class="f3" x="112" y="196" width="32" height="6"/><rect class="f3" x="94" y="214" width="66" height="5"/><rect class="f3" x="118" y="232" width="22" height="5"/><rect class="f3" x="100" y="252" width="54" height="4"/><path class="fi" d="M0 262l40-14 34 18 44-6 82 24v16H0Z"/></symbol>
+  <symbol id="art-hills" viewBox="0 0 200 300"><rect class="f1" width="200" height="300"/><circle class="f3" cx="58" cy="82" r="34"/><path class="f2" d="M0 170C40 120 80 130 112 158s58 12 88-14v156H0Z"/><path class="f3" d="M0 224c44-34 92-28 122-6s52 18 78 2v80H0Z" opacity=".55"/><path class="fi" d="M0 262c50-20 110-18 200 6v32H0Z"/></symbol>
+  <symbol id="art-burst" viewBox="0 0 200 300"><rect class="f1" width="200" height="300"/><path class="f2" d="M100 170L0 0h34ZM100 170L66 0h26ZM100 170L118 0h32ZM100 170L176 0h24ZM100 170L200 60v44ZM100 170L200 160v40ZM100 170L200 252v48h-14ZM100 170L142 300h-34ZM100 170L76 300H42ZM100 170L12 300H0v-22ZM100 170L0 206v-44ZM100 170L0 96V54Z"/><circle class="f3" cx="100" cy="170" r="30"/><circle class="fi" cx="100" cy="170" r="12"/></symbol>
+  <symbol id="art-steps" viewBox="0 0 200 300"><rect class="f1" width="200" height="300"/><path class="f2" d="M0 300V240h40v-40h40v-40h40v-40h40V80h40v220Z"/><path class="fi" d="M40 240h40v-40h40v-40h40v-40h40v22h-22v40h-40v40h-40v40H40Z" opacity=".85"/><circle class="f3" cx="52" cy="72" r="26"/></symbol>
+  <symbol id="art-wires" viewBox="0 0 200 300"><rect class="f1" width="200" height="300"/><rect class="f2" y="206" width="200" height="94"/><circle class="f3" cx="150" cy="196" r="40"/><rect class="f2" y="206" width="200" height="40"/><path class="fi" d="M40 40h6v266h-6ZM18 62h50v5H18ZM24 84h38v5H24ZM0 268h200v32H0Z"/><path class="si" stroke-width="2.5" d="M18 64c60 44 120 50 182 42M68 64c50 30 90 38 132 34M24 86c60 50 120 62 176 56"/></symbol>
+  <symbol id="art-rain" viewBox="0 0 200 300"><rect class="f1" width="200" height="300"/><path class="s3" stroke-width="3" d="M30-10L-10 90M80-10L20 140M130-10L40 220M190-10L70 280M210 40L110 290M210 120L150 280M210 200L180 290"/><path class="fi" d="M0 232h64v-46h52v28h40v-60h44v146H0Z"/><rect class="f3" x="76" y="198" width="10" height="12"/><rect class="f3" x="96" y="198" width="10" height="12"/><rect class="f2" x="170" y="172" width="14" height="16"/><rect class="f2" x="170" y="200" width="14" height="16"/></symbol>
+  <symbol id="art-stripes" viewBox="0 0 200 300"><rect class="f1" width="200" height="300"/><path class="f2" d="M-20 70L220 10v36L-20 106ZM-20 152L220 92v18L-20 170Z"/><path class="f3" d="M-20 196L220 136v64L-20 260Z"/><path class="fi" d="M-20 280L220 220v14L-20 294Z"/></symbol>
+  <symbol id="art-road" viewBox="0 0 200 300"><rect class="f1" width="200" height="300"/><circle class="f3" cx="100" cy="128" r="48"/><rect class="f2" y="150" width="200" height="150"/><path class="fi" d="M88 150h24l88 150H0Z"/><path class="f3" d="M98 164h4l1 18h-6ZM97 198h6l2 28h-10ZM94 248h12l3 52H91Z"/></symbol>
+  <symbol id="art-dots" viewBox="0 0 200 300"><rect class="f1" width="200" height="300"/><g class="f3"><circle cx="20" cy="30" r="3"/><circle cx="70" cy="30" r="3"/><circle cx="120" cy="30" r="3"/><circle cx="170" cy="30" r="3"/><circle cx="45" cy="65" r="6"/><circle cx="95" cy="65" r="6"/><circle cx="145" cy="65" r="6"/><circle cx="195" cy="65" r="6"/><circle cx="20" cy="100" r="10"/><circle cx="70" cy="100" r="10"/><circle cx="120" cy="100" r="10"/><circle cx="170" cy="100" r="10"/><circle cx="45" cy="135" r="14"/><circle cx="95" cy="135" r="14"/><circle cx="145" cy="135" r="14"/><circle cx="195" cy="135" r="14"/><circle cx="20" cy="170" r="19"/><circle cx="70" cy="170" r="19"/><circle cx="120" cy="170" r="19"/><circle cx="170" cy="170" r="19"/></g><rect class="f3" y="200" width="200" height="100"/><path class="f2" d="M0 300V250h60v-22h70v36h70v36Z"/></symbol>
+  <symbol id="art-comet" viewBox="0 0 200 300"><rect class="f1" width="200" height="300"/><path class="f3" d="M204 18L66 150l-10-8Z"/><circle class="f3" cx="60" cy="148" r="11"/><path class="f3" d="M30 44h3v3h-3ZM90 28h3v3h-3ZM140 110h4v4h-4ZM166 86h3v3h-3ZM24 112h3v3h-3ZM118 56h3v3h-3ZM176 170h4v4h-4Z"/><path class="f2" d="M0 240c40-30 96-34 124-14s50 12 76-6v80H0Z"/></symbol>
+  <symbol id="art-tank" viewBox="0 0 200 300"><rect class="f1" width="200" height="300"/><circle class="f3" cx="100" cy="132" r="72"/><path class="fi" d="M58 120l42-34 42 34v62H58ZM64 182h7l-10 64h-7ZM129 182h7l10 64h-7ZM0 246h200v54H0Z"/><rect class="f2" x="58" y="120" width="13" height="62"/></symbol>
+  <symbol id="art-corridor" viewBox="0 0 200 300"><rect class="f1" width="200" height="300"/><path class="f2" d="M0 0l66 96v108L0 300Z"/><path class="fi" d="M200 0l-66 96v108l66 96Z" opacity=".9"/><path class="f2" d="M66 204h68l66 96H0Z" opacity=".6"/><rect class="f3" x="86" y="122" width="28" height="82"/></symbol>
+  <symbol id="roofs" viewBox="0 0 1440 320" preserveAspectRatio="xMaxYMax slice">
+    <path style="fill:var(--far)" d="M0 320V168h90v-30h70v48h80v-58h60v30h120v-48h90v68h100v-88h70v58h110v-38h90v58h120v-50h120v40h110v-46h120V320Z"/>
+    <path style="fill:var(--near)" d="M0 320V232h170v-24h120v44h150v-30h34v-38h90v54h168v-22h128v-30h210v-16h150v42h220V320Z"/>
+    <g style="fill:var(--near)">
+      <path d="M1116 62l54-28 54 28v4h-108Z"/><rect x="1124" y="66" width="92" height="60"/>
+      <path d="M1130 126h8l-6 46h-8ZM1202 126h8l6 46h-8ZM1166 126h8v46h-8Z"/>
+      <path d="M516 136l28-15 28 15v3h-56Z"/><rect x="520" y="139" width="48" height="30"/><path d="M525 169h5l-3 17h-5ZM558 169h5l3 17h-5Z"/>
+      <path d="M1370 60h5v150h-5ZM1352 76h41v4h-41ZM1358 92h29v4h-29Z"/><path d="M300 128h4v80h-4ZM312 150h3v58h-3Z"/>
+    </g>
+    <path style="stroke:var(--near);fill:none" stroke-width="3" d="M1132 136L1206 162M1208 136L1134 162"/>
+    <rect style="fill:var(--rim)" x="1124" y="66" width="14" height="60"/>
+    <path style="fill:var(--rim)" d="M1116 62l54-28v9l-36 19Z"/>
+    <path style="stroke:var(--rim);fill:none" stroke-width="2" d="M1138 82h78M1138 102h78"/>
+    <path style="stroke:var(--near);fill:none" stroke-width="2" d="M1352 78c-60 30-110 34-132 30M1393 78c10 12 30 20 47 22M1358 94c-70 34-120 38-140 34M1124 104c-30 6-60 4-90-4"/>
+    <g style="fill:var(--lit)"><rect x="40" y="258" width="9" height="13"/><rect x="58" y="258" width="9" height="13"/><rect x="58" y="280" width="9" height="13"/><rect x="208" y="238" width="9" height="13"/><rect x="226" y="238" width="9" height="13"/><rect x="340" y="280" width="9" height="13"/><rect x="510" y="216" width="9" height="13"/><rect x="528" y="216" width="9" height="13"/><rect x="510" y="238" width="9" height="13"/><rect x="620" y="262" width="9" height="13"/><rect x="770" y="244" width="9" height="13"/><rect x="788" y="244" width="9" height="13"/><rect x="788" y="266" width="9" height="13"/><rect x="900" y="214" width="9" height="13"/><rect x="918" y="214" width="9" height="13"/><rect x="900" y="258" width="9" height="13"/><rect x="1020" y="236" width="9" height="13"/><rect x="1120" y="198" width="9" height="13"/><rect x="1138" y="198" width="9" height="13"/><rect x="1156" y="198" width="9" height="13"/><rect x="1138" y="240" width="9" height="13"/><rect x="1192" y="270" width="9" height="13"/><rect x="1290" y="240" width="9" height="13"/><rect x="1308" y="240" width="9" height="13"/><rect x="1400" y="262" width="9" height="13"/></g>
+  </symbol>
+</svg>
+
+<header class="bar on-dark">
+  <div class="wrap bar__row">
+    <a class="bar__name" href="#top">Sean Wang</a>
+    <button class="bar__toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden>Episode guide</button>
+    <nav id="site-nav" class="bar__nav" aria-label="Sections">
+      <ul class="bar__list">
+        <li><a href="#previously">Recent</a></li>
+        <li><a href="#now">Now showing</a></li>
+        <li><a href="#anime">Anime</a></li>
+        <li><a href="#films">Films</a></li>
+        <li><a href="#tv">TV</a></li>
+        <li><a href="#books">Books</a></li>
+        <li><a href="#restaurants">Restaurants</a></li>
+        <li><a href="#workouts">Workouts</a></li>
+        <li><a href="#notes">Notes</a></li>
+        <li><a href="#writing">Writing</a></li>
+        <li><a href="#games">Flash games</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="seek" aria-hidden="true"><span></span></div>
+</header>
+
+<main id="main">
+
+<!-- CONTENT: intro. Only the New York line and the list of interests are known; replace the bracketed line in Sean's words. -->
+<section class="hero on-dark" id="top" aria-label="Introduction">
+  <div class="hero__sun" aria-hidden="true"></div>
+  <div class="tone hero__tone" aria-hidden="true"></div>
+  <div class="sky" style="--far:#4A1C8C;--near:#16123A;--lit:#FFD83D;--rim:#FF6B4A" aria-hidden="true"><svg viewBox="0 0 1440 320"><use href="#roofs"/></svg><svg viewBox="0 0 1440 320"><use href="#roofs"/></svg><svg viewBox="0 0 1440 320"><use href="#roofs"/></svg></div>
+
+  <div class="wrap hero__grid">
+    <p class="hero__ep"><span class="jp-small" lang="ja">第一話</span> Episode 1</p>
+    <h1><span>Sean</span> <span>Wang</span></h1>
+    <div class="hero__kana jp vert" lang="ja" aria-hidden="true">ショーン・ワン</div>
+    <div class="hero__plate">
+      <p class="lead">Sean lives in New York. This page gathers what he watches, reads, eats, lifts and writes, each from the app where he logs it.</p>
+      <p>[One or two sentences from Sean, in his own words]</p>
+      <p class="hero__links"><a class="btn" href="#now">See what's on now</a> <a class="btn btn--line" href="#writing">Read the writing</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT: recent activity. One row per event, newest first. Wire each row to its source. -->
+<section class="prev wrap" id="previously" aria-labelledby="prev-h">
+  <div class="prev__grid">
+    <div class="prev__card">
+      <div class="tone" aria-hidden="true"></div>
+      <div class="prev__head">
+        <h2 id="prev-h">Previously</h2>
+        <p>The latest from every feed on this page.</p>
+        <p class="src">Source: all feeds below</p>
+      </div>
+      <div class="prev__kana jp vert" lang="ja" aria-hidden="true">前回のあらすじ</div>
+    </div>
+    <ul class="feed">
+      <li><span class="feed__when">[Date]</span><span class="feed__what">Watched [Anime title], episode [Number]</span><span class="src-chip">MyAnimeList</span></li>
+      <li><span class="feed__when">[Date]</span><span class="feed__what">Published [Post title]</span><span class="src-chip">Substack</span></li>
+      <li><span class="feed__when">[Date]</span><span class="feed__what">Rated [Film title] [Rating]</span><span class="src-chip">Letterboxd</span></li>
+      <li><span class="feed__when">[Date]</span><span class="feed__what">Ranked [Restaurant name] at number [Rank]</span><span class="src-chip">Beli</span></li>
+      <li><span class="feed__when">[Date]</span><span class="feed__what">Set a new [Lift name] record</span><span class="src-chip">Hevy</span></li>
+      <li><span class="feed__when">[Date]</span><span class="feed__what">Finished [Book title] by [Author]</span><span class="src-chip">Goodreads</span></li>
+      <li><span class="feed__when">[Date]</span><span class="feed__what">Started [Show title]</span><span class="src-chip">[TV source]</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="part-a wrap" aria-labelledby="part-a-h">
+  <div class="part-head">
+    <h2 id="part-a-h">Part A</h2>
+    <p>What's on the screen and on the nightstand.</p>
+  </div>
+
+  <div class="spread">
+
+    <!-- CONTENT: now watching / now reading. Without JavaScript all four panels simply stack. -->
+    <section class="now on-dark" id="now" aria-labelledby="now-h">
+      <div class="now__top">
+        <h3 id="now-h">Now showing</h3>
+        <div class="tabs" role="tablist" aria-label="Choose what's on now" hidden>
+          <button class="tab" type="button" role="tab" id="tab-anime" aria-controls="panel-anime" aria-selected="true">Anime</button>
+          <button class="tab" type="button" role="tab" id="tab-film" aria-controls="panel-film" aria-selected="false" tabindex="-1">Film</button>
+          <button class="tab" type="button" role="tab" id="tab-tv" aria-controls="panel-tv" aria-selected="false" tabindex="-1">TV</button>
+          <button class="tab" type="button" role="tab" id="tab-book" aria-controls="panel-book" aria-selected="false" tabindex="-1">Book</button>
+        </div>
+      </div>
+
+      <div class="feature" id="panel-anime">
+        <figure class="cover" style="--c1:#FF6B4A;--c2:#3A1F96;--c3:#FFD83D">
+          <div class="cover__frame">
+            <!-- COVER SLOT: replace this <svg> with <img src="..." alt="[Anime title] cover" width="600" height="900"> -->
+            <svg viewBox="0 0 200 300" aria-hidden="true"><use href="#art-moon"/></svg>
+          </div>
+        </figure>
+        <div class="feature__body">
+          <p class="feature__state">Now watching: anime</p>
+          <h4 class="feature__title">[Anime title]</h4>
+          <p class="feature__take">[One line from Sean on why he's watching this]</p>
+          <dl class="feature__meta">
+            <div><dt>Progress:</dt> <dd>episode [Number] of [Total]</dd></div>
+            <div><dt>Rating:</dt> <dd>[Rating]</dd></div>
+            <div><dt>Source:</dt> <dd><a href="#replace-with-myanimelist-profile">MyAnimeList</a></dd></div>
+          </dl>
+        </div>
+        <div class="feature__kana jp vert" lang="ja" aria-hidden="true">視聴中</div>
+      </div>
+
+      <div class="feature" id="panel-film">
+        <figure class="cover" style="--c1:#16123A;--c2:#B0237F;--c3:#FFD83D">
+          <div class="cover__frame">
+            <!-- COVER SLOT: replace this <svg> with <img src="..." alt="[Film title] poster" width="600" height="900"> -->
+            <svg viewBox="0 0 200 300" aria-hidden="true"><use href="#art-road"/></svg>
+          </div>
+        </figure>
+        <div class="feature__body">
+          <p class="feature__state">Now watching: film</p>
+          <h4 class="feature__title">[Film title]</h4>
+          <p class="feature__by">Directed by [Director], [Year]</p>
+          <p class="feature__take">[One line from Sean on why he's watching this]</p>
+          <dl class="feature__meta">
+            <div><dt>Rating:</dt> <dd>[Rating]</dd></div>
+            <div><dt>Source:</dt> <dd><a href="#replace-with-letterboxd-profile">Letterboxd</a></dd></div>
+          </dl>
+        </div>
+        <div class="feature__kana jp vert" lang="ja" aria-hidden="true">視聴中</div>
+      </div>
+
+      <div class="feature" id="panel-tv">
+        <figure class="cover" style="--c1:#D9E6FF;--c2:#2230C9;--c3:#FF6B4A">
+          <div class="cover__frame">
+            <!-- COVER SLOT: replace this <svg> with <img src="..." alt="[Show title] poster" width="600" height="900"> -->
+            <svg viewBox="0 0 200 300" aria-hidden="true"><use href="#art-wires"/></svg>
+          </div>
+        </figure>
+        <div class="feature__body">
+          <p class="feature__state">Now watching: TV</p>
+          <h4 class="feature__title">[Show title]</h4>
+          <p class="feature__take">[One line from Sean on why he's watching this]</p>
+          <dl class="feature__meta">
+            <div><dt>Progress:</dt> <dd>season [Number], episode [Number]</dd></div>
+            <div><dt>Rating:</dt> <dd>[Rating]</dd></div>
+            <div><dt>Source:</dt> <dd>[TV source]</dd></div>
+          </dl>
+        </div>
+        <div class="feature__kana jp vert" lang="ja" aria-hidden="true">視聴中</div>
+      </div>
+
+      <div class="feature" id="panel-book">
+        <figure class="cover" style="--c1:#FFD83D;--c2:#B0237F;--c3:#16123A;--c4:#B0237F">
+          <div class="cover__frame">
+            <!-- COVER SLOT: replace this <svg> with <img src="..." alt="[Book title] cover" width="600" height="900"> -->
+            <svg viewBox="0 0 200 300" aria-hidden="true"><use href="#art-stripes"/></svg>
+          </div>
+        </figure>
+        <div class="feature__body">
+          <p class="feature__state">Now reading</p>
+          <h4 class="feature__title">[Book title]</h4>
+          <p class="feature__by">By [Author]</p>
+          <p class="feature__take">[One line from Sean on why he's reading this]</p>
+          <dl class="feature__meta">
+            <div><dt>Progress:</dt> <dd>page [Page] of [Total]</dd></div>
+            <div><dt>Source:</dt> <dd><a href="#replace-with-goodreads-profile">Goodreads</a></dd></div>
+          </dl>
+        </div>
+        <div class="feature__kana jp vert" lang="ja" aria-hidden="true">読書中</div>
+      </div>
+    </section>
+
+    <!-- CONTENT: anime shelf. In each cover, swap the <svg> for an <img> as noted in the COVER SLOT comment. -->
+    <section class="shelf shelf--side shelf--pink" id="anime" aria-labelledby="anime-h">
+      <div class="card card--magenta on-dark">
+        <div>
+          <h3 id="anime-h">Anime</h3>
+          <p class="src">Source: <a href="#replace-with-myanimelist-profile">MyAnimeList</a></p>
+        </div>
+        <div class="card__kana jp vert" lang="ja" aria-hidden="true">アニメ</div>
+      </div>
+      <ul class="covers">
+        <li><figure class="cover" style="--c1:#211A6B;--c2:#B0237F;--c3:#FFD83D"><div class="cover__frame"><!-- COVER SLOT: <img src alt width="400" height="600"> replaces the svg --><svg viewBox="0 0 200 300" aria-hidden="true"><use href="#art-comet"/></svg></div><figcaption><span class="cover__name">[Anime title]</span><span class="cover__meta">[Rating]</span></figcaption></figure></li>
+        <li><figure class="cover" style="--c1:#FFB9CF;--c2:#FF6B4A;--c3:#FFF3B0"><div class="cover__frame"><!-- COVER SLOT --><svg viewBox="0 0 200 300" aria-hidden="true"><use href="#art-hills"/></svg></div><figcaption><span class="cover__name">[Anime title]</span><span class="cover__meta">[Rating]</span></figcaption></figure></li>
+        <li><figure class="cover" style="--c1:#2230C9;--c2:#5A70FF;--c3:#FFD83D"><div class="cover__frame"><!-- COVER SLOT --><svg viewBox="0 0 200 300" aria-hidden="true"><use href="#art-burst"/></svg></div><figcaption><span class="cover__name">[Anime title]</span><span class="cover__meta">[Rating]</span></figcaption></figure></li>
+        <li><figure class="cover" style="--c1:#FFD83D;--c2:#FF6B4A;--c3:#16123A"><div class="cover__frame"><!-- COVER SLOT --><svg viewBox="0 0 200 300" aria-hidden="true"><use href="#art-steps"/></svg></div><figcaption><span class="cover__name">[Anime title]</span><span class="cover__meta">[Rating]</span></figcaption></figure></li>
+        <li><figure class="cover" style="--c1:#6A1FA6;--c2:#FFD83D;--c3:#FFB9CF"><div class="cover__frame"><!-- COVER SLOT --><svg viewBox="0 0 200 300" aria-hidden="true"><use href="#art-rain"/></svg></div><figcaption><span class="cover__name">[Anime title]</span><span class="cover__meta">[Rating]</span></figcaption></figure></li>
+        <li><figure class="cover" style="--c1:#7FD6E8;--c2:#2230C9;--c3:#F5F6FF"><div class="cover__frame"><!-- COVER SLOT --><svg viewBox="0 0 200 300" aria-hidden="true"><use href="#art-moon"/></svg></div><figcaption><span class="cover__name">[Anime title]</span><span class="cover__meta">[Rating]</span></figcaption></figure></li>
+      </ul>
+    </section>
+
+    <!-- CONTENT: films shelf -->
+    <section class="shelf shelf--top shelf--lilac shelf--lean-r" id="films" aria-labelledby="films-h">
+      <div class="card on-dark">
+        <div>
+          <h3 id="films-h">Films</h3>
+          <p class="src">Source: <a href="#replace-with-letterboxd-profile">Letterboxd</a></p>
+        </div>
+        <div class="card__kana jp-small" lang="ja" aria-hidden="true">映画</div>
+      </div>
+      <ul class="covers">
+        <li><figure class="cover" style="--c1:#16123A;--c2:#B0237F;--c3:#FFD83D"><div class="cover__frame"><!-- COVER SLOT --><svg viewBox="0 0 200 300" aria-hidden="true"><use href="#art-road"/></svg></div><figcaption><span class="cover__name">[Film title]</span><span class="cover__meta">[Year], [Rating]</span></figcaption></figure></li>
+        <li><figure class="cover" style="--c1:#FF6B4A;--c2:#FFD83D;--c3:#F5F6FF"><div class="cover__frame"><!-- COVER SLOT --><svg viewBox="0 0 200 300" aria-hidden="true"><use href="#art-tank"/></svg></div><figcaption><span class="cover__name">[Film title]</span><span class="cover__meta">[Year], [Rating]</span></figcaption></figure></li>
+        <li><figure class="cover" style="--c1:#3A1F96;--c2:#7D62E8;--c3:#FFF3B0"><div class="cover__frame"><!-- COVER SLOT --><svg viewBox="0 0 200 300" aria-hidden="true"><use href="#art-corridor"/></svg></div><figcaption><span class="cover__name">[Film title]</span><span class="cover__meta">[Year], [Rating]</span></figcaption></figure></li>
+        <li><figure class="cover" style="--c1:#F5F6FF;--c2:#B0237F;--c3:#2230C9"><div class="cover__frame"><!-- COVER SLOT --><svg viewBox="0 0 200 300" aria-hidden="true"><use href="#art-stripes"/></svg></div><figcaption><span class="cover__name">[Film title]</span><span class="cover__meta">[Year], [Rating]</span></figcaption></figure></li>
+      </ul>
+    </section>
+
+    <!-- CONTENT: TV shelf. The source is undecided; replace [TV source] and link it. -->
+    <section class="shelf shelf--top shelf--blue shelf--lean-l" id="tv" aria-labelledby="tv-h">
+      <div class="card card--cobalt on-dark">
+        <div>
+          <h3 id="tv-h">TV</h3>
+          <p class="src">Source: [TV source]</p>
+        </div>
+        <div class="card__kana jp-small" lang="ja" aria-hidden="true">テレビ</div>
+      </div>
+      <ul class="covers">
+        <li><figure class="cover" style="--c1:#D9E6FF;--c2:#2230C9;--c3:#FF6B4A"><div class="cover__frame"><!-- COVER SLOT --><svg viewBox="0 0 200 300" aria-hidden="true"><use href="#art-wires"/></svg></div><figcaption><span class="cover__name">[Show title]</span><span class="cover__meta">[Rating]</span></figcaption></figure></li>
+        <li><figure class="cover" style="--c1:#B0237F;--c2:#FFB9CF;--c3:#F5F6FF"><div class="cover__frame"><!-- COVER SLOT --><svg viewBox="0 0 200 300" aria-hidden="true"><use href="#art-dots"/></svg></div><figcaption><span class="cover__name">[Show title]</span><span class="cover__meta">[Rating]</span></figcaption></figure></li>
+        <li><figure class="cover" style="--c1:#FFA24A;--c2:#6A1FA6;--c3:#FFF3B0"><div class="cover__frame"><!-- COVER SLOT --><svg viewBox="0 0 200 300" aria-hidden="true"><use href="#art-hills"/></svg></div><figcaption><span class="cover__name">[Show title]</span><span class="cover__meta">[Rating]</span></figcaption></figure></li>
+        <li><figure class="cover" style="--c1:#211A6B;--c2:#2230C9;--c3:#7FD6E8"><div class="cover__frame"><!-- COVER SLOT --><svg viewBox="0 0 200 300" aria-hidden="true"><use href="#art-rain"/></svg></div><figcaption><span class="cover__name">[Show title]</span><span class="cover__meta">[Rating]</span></figcaption></figure></li>
+      </ul>
+    </section>
+
+    <!-- CONTENT: books shelf -->
+    <section class="shelf shelf--side shelf--yellow" id="books" aria-labelledby="books-h">
+      <div class="card card--yellow">
+        <div>
+          <h3 id="books-h">Books</h3>
+          <p class="src">Source: <a href="#replace-with-goodreads-profile">Goodreads</a></p>
+        </div>
+        <div class="card__kana jp vert" lang="ja" aria-hidden="true">本</div>
+      </div>
+      <ul class="covers">
+        <li><figure class="cover" style="--c1:#FFD83D;--c2:#B0237F;--c3:#16123A;--c4:#B0237F"><div class="cover__frame"><!-- COVER SLOT --><svg viewBox="0 0 200 300" aria-hidden="true"><use href="#art-stripes"/></svg></div><figcaption><span class="cover__name">[Book title]</span><span class="cover__meta">[Author], [Rating]</span></figcaption></figure></li>
+        <li><figure class="cover" style="--c1:#2230C9;--c2:#F5F6FF;--c3:#FFD83D"><div class="cover__frame"><!-- COVER SLOT --><svg viewBox="0 0 200 300" aria-hidden="true"><use href="#art-dots"/></svg></div><figcaption><span class="cover__name">[Book title]</span><span class="cover__meta">[Author], [Rating]</span></figcaption></figure></li>
+        <li><figure class="cover" style="--c1:#F5F6FF;--c2:#FF6B4A;--c3:#16123A"><div class="cover__frame"><!-- COVER SLOT --><svg viewBox="0 0 200 300" aria-hidden="true"><use href="#art-corridor"/></svg></div><figcaption><span class="cover__name">[Book title]</span><span class="cover__meta">[Author], [Rating]</span></figcaption></figure></li>
+        <li><figure class="cover" style="--c1:#FF6B4A;--c2:#FFD83D;--c3:#F5F6FF"><div class="cover__frame"><!-- COVER SLOT --><svg viewBox="0 0 200 300" aria-hidden="true"><use href="#art-steps"/></svg></div><figcaption><span class="cover__name">[Book title]</span><span class="cover__meta">[Author], [Rating]</span></figcaption></figure></li>
+        <li><figure class="cover" style="--c1:#16123A;--c2:#3A1F96;--c3:#F5F6FF;--c4:#6A1FA6"><div class="cover__frame"><!-- COVER SLOT --><svg viewBox="0 0 200 300" aria-hidden="true"><use href="#art-comet"/></svg></div><figcaption><span class="cover__name">[Book title]</span><span class="cover__meta">[Author], [Rating]</span></figcaption></figure></li>
+        <li><figure class="cover" style="--c1:#7FD6E8;--c2:#2230C9;--c3:#FFD83D"><div class="cover__frame"><!-- COVER SLOT --><svg viewBox="0 0 200 300" aria-hidden="true"><use href="#art-tank"/></svg></div><figcaption><span class="cover__name">[Book title]</span><span class="cover__meta">[Author], [Rating]</span></figcaption></figure></li>
+      </ul>
+    </section>
+
+  </div>
+</section>
+
+<!-- Part B: eyecatch, then everything after dark -->
+<section aria-labelledby="part-b-h">
+  <div class="eyecatch">
+    <div class="tone" aria-hidden="true"></div>
+    <div class="eyecatch__moon" aria-hidden="true"></div>
+    <div class="wrap eyecatch__inner">
+      <div class="eyecatch__plate on-dark">
+        <h2 id="part-b-h">Part B</h2>
+        <p>Off the couch: what he eats, lifts, writes and plays.</p>
+      </div>
+    </div>
+    <div class="eyecatch__kana jp vert" lang="ja" aria-hidden="true">Bパート</div>
+  </div>
+
+  <div class="part-b on-dark">
+    <div class="wrap spread">
+
+      <!-- CONTENT: restaurants, best first. Six rows sit beside the number one panel on wide screens. -->
+      <section class="band food" id="restaurants" aria-labelledby="food-h">
+        <div class="night-head">
+          <div>
+            <h3 id="food-h">Restaurants</h3>
+            <p class="src">Source: <a href="#replace-with-beli-profile">Beli</a></p>
+          </div>
+          <div class="night-head__kana jp vert" lang="ja" aria-hidden="true">食べ歩き</div>
+        </div>
+        <ol class="rank" role="list">
+          <li><div class="tone" aria-hidden="true"></div><div><span class="rank__name">[Restaurant name]</span><span class="rank__place">[Neighborhood], [Cuisine]</span><span class="rank__score">Score: [Score]</span></div></li>
+          <li><span class="rank__name">[Restaurant name]<span class="rank__place">[Neighborhood], [Cuisine]</span></span><span class="rank__score">[Score]</span></li>
+          <li><span class="rank__name">[Restaurant name]<span class="rank__place">[Neighborhood], [Cuisine]</span></span><span class="rank__score">[Score]</span></li>
+          <li><span class="rank__name">[Restaurant name]<span class="rank__place">[Neighborhood], [Cuisine]</span></span><span class="rank__score">[Score]</span></li>
+          <li><span class="rank__name">[Restaurant name]<span class="rank__place">[Neighborhood], [Cuisine]</span></span><span class="rank__score">[Score]</span></li>
+          <li><span class="rank__name">[Restaurant name]<span class="rank__place">[Neighborhood], [Cuisine]</span></span><span class="rank__score">[Score]</span></li>
+          <li><span class="rank__name">[Restaurant name]<span class="rank__place">[Neighborhood], [Cuisine]</span></span><span class="rank__score">[Score]</span></li>
+        </ol>
+      </section>
+
+      <!-- CONTENT: workouts. Totals and personal records only, by design: no session log. -->
+      <section class="band stats" id="workouts" aria-labelledby="work-h">
+        <div class="night-head">
+          <div>
+            <h3 id="work-h">Workouts</h3>
+            <p class="src">Source: <a href="#replace-with-hevy-profile">Hevy</a>. Totals and personal records only.</p>
+          </div>
+          <div class="night-head__kana jp vert" style="color:var(--magenta)" lang="ja" aria-hidden="true">筋トレ</div>
+        </div>
+        <h4 class="stats__sub">Totals</h4>
+        <dl class="stats__grid">
+          <div class="stat"><dt>Workouts logged</dt><dd>[Total workouts]</dd></div>
+          <div class="stat"><dt>Time lifting</dt><dd>[Total hours]</dd></div>
+          <div class="stat"><dt>Volume moved</dt><dd>[Total volume]</dd></div>
+          <div class="stat"><dt>Tracking since</dt><dd>[Start date]</dd></div>
+        </dl>
+        <h4 class="stats__sub">Personal records</h4>
+        <dl class="stats__grid stats__grid--pr">
+          <div class="stat stat--pr"><dt>Deadlift</dt><dd>[Deadlift PR]<span class="stat__note">Set [Date]</span></dd></div>
+          <div class="stat stat--pr"><dt>Squat</dt><dd>[Squat PR]<span class="stat__note">Set [Date]</span></dd></div>
+          <div class="stat stat--pr"><dt>Bench press</dt><dd>[Bench PR]<span class="stat__note">Set [Date]</span></dd></div>
+          <div class="stat stat--pr"><dt>Overhead press</dt><dd>[Press PR]<span class="stat__note">Set [Date]</span></dd></div>
+        </dl>
+      </section>
+
+      <!-- CONTENT: notes -->
+      <section class="band notes" id="notes" aria-labelledby="notes-h">
+        <div class="night-head">
+          <div>
+            <h3 id="notes-h">Notes</h3>
+            <p class="src">Source: <a href="#replace-with-notion-page" style="color:var(--cobalt)">Notion</a></p>
+          </div>
+          <div class="night-head__kana jp vert" lang="ja" aria-hidden="true">メモ</div>
+        </div>
+        <ul>
+          <li><a href="#replace-with-notion-note">[Note title]</a><p>[Date]. [One line on what this note covers]</p></li>
+          <li><a href="#replace-with-notion-note">[Note title]</a><p>[Date]. [One line on what this note covers]</p></li>
+          <li><a href="#replace-with-notion-note">[Note title]</a><p>[Date]. [One line on what this note covers]</p></li>
+          <li><a href="#replace-with-notion-note">[Note title]</a><p>[Date]. [One line on what this note covers]</p></li>
+          <li><a href="#replace-with-notion-note">[Note title]</a><p>[Date]. [One line on what this note covers]</p></li>
+        </ul>
+      </section>
+
+      <!-- CONTENT: writing. Each entry is an excerpt plus a link out to Substack. -->
+      <section class="band writing" id="writing" aria-labelledby="writing-h">
+        <div class="night-head">
+          <div>
+            <h3 id="writing-h">Writing</h3>
+            <p class="src">Source: <a href="#replace-with-substack-home" style="color:var(--cobalt)">Substack</a></p>
+          </div>
+          <div class="night-head__kana jp vert" lang="ja" aria-hidden="true">執筆</div>
+        </div>
+        <article class="post">
+          <h4>[Post title]</h4>
+          <p class="post__date">[Publish date]</p>
+          <p class="post__text">[Excerpt: the first two or three sentences of this post, trimmed to about fifty words, so a reader can tell whether to click through.]</p>
+          <a class="post__link" href="#replace-with-substack-post">Read [Post title] on Substack</a>
+        </article>
+        <article class="post">
+          <h4>[Post title]</h4>
+          <p class="post__date">[Publish date]</p>
+          <p class="post__text">[Excerpt: the first two or three sentences of this post, trimmed to about fifty words, so a reader can tell whether to click through.]</p>
+          <a class="post__link" href="#replace-with-substack-post">Read [Post title] on Substack</a>
+        </article>
+      </section>
+
+      <!-- CONTENT: Flash games. Title, creator, year and one line on why. -->
+      <section class="band games" id="games" aria-labelledby="games-h">
+        <div class="night-head">
+          <div>
+            <h3 id="games-h">Flash games</h3>
+            <p class="src">Source: Sean's own list</p>
+          </div>
+          <div class="night-head__kana jp vert" lang="ja" aria-hidden="true">おまけ</div>
+        </div>
+        <ul class="games__grid">
+          <li class="game"><h4>[Game title]</h4><p class="game__by">[Creator], [Year]</p><p class="game__why">[One line on why he loves it]</p></li>
+          <li class="game"><h4>[Game title]</h4><p class="game__by">[Creator], [Year]</p><p class="game__why">[One line on why he loves it]</p></li>
+          <li class="game"><h4>[Game title]</h4><p class="game__by">[Creator], [Year]</p><p class="game__why">[One line on why he loves it]</p></li>
+          <li class="game"><h4>[Game title]</h4><p class="game__by">[Creator], [Year]</p><p class="game__why">[One line on why he loves it]</p></li>
+          <li class="game"><h4>[Game title]</h4><p class="game__by">[Creator], [Year]</p><p class="game__why">[One line on why he loves it]</p></li>
+          <li class="game"><h4>[Game title]</h4><p class="game__by">[Creator], [Year]</p><p class="game__why">[One line on why he loves it]</p></li>
+        </ul>
+      </section>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT: next episode preview, the top of each queue. -->
+<section class="next on-dark" aria-labelledby="next-h">
+  <div class="wrap">
+    <div class="next__panel">
+      <div class="next__head">
+        <div>
+          <h2 id="next-h">Next time</h2>
+          <p class="next__lead">Up next in the queues.</p>
+        </div>
+        <div class="next__kana jp vert" lang="ja" aria-hidden="true">次回予告</div>
+      </div>
+      <ul class="next__cuts">
+        <li class="cut"><h3>[Anime title]</h3><p>Next to watch. Source: MyAnimeList</p></li>
+        <li class="cut"><h3>[Film title]</h3><p>Next to watch. Source: Letterboxd</p></li>
+        <li class="cut"><h3>[Book title]</h3><p>Next to read. Source: Goodreads</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- CONTENT: footer. Replace the fragment links with real profile URLs and the bracketed values. -->
+<footer class="credits on-dark">
+  <div class="credits__moon" aria-hidden="true"></div>
+  <div class="sky" style="--far:#2C2286;--near:#16123A;--lit:#FFD83D;--rim:#3A1F96" aria-hidden="true"><svg viewBox="0 0 1440 320"><use href="#roofs"/></svg><svg viewBox="0 0 1440 320"><use href="#roofs"/></svg><svg viewBox="0 0 1440 320"><use href="#roofs"/></svg></div>
+  <div class="wrap credits__grid">
+    <div>
+      <h2>Credits</h2>
+      <dl class="roll">
+        <dt>Starring</dt><dd>Sean Wang</dd>
+        <dt>Based in</dt><dd>New York</dd>
+        <dt>Anime</dt><dd><a href="#replace-with-myanimelist-profile">MyAnimeList</a></dd>
+        <dt>Films</dt><dd><a href="#replace-with-letterboxd-profile">Letterboxd</a></dd>
+        <dt>TV</dt><dd>[TV source]</dd>
+        <dt>Books</dt><dd><a href="#replace-with-goodreads-profile">Goodreads</a></dd>
+        <dt>Restaurants</dt><dd><a href="#replace-with-beli-profile">Beli</a></dd>
+        <dt>Workouts</dt><dd><a href="#replace-with-hevy-profile">Hevy</a></dd>
+        <dt>Notes</dt><dd><a href="#replace-with-notion-page">Notion</a></dd>
+        <dt>Writing</dt><dd><a href="#replace-with-substack-home">Substack</a></dd>
+        <dt>Contact</dt><dd><a href="#replace-with-contact-link">[Contact link]</a></dd>
+      </dl>
+    </div>
+    <div class="credits__end">
+      <p class="credits__tbc">To be continued<small>&copy; [Year] Sean Wang</small><small><a href="#top">Back to the top</a></small></p>
+      <div class="credits__kana jp vert" lang="ja" aria-hidden="true">つづく</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var doc = document;
+
+  // Tabs: JS reveals the tablist and hides the other panels. Without JS every panel stacks.
+  var tablist = doc.querySelector('[role="tablist"]');
+  if (tablist) {
+    var tabs = Array.prototype.slice.call(tablist.querySelectorAll('[role="tab"]'));
+    tabs.forEach(function (tab) {
+      var panel = doc.getElementById(tab.getAttribute('aria-controls'));
+      panel.setAttribute('role', 'tabpanel');
+      panel.setAttribute('aria-labelledby', tab.id);
+      panel.setAttribute('tabindex', '0');
+    });
+    var select = function (next, focus) {
+      tabs.forEach(function (tab) {
+        var on = tab === next;
+        tab.setAttribute('aria-selected', on ? 'true' : 'false');
+        tab.setAttribute('tabindex', on ? '0' : '-1');
+        doc.getElementById(tab.getAttribute('aria-controls')).hidden = !on;
+      });
+      if (focus) next.focus();
+    };
+    tablist.hidden = false;
+    select(tabs[0], false);
+    tablist.addEventListener('click', function (e) {
+      var tab = e.target.closest('[role="tab"]');
+      if (tab) select(tab, false);
+    });
+    tablist.addEventListener('keydown', function (e) {
+      var i = tabs.indexOf(doc.activeElement);
+      if (i < 0) return;
+      var to = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+      if (to === undefined) return;
+      e.preventDefault();
+      select(tabs[(to + tabs.length) % tabs.length], true);
+    });
+  }
+
+  // Narrow-screen section menu
+  var toggle = doc.querySelector('.bar__toggle');
+  var nav = doc.getElementById('site-nav');
+  if (toggle && nav) {
+    toggle.hidden = false;
+    var setOpen = function (open) {
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      nav.classList.toggle('is-open', open);
+    };
+    toggle.addEventListener('click', function () {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.closest('a')) setOpen(false);
+    });
+    doc.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+  }
+
+  // Seek bar under the header: how far through the episode you are.
+  var fill = doc.querySelector('.seek span');
+  var queued = false;
+  var paint = function () {
+    queued = false;
+    var max = doc.documentElement.scrollHeight - window.innerHeight;
+    fill.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ')';
+  };
+  var request = function () {
+    if (!queued) { queued = true; requestAnimationFrame(paint); }
+  };
+  if (fill) {
+    window.addEventListener('scroll', request, { passive: true });
+    window.addEventListener('resize', request);
+    paint();
+  }
+
+  // Mark the section in view in the nav.
+  if ('IntersectionObserver' in window) {
+    var links = {};
+    Array.prototype.forEach.call(doc.querySelectorAll('.bar__list a'), function (a) {
+      links[a.getAttribute('href').slice(1)] = a;
+    });
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        Object.keys(links).forEach(function (id) {
+          if (id === entry.target.id) links[id].setAttribute('aria-current', 'true');
+          else links[id].removeAttribute('aria-current');
+        });
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    Object.keys(links).forEach(function (id) {
+      var el = doc.getElementById(id);
+      if (el) observer.observe(el);
+    });
+  }
+})();
+</script>
+</body>
+</html>

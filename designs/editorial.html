@@ -1,0 +1,914 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sean Wang</title>
+<meta name="description" content="Sean Wang's personal site: the films, TV, anime and books he is watching and reading in New York, with restaurants, workouts, notes and writing.">
+<meta name="theme-color" content="#451519">
+<!-- CONTENT: replace the bracketed Open Graph values before launch -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sean Wang">
+<meta property="og:description" content="Films, TV, anime, books, restaurants, workouts, notes and writing, gathered in one place.">
+<meta property="og:url" content="[Site URL]">
+<meta property="og:image" content="[Open Graph image URL]">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23451519'/%3E%3Crect x='10' y='5' width='12' height='18' fill='%23E6E7E3'/%3E%3Crect x='10' y='25' width='12' height='2' fill='%23E6E7E3'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+/* ---------- Tokens: each room is a painted wall ---------- */
+:root {
+  --plaster: #E6E7E3;
+  --ink: #1B2029;
+  --film: #451519;
+  --tv: #1F3D45;
+  --anime: #1B2561;
+  --book: #39402E;
+  --lichen: #BCC2AC;
+  --mustard: #C39A3A;
+  --gutter: clamp(16px, 3.3vw, 48px);
+  --gap: clamp(16px, 1.7vw, 24px);
+  --sans: Archivo, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --serif: Newsreader, Georgia, "Times New Roman", serif;
+  --hang: 0 1px 2px rgba(0,0,0,.35), 0 18px 28px -14px rgba(0,0,0,.55);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { margin: 0; background: var(--plaster); color: var(--ink); font: 400 1.125rem/1.55 var(--serif); font-optical-sizing: auto; overflow-wrap: break-word; }
+h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .18em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+main:focus { outline: none; }
+[hidden] { display: none !important; }
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.wrap { max-width: 1680px; margin-inline: auto; padding-inline: var(--gutter); }
+.skip { position: absolute; left: var(--gutter); top: -100px; z-index: 10; padding: 12px 16px; background: var(--plaster); color: var(--ink); font: 500 1rem var(--sans); }
+.skip:focus { top: 12px; }
+
+/* ---------- Cover component ---------- */
+/* .cover holds one <img> or placeholder <svg> at a locked 2:3. Swapping art changes nothing else. */
+.cover { position: relative; aspect-ratio: 2 / 3; background: rgba(0,0,0,.18); box-shadow: var(--hang); }
+.cover > svg, .cover > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* Book treatment: cloth hinge near the spine, page block on the fore edge. */
+.cover--book { border-radius: 1px 3px 3px 1px; box-shadow: 1px 0 0 #F4F2EA, 2px 0 0 #B9B6AA, 3px 0 0 #F4F2EA, 4px 1px 0 #A4A195, var(--hang); }
+.cover--book > svg, .cover--book > img { border-radius: inherit; }
+.cover--book::after { content: ""; position: absolute; inset: 0 auto 0 0; width: 7%; background: linear-gradient(90deg, rgba(255,255,255,.14), rgba(255,255,255,0) 40%, rgba(0,0,0,.26) 72%, rgba(255,255,255,.1)); pointer-events: none; }
+.work { position: relative; min-width: 0; }
+.work:has(a:focus-visible) .cover { outline: 2px solid currentColor; outline-offset: 4px; }
+.label { display: flex; flex-direction: column; padding-top: 14px; font: 400 .875rem/1.4 var(--sans); }
+.work-title { font: italic 400 1.1875rem/1.25 var(--serif); margin-bottom: 4px; text-decoration: none; }
+.work-title::after { content: ""; position: absolute; inset: 0; }
+.work-title:focus-visible { outline: none; }
+.work:hover .work-title { text-decoration: underline; text-decoration-thickness: 1px; }
+
+/* ---------- Type ---------- */
+.room-title { font: 500 clamp(3.5rem, 10vw, 10rem)/.92 var(--sans); font-stretch: 125%; letter-spacing: -.035em; }
+.room-title--mid { font-size: clamp(2.25rem, 3.9vw, 4.25rem); line-height: 1; letter-spacing: -.03em; }
+.credit { font: 400 .875rem/1.4 var(--sans); }
+
+/* ---------- Hero wall ---------- */
+body { --hero: var(--film); }
+body[data-wall="tv"] { --hero: var(--tv); }
+body[data-wall="anime"] { --hero: var(--anime); }
+body[data-wall="book"] { --hero: var(--book); }
+.hero, .masthead { background-color: var(--hero); color: var(--plaster); transition: background-color .7s ease; }
+.masthead-in { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-block: 18px; font: 400 .9375rem/1.4 var(--sans); position: relative; }
+.nav-list { display: flex; flex-wrap: wrap; gap: 4px 20px; justify-content: flex-end; }
+.nav-list a { display: inline-block; padding-block: 6px; text-decoration: none; }
+.nav-list a:hover { text-decoration: underline; }
+.nav-toggle { display: none; font: 500 .9375rem var(--sans); color: inherit; background: none; border: 1px solid currentColor; padding: 10px 18px; min-height: 44px; cursor: pointer; }
+
+.hero-body { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); padding-bottom: clamp(48px, 6vw, 96px); }
+.name { grid-column: 1 / -1; font: 600 min(14.6vw, 245px)/.86 var(--sans); font-stretch: 125%; letter-spacing: -.045em; margin: clamp(12px, 2vw, 32px) 0 clamp(32px, 4vw, 64px) -.04em; white-space: nowrap; }
+.hero-side { grid-column: 1 / span 4; display: flex; flex-direction: column; justify-content: space-between; gap: 40px; }
+.intro { font-size: clamp(1.375rem, 1.9vw, 1.75rem); line-height: 1.32; max-width: 22em; }
+.now-head h2 { font: 500 1rem/1.3 var(--sans); margin-bottom: 14px; }
+.tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 420px; border: 1px solid currentColor; }
+.tabs button { font: 500 .9375rem var(--sans); color: inherit; background: none; border: 0; min-height: 44px; padding: 8px 4px; cursor: pointer; }
+.tabs button + button { border-left: 1px solid currentColor; }
+.tabs button:hover { text-decoration: underline; text-underline-offset: .2em; }
+.tabs button[aria-selected="true"] { background: var(--plaster); color: var(--ink); }
+.tabs button:focus-visible { outline-offset: 2px; position: relative; z-index: 1; }
+.now-panels { grid-column: 5 / -1; }
+/* Cover height follows the viewport so tabs, placard and cover all sit above the fold. */
+.now-panel { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: clamp(24px, 3vw, 48px); align-items: end; }
+.now-panel .cover { grid-column: 2; grid-row: 1; width: clamp(280px, calc((100vh - 352px) * 2 / 3), 520px); }
+.placard { grid-column: 1; grid-row: 1; justify-self: stretch; font: 400 .9375rem/1.45 var(--sans); }
+.placard h3 { font: 500 .9375rem/1.4 var(--sans); margin-bottom: 18px; }
+.placard-title { font: italic 400 clamp(1.625rem, 2.3vw, 2.25rem)/1.12 var(--serif); margin-bottom: 10px; }
+.placard-title a { text-decoration: none; }
+.placard-title a:hover { text-decoration: underline; text-decoration-thickness: 1px; }
+.placard-note { font: 400 1.0625rem/1.4 var(--serif); margin-block: 14px 18px; }
+@media (prefers-reduced-motion: no-preference) {
+  .js .now-panel .cover { animation: rehang .55s ease both; }
+  @keyframes rehang { from { opacity: 0; } }
+}
+/* JS off: all four panels hang together. */
+html:not(.js) .now-panels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px var(--gap); }
+html:not(.js) .now-panel { display: block; }
+html:not(.js) .now-panel .cover { width: auto; }
+html:not(.js) .placard { margin-top: 20px; }
+
+/* ---------- Rooms ---------- */
+.room { padding-block: clamp(64px, 8vw, 128px); }
+.room--plaster { background: var(--plaster); color: var(--ink); }
+.room--film { background: var(--film); color: var(--plaster); }
+.room--tv { background: var(--tv); color: var(--plaster); }
+.room--anime { background: var(--anime); color: var(--plaster); }
+.room--book { background: var(--lichen); color: var(--ink); }
+.room--ink { background: var(--ink); color: var(--plaster); }
+.room--games { background: var(--mustard); color: var(--ink); padding-block: clamp(56px, 6vw, 88px); }
+
+/* Films: lead cover hangs tall, four smaller covers share its bottom edge. */
+.hang { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: 1fr auto auto; column-gap: var(--gap); }
+.hang-head { grid-column: 5 / -1; grid-row: 1; display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; padding-bottom: 32px; }
+.hang .work { grid-row: 2 / span 2; display: grid; grid-template-rows: subgrid; grid-column: span 2; }
+.hang .work .cover { align-self: end; }
+.hang .work--lead { grid-column: 1 / span 4; grid-row: 1 / span 3; }
+.hang .work--lead .cover { grid-row: 1 / span 2; }
+.hang .work--lead .label { grid-row: 3; }
+.hang .work--lead .work-title { font-size: 1.625rem; }
+.hang-head .credit { padding-top: .8em; white-space: nowrap; }
+
+/* TV: title beside the row. */
+.row { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); }
+.row-head { grid-column: 1 / span 4; }
+.row-head .credit { margin-top: 14px; }
+.row .covers { grid-column: 5 / -1; }
+
+.covers { display: grid; column-gap: var(--gap); row-gap: 40px; }
+.covers--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.covers--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: clamp(20px, 3vw, 48px); }
+.covers--6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+
+.line-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: clamp(32px, 4vw, 64px); }
+.line-head--tight { margin-bottom: clamp(24px, 2.6vw, 40px); }
+.line-head .credit { white-space: nowrap; padding-bottom: .4em; }
+
+/* Title column, then content. */
+.split { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); }
+.split-head { grid-column: 1 / span 4; }
+.split-head .credit { margin-top: 12px; }
+.split > :last-child { grid-column: 5 / -1; }
+
+/* Recent */
+.act { display: grid; grid-template-columns: 40px 8em minmax(0, 1fr) auto; column-gap: 20px; align-items: center; min-height: 76px; padding-block: 8px; border-top: 1px solid rgba(27,32,41,.22); }
+.act:last-child { border-bottom: 1px solid rgba(27,32,41,.22); }
+.act-thumb svg { display: block; width: 40px; height: 60px; box-shadow: 0 1px 3px rgba(0,0,0,.35); }
+.act-date, .act-src { font: 400 .875rem/1.4 var(--sans); }
+.act-what { font-size: 1.3125rem; line-height: 1.3; }
+.act-what cite { font-style: italic; }
+
+/* Restaurants: the rank is the design. */
+.rank { display: grid; grid-template-columns: 2.2em minmax(0, 1fr) minmax(0, 1fr) auto; column-gap: 20px; align-items: baseline; padding-block: 16px; border-top: 1px solid rgba(27,32,41,.22); font: 400 .9375rem/1.4 var(--sans); }
+.rank:last-child { border-bottom: 1px solid rgba(27,32,41,.22); }
+.rank-n { font: 500 1.75rem/1 var(--sans); font-stretch: 125%; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.rank-name { font: 400 1.625rem/1.2 var(--serif); }
+.rank:nth-child(-n+3) { padding-block: 22px; }
+.rank:nth-child(-n+3) .rank-n { font-size: clamp(2.5rem, 4vw, 3.75rem); }
+.rank:nth-child(-n+3) .rank-name { font-size: clamp(1.75rem, 2.8vw, 2.5rem); }
+
+/* Workouts */
+.lifts { display: grid; gap: clamp(40px, 4vw, 64px); }
+.lifts h3 { font: 500 1rem/1.3 var(--sans); margin-bottom: 20px; }
+.stats { display: grid; column-gap: var(--gap); row-gap: 28px; }
+.stats--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.stats--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.stat dt { font: 400 .9375rem/1.3 var(--sans); margin-bottom: 8px; }
+.stat dd { font: 500 clamp(1.75rem, 3vw, 3rem)/1.05 var(--sans); font-stretch: 75%; letter-spacing: -.01em; }
+.stat dd.stat-note { font: 400 .875rem/1.4 var(--sans); font-stretch: 100%; letter-spacing: 0; margin-top: 8px; }
+
+/* Writing and notes */
+.reading-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: 72px; }
+#writing { grid-column: 1 / span 7; }
+#notes { grid-column: 9 / -1; }
+.essays { display: grid; gap: 44px; }
+.essay { max-width: 38em; }
+.essay h3 { font: 400 clamp(1.625rem, 2.5vw, 2.25rem)/1.15 var(--serif); }
+.essay h3 a { text-decoration: none; }
+.essay h3 a:hover { text-decoration: underline; text-decoration-thickness: 1px; }
+.essay-date { font: 400 .875rem/1.4 var(--sans); margin-block: 8px 12px; }
+.out { display: inline-block; margin-top: 10px; font: 500 .9375rem/1.4 var(--sans); }
+.notes li { display: flex; flex-direction: column; gap: 2px; padding-block: 14px; border-top: 1px solid rgba(27,32,41,.22); }
+.notes li:last-child { border-bottom: 1px solid rgba(27,32,41,.22); }
+.notes a { font-size: 1.25rem; line-height: 1.3; text-decoration: none; }
+.notes a:hover { text-decoration: underline; text-decoration-thickness: 1px; }
+.notes span { font: 400 .875rem/1.4 var(--sans); }
+
+/* Flash games */
+.games { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px var(--gap); }
+.game h3 { font: 600 1.5rem/1.1 var(--sans); font-stretch: 75%; }
+.game-by { font: 400 .875rem/1.4 var(--sans); margin-block: 6px 10px; }
+.game p:last-child { font-size: 1.0625rem; line-height: 1.4; max-width: 24em; }
+
+/* ---------- Footer: the paint chips are the map ---------- */
+.foot { background: var(--ink); color: var(--plaster); padding-block: clamp(48px, 6vw, 88px) 32px; }
+.foot-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 48px var(--gap); }
+.foot h2 { font: 500 1rem/1.3 var(--sans); margin-bottom: 16px; }
+.plan { grid-column: 1 / span 8; }
+.plan ul { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.chip { display: flex; align-items: flex-end; aspect-ratio: 3 / 2; padding: 10px; font: 500 .9375rem/1.2 var(--sans); text-decoration: none; }
+.chip:hover { text-decoration: underline; }
+.chip--plaster { background: var(--plaster); color: var(--ink); }
+.chip--film { background: var(--film); color: var(--plaster); }
+.chip--tv { background: var(--tv); color: var(--plaster); }
+.chip--anime { background: var(--anime); color: var(--plaster); }
+.chip--book { background: var(--lichen); color: var(--ink); }
+.chip--ink { background: #343B49; color: var(--plaster); }
+.chip--games { background: var(--mustard); color: var(--ink); }
+.foot-col { grid-column: span 2; font: 400 .9375rem/1.4 var(--sans); }
+.foot-col li, .foot-col p { padding-block: 3px; }
+.foot-col a { display: inline-block; padding-block: 2px; }
+.colophon { grid-column: 1 / -1; font: 400 .875rem/1.5 var(--sans); }
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1100px) {
+  .covers--6 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .now-panels { grid-column: 5 / -1; }
+  .row-head { grid-column: 1 / -1; margin-bottom: 32px; display: flex; justify-content: space-between; align-items: flex-end; }
+  .row .covers { grid-column: 1 / -1; }
+  #writing { grid-column: 1 / span 7; }
+  #notes { grid-column: 8 / -1; }
+  .plan { grid-column: 1 / -1; }
+  .foot-col { grid-column: span 6; }
+  .split-head, .split > :last-child { grid-column: 1 / -1; }
+  .split-head { margin-bottom: 32px; }
+}
+
+/* ---------- Phone and small tablet ---------- */
+@media (max-width: 899px) {
+  .nav-toggle { display: inline-block; }
+  html:not(.js) .nav-list { justify-content: flex-start; }
+  .js .nav-list { display: none; position: absolute; z-index: 5; left: var(--gutter); right: var(--gutter); top: 100%; background: var(--plaster); color: var(--ink); padding: 8px 16px; box-shadow: 0 16px 28px -12px rgba(0,0,0,.6); }
+  .js .nav-list.is-open { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 16px; }
+  .nav-list a { padding-block: 11px; }
+  html:not(.js) .masthead-in { flex-direction: column; align-items: flex-start; gap: 8px; }
+
+  .name { white-space: normal; font-size: 28.5vw; line-height: .86; margin: 12px 0 32px -.03em; letter-spacing: -.05em; }
+  .name span { display: block; }
+  .hero-side, .now-panels { grid-column: 1 / -1; }
+  .hero-side { gap: 32px; margin-bottom: 32px; }
+  .tabs { max-width: none; }
+  .now-panel { display: block; }
+  .now-panel .cover { width: auto; }
+  .placard { margin-top: 24px; }
+  .placard h3 { margin-bottom: 10px; }
+
+  .hang { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; row-gap: 32px; }
+  .hang-head { grid-column: 1 / -1; grid-row: auto; padding-bottom: 0; align-items: flex-end; }
+  .hang-head .credit { padding-top: 0; padding-bottom: .4em; }
+  .hang .work, .hang .work--lead { grid-row: auto; display: block; grid-column: span 1; }
+  .hang .work--lead { grid-column: 1 / -1; }
+
+  .covers--4, .covers--5, .covers--6 { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gap); row-gap: 32px; }
+  .covers--5 .work:first-child { grid-column: 1 / -1; }
+  .covers--5 { column-gap: 20px; }
+  .row-head, .line-head { flex-wrap: wrap; }
+  .row-head .credit { margin: 0; padding-bottom: .4em; }
+
+  .split-head, .split > :last-child { grid-column: 1 / -1; }
+  .split-head { margin-bottom: 28px; }
+
+  .act { grid-template-columns: 40px minmax(0, 1fr); column-gap: 14px; row-gap: 0; }
+  .act-thumb { grid-row: 1 / span 3; align-self: start; padding-top: 4px; }
+  .act-thumb:empty { min-height: 1px; }
+  .act-date, .act-what, .act-src { grid-column: 2; }
+  .act { padding-block: 14px; }
+  .act-what { font-size: 1.1875rem; }
+
+  .rank { grid-template-columns: 2.2rem minmax(0, 1fr) auto; column-gap: 12px; }
+  .rank-place { grid-column: 2 / -1; grid-row: 2; }
+  .rank-name, .rank:nth-child(-n+3) .rank-name { font-size: 1.375rem; }
+  .rank-score { grid-row: 1; grid-column: 3; }
+  .rank-n, .rank:nth-child(-n+3) .rank-n { font-size: 1.5rem; }
+  .rank:nth-child(-n+3) { padding-block: 16px; }
+
+  .stats--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .stats--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .reading-grid { row-gap: 64px; }
+  #writing, #notes { grid-column: 1 / -1; }
+  .games { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .plan ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .chip { aspect-ratio: auto; min-height: 64px; }
+}
+@media (max-width: 479px) {
+  .games { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 359px) {
+  .stats--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+</style>
+</head>
+<body id="top" data-wall="film">
+<a class="skip" href="#main">Skip to content</a>
+<svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
+  <defs><filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="1.5" numOctaves="2" seed="4"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .9 -.25"/></filter></defs>
+  <symbol id="art-hf" viewBox="0 0 200 300"><rect width="200" height="300" fill="#D8D3C6"/><circle cx="126" cy="122" r="74" fill="#C43A22"/><rect y="192" width="200" height="108" fill="#171B20"/><polygon points="62,192 68,192 170,300 112,300" fill="#3A3F46"/><rect x="61" y="164" width="7" height="28" fill="#171B20"/><circle cx="64.5" cy="158" r="5" fill="#171B20"/><text x="14" y="30" font-size="15" fill="#171B20" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:125%;font-weight:600" >[Film title]</text><text x="14" y="284" font-size="8" fill="#D8D3C6" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:125%;font-weight:600" >[Director]</text><rect width="200" height="300" filter="url(#grain)" opacity="0.28"/></symbol>
+  <symbol id="art-ht" viewBox="0 0 200 300"><rect width="200" height="300" fill="#D9A92F"/><rect x="14" y="60" width="172" height="9" fill="#1A2433"/><rect x="14" y="76" width="135" height="9" fill="#1A2433"/><rect x="14" y="92" width="98" height="9" fill="#1A2433"/><rect x="14" y="108" width="151" height="9" fill="#1A2433"/><rect x="14" y="124" width="114" height="9" fill="#1A2433"/><rect x="14" y="140" width="167" height="9" fill="#1A2433"/><rect x="14" y="156" width="130" height="9" fill="#1A2433"/><rect x="14" y="172" width="93" height="9" fill="#1A2433"/><rect x="14" y="188" width="146" height="9" fill="#B3261E"/><rect x="14" y="204" width="109" height="9" fill="#1A2433"/><rect x="14" y="220" width="162" height="9" fill="#1A2433"/><rect x="14" y="236" width="125" height="9" fill="#1A2433"/><rect x="14" y="252" width="88" height="9" fill="#1A2433"/><text x="14" y="38" font-size="22" fill="#1A2433" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:75%;font-weight:700" >[Show title]</text><rect width="200" height="300" filter="url(#grain)" opacity="0.14"/></symbol>
+  <symbol id="art-ha" viewBox="0 0 200 300"><rect width="200" height="300" fill="#7CC6DA"/><rect y="150" width="200" height="60" fill="#F4C7B8"/><rect y="195" width="200" height="30" fill="#F2A98F"/><g fill="#FBFBF6"><circle cx="70" cy="120" r="44"/><circle cx="118" cy="98" r="54"/><circle cx="160" cy="130" r="36"/><rect x="40" y="128" width="146" height="36" rx="18"/></g><rect y="225" width="200" height="75" fill="#1E2A44"/><g fill="#14192A"><rect x="42" y="70" width="5" height="170"/><rect x="28" y="88" width="34" height="4"/><rect x="31" y="102" width="28" height="3"/><rect x="154" y="112" width="4" height="125"/><rect x="143" y="126" width="26" height="3"/></g><path d="M28 90Q95 150 143 127M62 90Q110 158 169 127M31 103Q90 165 146 141" fill="none" stroke="#14192A" stroke-width="1"/><polygon points="88,240 120,216 152,240" fill="#B7372B"/><rect x="96" y="240" width="48" height="26" fill="#EDE6D6"/><rect x="104" y="246" width="10" height="10" fill="#F2B632"/><text x="14" y="288" font-size="11" fill="#FBFBF6" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:125%;font-weight:600" >[Anime title]</text></symbol>
+  <symbol id="art-hb" viewBox="0 0 200 300"><rect width="200" height="300" fill="#ECEAE0"/><rect x="14" y="14" width="172" height="272" fill="none" stroke="#B3361F" stroke-width="1.5"/><rect x="18" y="18" width="164" height="264" fill="none" stroke="#B3361F" stroke-width=".5"/><text x="100" y="118" font-size="27" fill="#1E2430" style="font-family:Newsreader,Georgia,serif;font-style:italic" text-anchor="middle">[Book</text><text x="100" y="148" font-size="27" fill="#1E2430" style="font-family:Newsreader,Georgia,serif;font-style:italic" text-anchor="middle">title]</text><g fill="#B3361F"><rect x="94" y="172" width="12" height="12" transform="rotate(45 100 178)"/></g><text x="100" y="248" font-size="9" fill="#1E2430" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:125%;font-weight:600" text-anchor="middle">[Author]</text></symbol>
+  <symbol id="art-f1" viewBox="0 0 200 300"><rect width="200" height="300" fill="#141D33"/><circle cx="132" cy="96" r="60" fill="#E8DFC8"/><path d="M0 300V168h34v-34h30v52h28v-78h36v50h22v-30h50v172z" fill="#0A0F1C"/><g fill="#F2B632"><rect x="72" y="136" width="8" height="11"/></g><g fill="#2B3556"><rect x="42" y="150" width="8" height="11"/><rect x="42" y="176" width="8" height="11"/><rect x="72" y="176" width="8" height="11"/><rect x="104" y="176" width="8" height="11"/><rect x="104" y="204" width="8" height="11"/><rect x="42" y="232" width="8" height="11"/><rect x="164" y="204" width="8" height="11"/></g><text x="14" y="272" font-size="25" fill="#E8DFC8" style="font-family:Newsreader,Georgia,serif;font-style:italic" >[Film title]</text><text x="14" y="288" font-size="7" fill="#E8DFC8" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:125%;font-weight:600" >[Director]</text><rect width="200" height="300" filter="url(#grain)" opacity="0.3"/></symbol>
+  <symbol id="art-f2" viewBox="0 0 200 300"><rect width="200" height="300" fill="#D5A52E"/><circle cx="82" cy="118" r="70" fill="#15181D"/><rect y="228" width="200" height="1.5" fill="#15181D"/><text x="14" y="256" font-size="13" fill="#15181D" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:125%;font-weight:600" >[Film title]</text></symbol>
+  <symbol id="art-f3" viewBox="0 0 200 300"><rect width="200" height="300" fill="#C9CDD0"/><rect x="66" y="52" width="68" height="168" fill="#14171B"/><polygon points="66,220 134,220 200,300 30,300" fill="#F2F1EC"/><rect x="92" y="196" width="8" height="24" fill="#C9CDD0"/><circle cx="96" cy="191" r="4.5" fill="#C9CDD0"/><text x="14" y="30" font-size="17" fill="#14171B" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:75%;font-weight:700" >[Film title]</text><rect width="200" height="300" filter="url(#grain)" opacity="0.2"/></symbol>
+  <symbol id="art-f4" viewBox="0 0 200 300"><rect width="200" height="300" fill="#F0EDE4"/><rect x="-10" y="84" width="240" height="30" fill="#B5301F"/><rect x="20" y="114" width="240" height="30" fill="#1B1D21"/><rect x="50" y="144" width="240" height="30" fill="#B5301F"/><rect x="80" y="174" width="240" height="30" fill="#1B1D21"/><rect x="110" y="204" width="240" height="30" fill="#B5301F"/><rect x="140" y="234" width="240" height="30" fill="#1B1D21"/><rect x="170" y="264" width="240" height="30" fill="#B5301F"/><rect x="48" y="84" width="8" height="30" fill="#1B1D21"/><circle cx="52" cy="77" r="6" fill="#1B1D21"/><text x="14" y="34" font-size="20" fill="#1B1D21" style="font-family:Newsreader,Georgia,serif" >[Film title]</text></symbol>
+  <symbol id="art-f5" viewBox="0 0 200 300"><rect width="200" height="300" fill="#1F6E72"/><path d="M-10 110q17-12 35 0t35 0 35 0 35 0 35 0 35 0" fill="none" stroke="#E5EFE6" stroke-width="0.6"/><path d="M-10 128q17-12 35 0t35 0 35 0 35 0 35 0 35 0" fill="none" stroke="#E5EFE6" stroke-width="0.72"/><path d="M-10 146q17-12 35 0t35 0 35 0 35 0 35 0 35 0" fill="none" stroke="#E5EFE6" stroke-width="0.84"/><path d="M-10 164q17-12 35 0t35 0 35 0 35 0 35 0 35 0" fill="none" stroke="#E5EFE6" stroke-width="0.96"/><path d="M-10 182q17-12 35 0t35 0 35 0 35 0 35 0 35 0" fill="none" stroke="#E5EFE6" stroke-width="1.08"/><path d="M-10 200q17-12 35 0t35 0 35 0 35 0 35 0 35 0" fill="none" stroke="#E5EFE6" stroke-width="1.2"/><path d="M-10 218q17-12 35 0t35 0 35 0 35 0 35 0 35 0" fill="none" stroke="#E5EFE6" stroke-width="1.3199999999999998"/><path d="M-10 236q17-12 35 0t35 0 35 0 35 0 35 0 35 0" fill="none" stroke="#E5EFE6" stroke-width="1.44"/><path d="M-10 254q17-12 35 0t35 0 35 0 35 0 35 0 35 0" fill="none" stroke="#E5EFE6" stroke-width="1.56"/><path d="M-10 272q17-12 35 0t35 0 35 0 35 0 35 0 35 0" fill="none" stroke="#E5EFE6" stroke-width="1.6800000000000002"/><path d="M-10 290q17-12 35 0t35 0 35 0 35 0 35 0 35 0" fill="none" stroke="#E5EFE6" stroke-width="1.7999999999999998"/><polygon points="104,68 104,102 128,102" fill="#F4F2EA"/><rect x="88" y="102" width="44" height="6" fill="#16282A"/><text x="14" y="34" font-size="15" fill="#F4F2EA" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:125%;font-weight:600" >[Film title]</text></symbol>
+  <symbol id="art-t1" viewBox="0 0 200 300"><rect width="200" height="300" fill="#EFEDE6"/><rect x="26" y="58" width="148" height="112" rx="16" fill="#191C22"/><rect x="38" y="70" width="124" height="88" rx="8" fill="#E2829A"/><circle cx="100" cy="114" r="20" fill="#191C22"/><rect x="26" y="188" width="148" height="6" fill="#191C22"/><rect x="26" y="202" width="96" height="6" fill="#191C22"/><text x="26" y="252" font-size="19" fill="#191C22" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:75%;font-weight:700" >[Show title]</text></symbol>
+  <symbol id="art-t2" viewBox="0 0 200 300"><rect width="200" height="300" fill="#D5593E"/><circle cx="28" cy="54" r="8" fill="#2A1612"/><circle cx="52" cy="54" r="8" fill="#2A1612"/><circle cx="76" cy="54" r="8" fill="#2A1612"/><circle cx="100" cy="54" r="8" fill="#2A1612"/><circle cx="124" cy="54" r="8" fill="#2A1612"/><circle cx="148" cy="54" r="8" fill="#2A1612"/><circle cx="172" cy="54" r="8" fill="#2A1612"/><circle cx="28" cy="82" r="8" fill="#2A1612"/><circle cx="52" cy="82" r="8" fill="#2A1612"/><circle cx="76" cy="82" r="8" fill="#2A1612"/><circle cx="100" cy="82" r="8" fill="#2A1612"/><circle cx="124" cy="82" r="8" fill="#2A1612"/><circle cx="148" cy="82" r="8" fill="#2A1612"/><circle cx="172" cy="82" r="8" fill="#2A1612"/><circle cx="28" cy="110" r="8" fill="#2A1612"/><circle cx="52" cy="110" r="8" fill="#2A1612"/><circle cx="76" cy="110" r="8" fill="#2A1612"/><circle cx="100" cy="110" r="8" fill="#2A1612"/><circle cx="124" cy="110" r="8" fill="#2A1612"/><circle cx="148" cy="110" r="8" fill="#2A1612"/><circle cx="172" cy="110" r="8" fill="#2A1612"/><circle cx="28" cy="138" r="8" fill="#2A1612"/><circle cx="52" cy="138" r="8" fill="#2A1612"/><circle cx="76" cy="138" r="8" fill="#2A1612"/><circle cx="100" cy="138" r="8" fill="#F3EEDD"/><circle cx="124" cy="138" r="8" fill="#2A1612"/><circle cx="148" cy="138" r="8" fill="#2A1612"/><circle cx="172" cy="138" r="8" fill="#2A1612"/><circle cx="28" cy="166" r="8" fill="#2A1612"/><circle cx="52" cy="166" r="8" fill="#2A1612"/><circle cx="76" cy="166" r="8" fill="#2A1612"/><circle cx="100" cy="166" r="8" fill="#2A1612"/><circle cx="124" cy="166" r="8" fill="#2A1612"/><circle cx="148" cy="166" r="8" fill="#2A1612"/><circle cx="172" cy="166" r="8" fill="#2A1612"/><circle cx="28" cy="194" r="8" fill="#2A1612"/><circle cx="52" cy="194" r="8" fill="#2A1612"/><circle cx="76" cy="194" r="8" fill="#2A1612"/><circle cx="100" cy="194" r="8" fill="#2A1612"/><circle cx="124" cy="194" r="8" fill="#2A1612"/><circle cx="148" cy="194" r="8" fill="#2A1612"/><circle cx="172" cy="194" r="8" fill="#2A1612"/><circle cx="28" cy="222" r="8" fill="#2A1612"/><circle cx="52" cy="222" r="8" fill="#2A1612"/><circle cx="76" cy="222" r="8" fill="#2A1612"/><circle cx="100" cy="222" r="8" fill="#2A1612"/><circle cx="124" cy="222" r="8" fill="#2A1612"/><circle cx="148" cy="222" r="8" fill="#2A1612"/><circle cx="172" cy="222" r="8" fill="#2A1612"/><text x="14" y="30" font-size="14" fill="#2A1612" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:125%;font-weight:600" >[Show title]</text><text x="14" y="284" font-size="8" fill="#2A1612" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:125%;font-weight:600" >[Creator]</text></symbol>
+  <symbol id="art-t3" viewBox="0 0 200 300"><rect width="200" height="300" fill="#141A2A"/><g transform="translate(138 286) rotate(-90)"><text x="0" y="0" font-size="52" fill="#EFA9BC" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:75%;font-weight:700" >[Show title]</text></g><rect x="150" y="14" width="36" height="272" fill="#EFA9BC"/><circle cx="168" cy="40" r="10" fill="#141A2A"/></symbol>
+  <symbol id="art-t4" viewBox="0 0 200 300"><rect width="200" height="300" fill="#1E4637"/><circle cx="150" cy="58" r="20" fill="#EDE9D4"/><path d="M38 214v-92l62-52 62 52v92z" fill="none" stroke="#EDE9D4" stroke-width="2"/><rect x="60" y="136" width="24" height="30" fill="#F2B632"/><rect x="116" y="136" width="24" height="30" fill="none" stroke="#EDE9D4" stroke-width="1.5"/><rect x="88" y="176" width="24" height="38" fill="none" stroke="#EDE9D4" stroke-width="1.5"/><rect y="214" width="200" height="86" fill="#12291F"/><text x="14" y="262" font-size="18" fill="#EDE9D4" style="font-family:Newsreader,Georgia,serif" >[Show title]</text><rect width="200" height="300" filter="url(#grain)" opacity="0.2"/></symbol>
+  <symbol id="art-a1" viewBox="0 0 200 300"><rect width="200" height="300" fill="#2E8FC4"/><g fill="#F8F8F2"><circle cx="48" cy="180" r="34"/><circle cx="92" cy="150" r="48"/><circle cx="144" cy="172" r="38"/><rect x="48" y="180" width="96" height="30"/></g><rect y="208" width="200" height="92" fill="#123F6B"/><g stroke="#8EC4DF" stroke-width="1"><path d="M8 228h50M84 244h60M30 264h34M120 276h64"/></g><text x="14" y="36" font-size="15" fill="#F8F8F2" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:125%;font-weight:600" >[Anime title]</text></symbol>
+  <symbol id="art-a2" viewBox="0 0 200 300"><rect width="200" height="300" fill="#EFEEE8"/><polygon points="0,0 140,0 60,190 0,150" fill="#C5281F"/><polygon points="200,60 200,300 88,300 124,160" fill="#14161B"/><polygon points="72,196 112,172 92,300 46,300" fill="#C5281F"/><polygon points="136,8 200,8 200,46 118,50" fill="#14161B"/><text x="186" y="286" font-size="11" fill="#EFEEE8" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:125%;font-weight:600" text-anchor="end">[Anime title]</text></symbol>
+  <symbol id="art-a3" viewBox="0 0 200 300"><rect width="200" height="300" fill="#0E1436"/><circle cx="20" cy="30" r="1.1" fill="#F6F1DC"/><circle cx="60" cy="70" r="1.1" fill="#F6F1DC"/><circle cx="160" cy="24" r="1.1" fill="#F6F1DC"/><circle cx="180" cy="110" r="1.1" fill="#F6F1DC"/><circle cx="34" cy="130" r="1.1" fill="#F6F1DC"/><circle cx="120" cy="40" r="1.1" fill="#F6F1DC"/><circle cx="90" cy="230" r="1.1" fill="#F6F1DC"/><circle cx="170" cy="250" r="1.1" fill="#F6F1DC"/><circle cx="20" cy="240" r="1.1" fill="#F6F1DC"/><circle cx="140" cy="190" r="1.1" fill="#F6F1DC"/><circle cx="48" cy="190" r="1.1" fill="#F6F1DC"/><circle cx="104" cy="130" r="46" fill="#E9A23B"/><ellipse cx="104" cy="130" rx="82" ry="15" fill="none" stroke="#F6F1DC" stroke-width="2.5" transform="rotate(-18 104 130)"/><rect x="60" y="112" width="88" height="7" fill="#C97E22" transform="rotate(-18 104 116)"/><text x="14" y="280" font-size="17" fill="#F6F1DC" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:75%;font-weight:700" >[Anime title]</text></symbol>
+  <symbol id="art-a4" viewBox="0 0 200 300"><rect width="200" height="300" fill="#F3CFC6"/><circle cx="142" cy="74" r="26" fill="#FAF1E4"/><path d="M0 170 46 104l38 44 34-58 82 96v114H0z" fill="#A58BC4"/><path d="M0 214l52-52 40 34 44-44 64 62v86H0z" fill="#6C5A9E"/><path d="M0 256l62-40 52 24 86-34v94H0z" fill="#2F2857"/><text x="14" y="286" font-size="11" fill="#FAF1E4" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:125%;font-weight:600" >[Anime title]</text></symbol>
+  <symbol id="art-a5" viewBox="0 0 200 300"><rect width="200" height="300" fill="#EBC22E"/><rect x="96" y="60" width="8" height="240" fill="#16181D"/><circle cx="66" cy="84" r="24" fill="#16181D"/><circle cx="134" cy="84" r="24" fill="#16181D"/><circle cx="66" cy="84" r="15" fill="#D2301F"/><circle cx="134" cy="84" r="15" fill="#3A3A3A"/><g transform="rotate(-24 100 150)"><rect x="24" y="142" width="152" height="18" fill="#F6F4EA"/><rect x="24" y="142" width="26" height="18" fill="#16181D"/><rect x="76" y="142" width="26" height="18" fill="#16181D"/><rect x="128" y="142" width="26" height="18" fill="#16181D"/></g><text x="14" y="36" font-size="16" fill="#16181D" style="font-family:Newsreader,Georgia,serif" >[Anime title]</text></symbol>
+  <symbol id="art-a6" viewBox="0 0 200 300"><rect width="200" height="300" fill="#BFD8C6"/><circle cx="100" cy="112" r="68" fill="#FBF7E8"/><rect y="226" width="200" height="74" fill="#22342E"/><path d="M80 226v-46q0-18 8-26l-3-18 12 11q6-1 12 0l12-11-3 18q8 8 8 26v46z" fill="#22342E"/><path d="M128 226q24 0 18-30" fill="none" stroke="#22342E" stroke-width="6" stroke-linecap="round"/><text x="14" y="272" font-size="14" fill="#FBF7E8" style="font-family:Newsreader,Georgia,serif;font-style:italic" >[Anime title]</text></symbol>
+  <symbol id="art-b1" viewBox="0 0 200 300"><rect width="200" height="300" fill="#1C2E58"/><rect x="42" y="54" width="116" height="74" fill="#EFE9D8"/><rect x="46" y="58" width="108" height="66" fill="none" stroke="#1C2E58" stroke-width=".8"/><text x="100" y="88" font-size="15" fill="#1C2E58" style="font-family:Newsreader,Georgia,serif;font-style:italic" text-anchor="middle">[Book title]</text><text x="100" y="108" font-size="7" fill="#1C2E58" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:125%;font-weight:600" text-anchor="middle">[Author]</text><rect width="200" height="300" filter="url(#grain)" opacity="0.16"/></symbol>
+  <symbol id="art-b2" viewBox="0 0 200 300"><rect width="200" height="300" fill="#D49A2C"/><path d="M-10 300a110 110 0 0 1 220 0z" transform="translate(0 -70)" fill="#17191E"/><path d="M12 300a88 88 0 0 1 176 0z" transform="translate(0 -70)" fill="#D49A2C"/><path d="M34 300a66 66 0 0 1 132 0z" transform="translate(0 -70)" fill="#17191E"/><path d="M56 300a44 44 0 0 1 88 0z" transform="translate(0 -70)" fill="#D49A2C"/><path d="M78 300a22 22 0 0 1 44 0z" transform="translate(0 -70)" fill="#17191E"/><text x="14" y="34" font-size="18" fill="#17191E" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:75%;font-weight:700" >[Book title]</text><text x="14" y="50" font-size="7.5" fill="#17191E" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:125%;font-weight:600" >[Author]</text></symbol>
+  <symbol id="art-b3" viewBox="0 0 200 300"><rect width="200" height="300" fill="#F5F4EE"/><text x="4" y="196" font-size="190" fill="#17191E" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:125%;font-weight:600" >[</text><text x="112" y="196" font-size="190" fill="#17191E" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:125%;font-weight:600" >]</text><rect x="74" y="112" width="52" height="4" fill="#CC2D1E"/><text x="14" y="270" font-size="12" fill="#17191E" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:125%;font-weight:600" >[Book title]</text><text x="14" y="285" font-size="8" fill="#17191E" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:125%;font-weight:600" >[Author]</text></symbol>
+  <symbol id="art-b4" viewBox="0 0 200 300"><defs><pattern id="dm" width="22" height="22" patternUnits="userSpaceOnUse"><rect x="8" y="8" width="6" height="6" fill="#C9AE5D" transform="rotate(45 11 11)"/></pattern></defs><rect width="200" height="300" fill="#23503F"/><rect x="18" y="18" width="164" height="264" fill="url(#dm)"/><rect x="44" y="110" width="110" height="66" fill="#23503F" stroke="#C9AE5D"/><text x="99" y="142" font-size="14" fill="#EFE3B8" style="font-family:Newsreader,Georgia,serif" text-anchor="middle">[Book title]</text><text x="99" y="160" font-size="7" fill="#EFE3B8" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:125%;font-weight:600" text-anchor="middle">[Author]</text></symbol>
+  <symbol id="art-b5" viewBox="0 0 200 300"><rect width="200" height="300" fill="#E9E6DE"/><rect x="14" y="14" width="84" height="84" fill="#AD3F22"/><rect x="102" y="102" width="84" height="84" fill="#AD3F22"/><rect x="14" y="102" width="84" height="84" fill="#20242C"/><circle cx="144" cy="56" r="42" fill="#20242C"/><text x="14" y="226" font-size="20" fill="#20242C" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:75%;font-weight:700" >[Book title]</text><text x="14" y="244" font-size="8" fill="#20242C" style="font-family:Archivo,Helvetica,Arial,sans-serif;font-stretch:125%;font-weight:600" >[Author]</text></symbol>
+</svg>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <p class="place">New York</p>
+    <nav aria-label="Rooms">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list" hidden>Rooms</button>
+      <ul class="nav-list" id="nav-list"><li><a href="#recent">Recent</a></li><li><a href="#films">Films</a></li><li><a href="#tv">TV</a></li><li><a href="#anime">Anime</a></li><li><a href="#books">Books</a></li><li><a href="#restaurants">Restaurants</a></li><li><a href="#workouts">Workouts</a></li><li><a href="#writing">Writing</a></li><li><a href="#notes">Notes</a></li><li><a href="#games">Games</a></li></ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+<div class="hero" id="hero">
+  <div class="hero-body wrap">
+    <h1 class="name"><span>Sean</span> <span>Wang</span></h1>
+
+    <div class="hero-side">
+      <!-- CONTENT: intro. Only "lives in New York" is confirmed; fill the bracket. -->
+      <p class="intro">Sean Wang lives in New York. [One or two sentences on what he does and what he cares about.]</p>
+      <section class="now-head" aria-labelledby="now-heading">
+        <h2 id="now-heading">Now watching and reading</h2>
+        <div class="tabs" role="tablist" aria-labelledby="now-heading" hidden>
+          <button type="button" role="tab" id="tab-film" aria-controls="panel-film">Film</button>
+          <button type="button" role="tab" id="tab-tv" aria-controls="panel-tv">TV</button>
+          <button type="button" role="tab" id="tab-anime" aria-controls="panel-anime">Anime</button>
+          <button type="button" role="tab" id="tab-book" aria-controls="panel-book">Book</button>
+        </div>
+      </section>
+    </div>
+
+    <div class="now-panels">
+        <article class="now-panel" id="panel-film" data-wall="film" aria-labelledby="now-h-film">
+          <!-- CONTENT: now now watching (film) -->
+          <div class="cover">
+          <!-- COVER SLOT: replace the <svg> with <img src="[cover file]" alt="" width="600" height="900" loading="lazy">. The caption already names the work, so alt stays empty. -->
+          <svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-hf"/></svg>
+        </div>
+          <div class="placard">
+            <h3 id="now-h-film">Now watching</h3>
+            <p class="placard-title"><a href="#films">[Film title]</a></p>
+            <p>[Director], [Year]</p>
+            <p>Watched on [Date]</p>
+            <p class="placard-note">[One sentence on why this one, in his words.]</p>
+            <p class="credit">From <a href="https://letterboxd.com/">Letterboxd</a></p>
+          </div>
+        </article>
+        <article class="now-panel" id="panel-tv" data-wall="tv" aria-labelledby="now-h-tv">
+          <!-- CONTENT: now now watching (TV) -->
+          <div class="cover">
+          <!-- COVER SLOT: replace the <svg> with <img src="[cover file]" alt="" width="600" height="900" loading="lazy">. The caption already names the work, so alt stays empty. -->
+          <svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-ht"/></svg>
+        </div>
+          <div class="placard">
+            <h3 id="now-h-tv">Now watching</h3>
+            <p class="placard-title"><a href="#tv">[Show title]</a></p>
+            <p>[Creator], season [Number]</p>
+            <p>Started [Date]</p>
+            <p class="placard-note">[One sentence on why this one, in his words.]</p>
+            <p class="credit">From [TV source]</p>
+          </div>
+        </article>
+        <article class="now-panel" id="panel-anime" data-wall="anime" aria-labelledby="now-h-anime">
+          <!-- CONTENT: now now watching (anime) -->
+          <div class="cover">
+          <!-- COVER SLOT: replace the <svg> with <img src="[cover file]" alt="" width="600" height="900" loading="lazy">. The caption already names the work, so alt stays empty. -->
+          <svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-ha"/></svg>
+        </div>
+          <div class="placard">
+            <h3 id="now-h-anime">Now watching</h3>
+            <p class="placard-title"><a href="#anime">[Anime title]</a></p>
+            <p>[Studio], [Year], episode [Number]</p>
+            <p>Started [Date]</p>
+            <p class="placard-note">[One sentence on why this one, in his words.]</p>
+            <p class="credit">From <a href="https://myanimelist.net/">MyAnimeList</a></p>
+          </div>
+        </article>
+        <article class="now-panel" id="panel-book" data-wall="book" aria-labelledby="now-h-book">
+          <!-- CONTENT: now now reading (book) -->
+          <div class="cover cover--book">
+          <!-- COVER SLOT: replace the <svg> with <img src="[cover file]" alt="" width="600" height="900" loading="lazy">. The caption already names the work, so alt stays empty. -->
+          <svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-hb"/></svg>
+        </div>
+          <div class="placard">
+            <h3 id="now-h-book">Now reading</h3>
+            <p class="placard-title"><a href="#books">[Book title]</a></p>
+            <p>[Author], [Year]</p>
+            <p>Started [Date]</p>
+            <p class="placard-note">[One sentence on why this one, in his words.]</p>
+            <p class="credit">From <a href="https://www.goodreads.com/">Goodreads</a></p>
+          </div>
+        </article>
+    </div>
+  </div>
+</div>
+
+  <section class="room room--plaster" id="recent" aria-labelledby="recent-h">
+    <div class="wrap split">
+      <header class="split-head">
+        <h2 class="room-title room-title--mid" id="recent-h">Recent</h2>
+        <p class="credit">From every source below</p>
+      </header>
+      <!-- CONTENT: recent activity, newest first -->
+      <ul class="acts">
+        <li class="act">
+          <span class="act-thumb"><svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-f3"/></svg></span>
+          <span class="act-date">[Date]</span>
+          <span class="act-what">Watched <cite>[Film title]</cite></span>
+          <span class="act-src">Letterboxd</span>
+        </li>
+        <li class="act">
+          <span class="act-thumb"><svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-b2"/></svg></span>
+          <span class="act-date">[Date]</span>
+          <span class="act-what">Finished <cite>[Book title]</cite></span>
+          <span class="act-src">Goodreads</span>
+        </li>
+        <li class="act">
+          <span class="act-thumb"></span>
+          <span class="act-date">[Date]</span>
+          <span class="act-what">Ranked <cite>[Restaurant name]</cite></span>
+          <span class="act-src">Beli</span>
+        </li>
+        <li class="act">
+          <span class="act-thumb"></span>
+          <span class="act-date">[Date]</span>
+          <span class="act-what">Published <cite>[Essay title]</cite></span>
+          <span class="act-src">Substack</span>
+        </li>
+        <li class="act">
+          <span class="act-thumb"><svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-t1"/></svg></span>
+          <span class="act-date">[Date]</span>
+          <span class="act-what">Watched <cite>[Show title]</cite></span>
+          <span class="act-src">[TV source]</span>
+        </li>
+        <li class="act">
+          <span class="act-thumb"></span>
+          <span class="act-date">[Date]</span>
+          <span class="act-what">Set a record in <cite>[Lift name]</cite></span>
+          <span class="act-src">Hevy</span>
+        </li>
+        <li class="act">
+          <span class="act-thumb"><svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-a3"/></svg></span>
+          <span class="act-date">[Date]</span>
+          <span class="act-what">Completed <cite>[Anime title]</cite></span>
+          <span class="act-src">MyAnimeList</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="room room--film" id="films" aria-labelledby="films-h">
+    <!-- CONTENT: films. Each cover comes from the Letterboxd log; the first is the largest on the wall. -->
+    <div class="wrap hang">
+      <header class="hang-head">
+        <h2 class="room-title" id="films-h">Films</h2>
+        <div class="room-meta"><p class="credit">From <a href="https://letterboxd.com/">Letterboxd</a></p></div>
+      </header>
+      <figure class="work work--lead">
+        <div class="cover">
+          <!-- COVER SLOT: replace the <svg> with <img src="[cover file]" alt="" width="600" height="900" loading="lazy">. The caption already names the work, so alt stays empty. -->
+          <svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-f1"/></svg>
+        </div>
+        <figcaption class="label"><a class="work-title" href="#films">[Film title]</a><span>[Director], [Year]</span><span>[Rating]</span></figcaption>
+      </figure>
+      <figure class="work ">
+        <div class="cover">
+          <!-- COVER SLOT: replace the <svg> with <img src="[cover file]" alt="" width="600" height="900" loading="lazy">. The caption already names the work, so alt stays empty. -->
+          <svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-f2"/></svg>
+        </div>
+        <figcaption class="label"><a class="work-title" href="#films">[Film title]</a><span>[Director], [Year]</span><span>[Rating]</span></figcaption>
+      </figure>
+      <figure class="work ">
+        <div class="cover">
+          <!-- COVER SLOT: replace the <svg> with <img src="[cover file]" alt="" width="600" height="900" loading="lazy">. The caption already names the work, so alt stays empty. -->
+          <svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-f3"/></svg>
+        </div>
+        <figcaption class="label"><a class="work-title" href="#films">[Film title]</a><span>[Director], [Year]</span><span>[Rating]</span></figcaption>
+      </figure>
+      <figure class="work ">
+        <div class="cover">
+          <!-- COVER SLOT: replace the <svg> with <img src="[cover file]" alt="" width="600" height="900" loading="lazy">. The caption already names the work, so alt stays empty. -->
+          <svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-f4"/></svg>
+        </div>
+        <figcaption class="label"><a class="work-title" href="#films">[Film title]</a><span>[Director], [Year]</span><span>[Rating]</span></figcaption>
+      </figure>
+      <figure class="work ">
+        <div class="cover">
+          <!-- COVER SLOT: replace the <svg> with <img src="[cover file]" alt="" width="600" height="900" loading="lazy">. The caption already names the work, so alt stays empty. -->
+          <svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-f5"/></svg>
+        </div>
+        <figcaption class="label"><a class="work-title" href="#films">[Film title]</a><span>[Director], [Year]</span><span>[Rating]</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="room room--tv" id="tv" aria-labelledby="tv-h">
+    <!-- CONTENT: TV. Source is undecided, so the label stays [TV source]. -->
+    <div class="wrap row">
+      <header class="row-head">
+        <h2 class="room-title" id="tv-h">TV</h2>
+        <div class="room-meta"><p class="credit">From [TV source]</p></div>
+      </header>
+      <div class="covers covers--4">
+      <figure class="work ">
+        <div class="cover">
+          <!-- COVER SLOT: replace the <svg> with <img src="[cover file]" alt="" width="600" height="900" loading="lazy">. The caption already names the work, so alt stays empty. -->
+          <svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-t1"/></svg>
+        </div>
+        <figcaption class="label"><a class="work-title" href="#tv">[Show title]</a><span>[Creator], [Seasons]</span><span>[Rating]</span></figcaption>
+      </figure>
+      <figure class="work ">
+        <div class="cover">
+          <!-- COVER SLOT: replace the <svg> with <img src="[cover file]" alt="" width="600" height="900" loading="lazy">. The caption already names the work, so alt stays empty. -->
+          <svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-t2"/></svg>
+        </div>
+        <figcaption class="label"><a class="work-title" href="#tv">[Show title]</a><span>[Creator], [Seasons]</span><span>[Rating]</span></figcaption>
+      </figure>
+      <figure class="work ">
+        <div class="cover">
+          <!-- COVER SLOT: replace the <svg> with <img src="[cover file]" alt="" width="600" height="900" loading="lazy">. The caption already names the work, so alt stays empty. -->
+          <svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-t3"/></svg>
+        </div>
+        <figcaption class="label"><a class="work-title" href="#tv">[Show title]</a><span>[Creator], [Seasons]</span><span>[Rating]</span></figcaption>
+      </figure>
+      <figure class="work ">
+        <div class="cover">
+          <!-- COVER SLOT: replace the <svg> with <img src="[cover file]" alt="" width="600" height="900" loading="lazy">. The caption already names the work, so alt stays empty. -->
+          <svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-t4"/></svg>
+        </div>
+        <figcaption class="label"><a class="work-title" href="#tv">[Show title]</a><span>[Creator], [Seasons]</span><span>[Rating]</span></figcaption>
+      </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="room room--anime" id="anime" aria-labelledby="anime-h">
+    <!-- CONTENT: anime -->
+    <div class="wrap">
+      <header class="line-head">
+        <h2 class="room-title" id="anime-h">Anime</h2>
+        <div class="room-meta"><p class="credit">From <a href="https://myanimelist.net/">MyAnimeList</a></p></div>
+      </header>
+      <div class="covers covers--6">
+      <figure class="work ">
+        <div class="cover">
+          <!-- COVER SLOT: replace the <svg> with <img src="[cover file]" alt="" width="600" height="900" loading="lazy">. The caption already names the work, so alt stays empty. -->
+          <svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-a1"/></svg>
+        </div>
+        <figcaption class="label"><a class="work-title" href="#anime">[Anime title]</a><span>[Studio], [Year]</span><span>[Score]</span></figcaption>
+      </figure>
+      <figure class="work ">
+        <div class="cover">
+          <!-- COVER SLOT: replace the <svg> with <img src="[cover file]" alt="" width="600" height="900" loading="lazy">. The caption already names the work, so alt stays empty. -->
+          <svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-a2"/></svg>
+        </div>
+        <figcaption class="label"><a class="work-title" href="#anime">[Anime title]</a><span>[Studio], [Year]</span><span>[Score]</span></figcaption>
+      </figure>
+      <figure class="work ">
+        <div class="cover">
+          <!-- COVER SLOT: replace the <svg> with <img src="[cover file]" alt="" width="600" height="900" loading="lazy">. The caption already names the work, so alt stays empty. -->
+          <svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-a3"/></svg>
+        </div>
+        <figcaption class="label"><a class="work-title" href="#anime">[Anime title]</a><span>[Studio], [Year]</span><span>[Score]</span></figcaption>
+      </figure>
+      <figure class="work ">
+        <div class="cover">
+          <!-- COVER SLOT: replace the <svg> with <img src="[cover file]" alt="" width="600" height="900" loading="lazy">. The caption already names the work, so alt stays empty. -->
+          <svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-a4"/></svg>
+        </div>
+        <figcaption class="label"><a class="work-title" href="#anime">[Anime title]</a><span>[Studio], [Year]</span><span>[Score]</span></figcaption>
+      </figure>
+      <figure class="work ">
+        <div class="cover">
+          <!-- COVER SLOT: replace the <svg> with <img src="[cover file]" alt="" width="600" height="900" loading="lazy">. The caption already names the work, so alt stays empty. -->
+          <svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-a5"/></svg>
+        </div>
+        <figcaption class="label"><a class="work-title" href="#anime">[Anime title]</a><span>[Studio], [Year]</span><span>[Score]</span></figcaption>
+      </figure>
+      <figure class="work ">
+        <div class="cover">
+          <!-- COVER SLOT: replace the <svg> with <img src="[cover file]" alt="" width="600" height="900" loading="lazy">. The caption already names the work, so alt stays empty. -->
+          <svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-a6"/></svg>
+        </div>
+        <figcaption class="label"><a class="work-title" href="#anime">[Anime title]</a><span>[Studio], [Year]</span><span>[Score]</span></figcaption>
+      </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="room room--book" id="books" aria-labelledby="books-h">
+    <!-- CONTENT: books -->
+    <div class="wrap">
+      <header class="line-head">
+        <h2 class="room-title" id="books-h">Books</h2>
+        <div class="room-meta"><p class="credit">From <a href="https://www.goodreads.com/">Goodreads</a></p></div>
+      </header>
+      <div class="covers covers--5">
+      <figure class="work ">
+        <div class="cover cover--book">
+          <!-- COVER SLOT: replace the <svg> with <img src="[cover file]" alt="" width="600" height="900" loading="lazy">. The caption already names the work, so alt stays empty. -->
+          <svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-b1"/></svg>
+        </div>
+        <figcaption class="label"><a class="work-title" href="#books">[Book title]</a><span>[Author], [Year]</span><span>[Rating]</span></figcaption>
+      </figure>
+      <figure class="work ">
+        <div class="cover cover--book">
+          <!-- COVER SLOT: replace the <svg> with <img src="[cover file]" alt="" width="600" height="900" loading="lazy">. The caption already names the work, so alt stays empty. -->
+          <svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-b2"/></svg>
+        </div>
+        <figcaption class="label"><a class="work-title" href="#books">[Book title]</a><span>[Author], [Year]</span><span>[Rating]</span></figcaption>
+      </figure>
+      <figure class="work ">
+        <div class="cover cover--book">
+          <!-- COVER SLOT: replace the <svg> with <img src="[cover file]" alt="" width="600" height="900" loading="lazy">. The caption already names the work, so alt stays empty. -->
+          <svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-b3"/></svg>
+        </div>
+        <figcaption class="label"><a class="work-title" href="#books">[Book title]</a><span>[Author], [Year]</span><span>[Rating]</span></figcaption>
+      </figure>
+      <figure class="work ">
+        <div class="cover cover--book">
+          <!-- COVER SLOT: replace the <svg> with <img src="[cover file]" alt="" width="600" height="900" loading="lazy">. The caption already names the work, so alt stays empty. -->
+          <svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-b4"/></svg>
+        </div>
+        <figcaption class="label"><a class="work-title" href="#books">[Book title]</a><span>[Author], [Year]</span><span>[Rating]</span></figcaption>
+      </figure>
+      <figure class="work ">
+        <div class="cover cover--book">
+          <!-- COVER SLOT: replace the <svg> with <img src="[cover file]" alt="" width="600" height="900" loading="lazy">. The caption already names the work, so alt stays empty. -->
+          <svg viewBox="0 0 200 300" aria-hidden="true" focusable="false"><use href="#art-b5"/></svg>
+        </div>
+        <figcaption class="label"><a class="work-title" href="#books">[Book title]</a><span>[Author], [Year]</span><span>[Rating]</span></figcaption>
+      </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="room room--plaster" id="restaurants" aria-labelledby="restaurants-h">
+    <div class="wrap split">
+      <header class="split-head">
+        <h2 class="room-title room-title--mid" id="restaurants-h">Restaurants</h2>
+        <p class="credit">From <a href="https://beliapp.com/">Beli</a></p>
+      </header>
+      <!-- CONTENT: Beli ranking, best first -->
+      <ol class="ranks">
+        <li class="rank">
+          <span class="rank-n" aria-hidden="true">1</span>
+          <span class="rank-name">[Restaurant name]</span>
+          <span class="rank-place">[Neighborhood], [Cuisine]</span>
+          <span class="rank-score">[Beli score]</span>
+        </li>
+        <li class="rank">
+          <span class="rank-n" aria-hidden="true">2</span>
+          <span class="rank-name">[Restaurant name]</span>
+          <span class="rank-place">[Neighborhood], [Cuisine]</span>
+          <span class="rank-score">[Beli score]</span>
+        </li>
+        <li class="rank">
+          <span class="rank-n" aria-hidden="true">3</span>
+          <span class="rank-name">[Restaurant name]</span>
+          <span class="rank-place">[Neighborhood], [Cuisine]</span>
+          <span class="rank-score">[Beli score]</span>
+        </li>
+        <li class="rank">
+          <span class="rank-n" aria-hidden="true">4</span>
+          <span class="rank-name">[Restaurant name]</span>
+          <span class="rank-place">[Neighborhood], [Cuisine]</span>
+          <span class="rank-score">[Beli score]</span>
+        </li>
+        <li class="rank">
+          <span class="rank-n" aria-hidden="true">5</span>
+          <span class="rank-name">[Restaurant name]</span>
+          <span class="rank-place">[Neighborhood], [Cuisine]</span>
+          <span class="rank-score">[Beli score]</span>
+        </li>
+        <li class="rank">
+          <span class="rank-n" aria-hidden="true">6</span>
+          <span class="rank-name">[Restaurant name]</span>
+          <span class="rank-place">[Neighborhood], [Cuisine]</span>
+          <span class="rank-score">[Beli score]</span>
+        </li>
+        <li class="rank">
+          <span class="rank-n" aria-hidden="true">7</span>
+          <span class="rank-name">[Restaurant name]</span>
+          <span class="rank-place">[Neighborhood], [Cuisine]</span>
+          <span class="rank-score">[Beli score]</span>
+        </li>
+        <li class="rank">
+          <span class="rank-n" aria-hidden="true">8</span>
+          <span class="rank-name">[Restaurant name]</span>
+          <span class="rank-place">[Neighborhood], [Cuisine]</span>
+          <span class="rank-score">[Beli score]</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="room room--ink" id="workouts" aria-labelledby="workouts-h">
+    <!-- CONTENT: Hevy totals and personal records only. No session log, by design. -->
+    <div class="wrap split">
+      <header class="split-head">
+        <h2 class="room-title room-title--mid" id="workouts-h">Workouts</h2>
+        <p class="credit">From <a href="https://www.hevy.com/">Hevy</a></p>
+      </header>
+      <div class="lifts">
+        <div>
+          <h3>Totals</h3>
+          <dl class="stats stats--3">
+            <div class="stat"><dt>Workouts</dt><dd>[Count]</dd></div>
+            <div class="stat"><dt>Hours</dt><dd>[Hours]</dd></div>
+            <div class="stat"><dt>Volume lifted</dt><dd>[Volume]</dd></div>
+          </dl>
+        </div>
+        <div>
+          <h3>Personal records</h3>
+          <dl class="stats stats--4">
+            <div class="stat"><dt>Deadlift</dt><dd>[Deadlift PR]</dd><dd class="stat-note">Set [Date]</dd></div>
+            <div class="stat"><dt>Squat</dt><dd>[Squat PR]</dd><dd class="stat-note">Set [Date]</dd></div>
+            <div class="stat"><dt>Bench press</dt><dd>[Bench PR]</dd><dd class="stat-note">Set [Date]</dd></div>
+            <div class="stat"><dt>Overhead press</dt><dd>[Press PR]</dd><dd class="stat-note">Set [Date]</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="room room--plaster reading">
+    <div class="wrap reading-grid">
+      <section id="writing" aria-labelledby="writing-h">
+        <header class="line-head line-head--tight">
+          <h2 class="room-title room-title--mid" id="writing-h">Writing</h2>
+          <div class="room-meta"><p class="credit">From <a href="https://substack.com/">Substack</a></p></div>
+        </header>
+        <!-- CONTENT: Substack posts, excerpt plus link out -->
+        <div class="essays">
+        <article class="essay">
+          <h3><a href="#writing">[Essay title]</a></h3>
+          <p class="essay-date">[Publication date]</p>
+          <p>[Excerpt: the first two or three sentences of this post, exactly as published on Substack.]</p>
+          <p><a class="out" href="https://substack.com/">Read on Substack</a></p>
+        </article>
+        <article class="essay">
+          <h3><a href="#writing">[Essay title]</a></h3>
+          <p class="essay-date">[Publication date]</p>
+          <p>[Excerpt: the first two or three sentences of this post, exactly as published on Substack.]</p>
+          <p><a class="out" href="https://substack.com/">Read on Substack</a></p>
+        </article>
+        <article class="essay">
+          <h3><a href="#writing">[Essay title]</a></h3>
+          <p class="essay-date">[Publication date]</p>
+          <p>[Excerpt: the first two or three sentences of this post, exactly as published on Substack.]</p>
+          <p><a class="out" href="https://substack.com/">Read on Substack</a></p>
+        </article>
+        </div>
+      </section>
+      <section id="notes" aria-labelledby="notes-h">
+        <header class="line-head line-head--tight">
+          <h2 class="room-title room-title--mid" id="notes-h">Notes</h2>
+          <div class="room-meta"><p class="credit">From <a href="https://www.notion.so/">Notion</a></p></div>
+        </header>
+        <!-- CONTENT: public Notion notes -->
+        <ul class="notes">
+          <li><a href="#notes">[Note title]</a><span>[Topic], updated [Date]</span></li>
+          <li><a href="#notes">[Note title]</a><span>[Topic], updated [Date]</span></li>
+          <li><a href="#notes">[Note title]</a><span>[Topic], updated [Date]</span></li>
+          <li><a href="#notes">[Note title]</a><span>[Topic], updated [Date]</span></li>
+          <li><a href="#notes">[Note title]</a><span>[Topic], updated [Date]</span></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <section class="room room--games" id="games" aria-labelledby="games-h">
+    <div class="wrap">
+      <header class="line-head line-head--tight">
+        <h2 class="room-title room-title--mid" id="games-h">Flash games</h2>
+        <div class="room-meta"><p class="credit">From [Archive source]</p></div>
+      </header>
+      <!-- CONTENT: Flash games he loves: title, creator, year, one-line reason -->
+      <ul class="games">
+        <li class="game"><h3>[Game title]</h3><p class="game-by">[Creator], [Year]</p><p>[One line on why this game stays with him.]</p></li>
+        <li class="game"><h3>[Game title]</h3><p class="game-by">[Creator], [Year]</p><p>[One line on why this game stays with him.]</p></li>
+        <li class="game"><h3>[Game title]</h3><p class="game-by">[Creator], [Year]</p><p>[One line on why this game stays with him.]</p></li>
+        <li class="game"><h3>[Game title]</h3><p class="game-by">[Creator], [Year]</p><p>[One line on why this game stays with him.]</p></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <!-- CONTENT: footer -->
+    <nav class="plan" aria-labelledby="plan-h">
+      <h2 id="plan-h">Rooms</h2>
+      <ul><li><a class="chip chip--plaster" href="#recent">Recent</a></li><li><a class="chip chip--film" href="#films">Films</a></li><li><a class="chip chip--tv" href="#tv">TV</a></li><li><a class="chip chip--anime" href="#anime">Anime</a></li><li><a class="chip chip--book" href="#books">Books</a></li><li><a class="chip chip--plaster" href="#restaurants">Restaurants</a></li><li><a class="chip chip--ink" href="#workouts">Workouts</a></li><li><a class="chip chip--plaster" href="#writing">Writing</a></li><li><a class="chip chip--plaster" href="#notes">Notes</a></li><li><a class="chip chip--games" href="#games">Games</a></li></ul>
+    </nav>
+    <div class="foot-col">
+      <h2>Elsewhere</h2>
+      <ul>
+        <li><a href="https://letterboxd.com/">Letterboxd</a></li>
+        <li><a href="https://myanimelist.net/">MyAnimeList</a></li>
+        <li><a href="https://www.goodreads.com/">Goodreads</a></li>
+        <li><a href="https://beliapp.com/">Beli</a></li>
+        <li><a href="https://www.hevy.com/">Hevy</a></li>
+        <li><a href="https://substack.com/">Substack</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h2>Contact</h2>
+      <p>[Email address]</p>
+      <p>New York</p>
+      <p><a href="#top">Back to top</a></p>
+    </div>
+    <p class="colophon">&copy; [Year] Sean Wang. Last synced [Date]. Cover art belongs to its publishers and studios. Set in Archivo and Newsreader.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Rooms menu: collapses below 900px. Without JS the full list stays visible.
+  var toggle = document.querySelector('.nav-toggle');
+  var list = document.getElementById('nav-list');
+  toggle.hidden = false;
+  function setOpen(open) {
+    toggle.setAttribute('aria-expanded', String(open));
+    list.classList.toggle('is-open', open);
+  }
+  toggle.addEventListener('click', function () {
+    setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+  });
+  list.addEventListener('click', function (e) {
+    if (e.target.closest('a')) setOpen(false);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+
+  // Now tabs: selecting one rehangs the cover and repaints the wall.
+  // Without JS the tablist stays hidden and all four panels show.
+    var tablist = document.querySelector('.tabs');
+  var tabs = Array.prototype.slice.call(tablist.querySelectorAll('[role="tab"]'));
+  var meta = document.querySelector('meta[name="theme-color"]');
+  var paint = { film: '#451519', tv: '#1F3D45', anime: '#1B2561', book: '#39402E' };
+  function select(tab, focus) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      var panel = document.getElementById(t.getAttribute('aria-controls'));
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      panel.hidden = !on;
+    });
+    var wall = tab.id.replace('tab-', '');
+    document.body.dataset.wall = wall;
+    meta.content = paint[wall];
+    if (focus) tab.focus();
+  }
+  tablist.hidden = false;
+  tabs.forEach(function (t, i) {
+    var panel = document.getElementById(t.getAttribute('aria-controls'));
+    panel.setAttribute('role', 'tabpanel');
+    panel.setAttribute('aria-labelledby', t.id);
+    t.addEventListener('click', function () { select(t, false); });
+    t.addEventListener('keydown', function (e) {
+      var n = { ArrowRight: i + 1, ArrowDown: i + 1, ArrowLeft: i - 1, ArrowUp: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+      if (n === undefined) return;
+      e.preventDefault();
+      select(tabs[(n + tabs.length) % tabs.length], true);
+    });
+  });
+  select(tabs[0], false);
+})();
+</script>
+</body>
+</html>
