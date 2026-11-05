@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sean Wang</title>
+<meta name="description" content="Sean Wang's films, anime, books, restaurants, workouts, notes, writing and favorite Flash games, gathered in one place.">
+<meta name="theme-color" content="#1D0F2E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sean Wang">
+<meta property="og:title" content="Sean Wang">
+<meta property="og:description" content="Films, anime, books, restaurants, workouts, writing and Flash games, gathered in one place.">
+<meta property="og:url" content="[Site URL]">
+<meta property="og:image" content="[Share image URL]">
+<meta property="og:image:alt" content="[Share image description]">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231D0F2E'/%3E%3Crect x='6' y='7' width='6' height='15' fill='%23FF5C8A'/%3E%3Crect x='13' y='7' width='6' height='15' fill='%235FD6F2'/%3E%3Crect x='20' y='7' width='6' height='15' fill='%23FFD84D'/%3E%3Crect x='3' y='23' width='26' height='3' fill='%23F7F0FA'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Onest:wght@400;500;700&family=Pixelify+Sans:wght@700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{
+  color-scheme:dark;
+  /* Color */
+  --night:#1D0F2E; --wall:#2A1840; --paper:#F7F0FA; --dim:#CDBFDA; --line:#4A3560;
+  --films:#FF5C8A; --anime:#5FD6F2; --books:#E8D3A2; --food:#FF9F45; --lift:#B6F05A; --notes:#C8A8FF; --write:#7CF0C4; --arcade:#FFD84D;
+  /* Type scale */
+  --t-xs:.8125rem; --t-sm:.9375rem; --t-md:1.0625rem; --t-lg:1.375rem; --t-xl:clamp(1.75rem,3vw,2.25rem); --t-2xl:clamp(2.5rem,5vw,3.5rem);
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif; --body:Onest,system-ui,-apple-system,"Segoe UI",sans-serif; --pixel:"Pixelify Sans","Courier New",monospace;
+  /* Space */
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:64px; --section:clamp(72px,9vw,120px);
+  --g:16px; --max:1160px; --gap:16px; --plank:12px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+@media (min-width:640px){:root{--g:40px}}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:var(--s5)}
+body{margin:0;background:var(--night);color:var(--paper);font:400 var(--t-md)/1.5 var(--body);-webkit-font-smoothing:antialiased}
+ul,ol,dl,dd{list-style:none;margin:0;padding:0}
+h1,h2,h3,p{margin:0}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+small{font-size:inherit}
+button{font:inherit;color:inherit}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+:focus-visible{outline:3px solid #fff;outline-offset:3px;border-radius:2px}
+.skip{position:absolute;left:var(--g);top:-80px;z-index:10;background:#fff;color:var(--night);padding:var(--s3) var(--s4);font-weight:700;border-radius:0 0 4px 4px}
+.skip:focus{top:0}
+.wrap{width:100%;max-width:calc(var(--max) + 2*var(--g));margin-inline:auto;padding-inline:var(--g)}
+.c-films{--c:var(--films)}.c-anime{--c:var(--anime)}.c-books{--c:var(--books)}.c-food{--c:var(--food)}.c-lift{--c:var(--lift)}.c-notes{--c:var(--notes)}.c-write{--c:var(--write)}.c-arcade{--c:var(--arcade)}
+
+/* Shelf parts: the plank, and the tags that hang from it */
+.plank{height:var(--plank);background:var(--c,var(--paper));border-top:2px solid color-mix(in srgb,var(--c,var(--paper)) 45%,#fff);box-shadow:0 16px 32px -12px color-mix(in srgb,var(--c,var(--paper)) 45%,transparent)}
+.hang{display:inline-block;background:var(--c,var(--paper));color:var(--night);font-weight:700;font-size:var(--t-sm);line-height:1.2;padding:13px var(--s3);border-radius:0 0 4px 4px;text-decoration:none;white-space:nowrap;transition:box-shadow .2s var(--ease)}
+.hang:hover{box-shadow:0 5px 0 var(--c,var(--paper))}
+.hang:focus-visible{outline-color:var(--night);outline-offset:-5px}
+
+/* Masthead */
+.masthead{padding-top:clamp(var(--s6),6vw,var(--s8));container-type:inline-size}
+h1{font:900 calc(min(100cqw - 2*var(--g),var(--max))/4.41)/.8 var(--display);text-transform:uppercase;white-space:nowrap;margin-bottom:0;text-box:trim-both cap alphabetic;letter-spacing:0}
+@supports not (text-box:trim-both cap alphabetic){h1{line-height:1;margin-block:-.085em -.115em}}
+.tags{display:flex;gap:var(--s2);overflow-x:auto;scrollbar-width:none;margin-inline:calc(var(--g)*-1);padding-inline:var(--g);padding-bottom:var(--s2)}
+.tags::-webkit-scrollbar{display:none}
+.tags li{flex:none}
+@media (min-width:980px){.tags{flex-wrap:wrap;overflow:visible}}
+.lede{display:grid;gap:var(--s3) var(--s7);margin-top:var(--s6)}
+.lede strong{font:700 clamp(1.5rem,3vw,2rem)/1.2 var(--body);display:block}
+.lede p{color:var(--dim);max-width:52ch}
+@media (min-width:860px){.lede,.cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Section furniture */
+.section{margin-top:var(--section)}
+.head{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 var(--s3);margin-bottom:var(--s3)}
+h2{font:800 var(--t-2xl)/1 var(--display)}
+.aisle h3.shelf-name{font:800 var(--t-xl)/1 var(--display)}
+.src{display:inline-block;padding-block:11px;color:var(--c,var(--dim));font-size:var(--t-sm);font-weight:500}
+a.src:hover{color:#fff}
+.cols{display:grid;gap:var(--section) var(--s7)}
+.cols>.section{margin-top:0}
+.cols{margin-top:var(--section)}
+.board{border-top:var(--plank) solid var(--c)}
+
+/* Latest */
+.spots{display:grid;gap:var(--gap);margin-bottom:var(--s5)}
+@media (min-width:860px){.spots{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s7)}}
+.spot{display:grid;grid-template-columns:96px minmax(0,1fr);gap:var(--s4);align-items:center;background:var(--wall);padding:var(--s4);border-radius:6px}
+.spot .thumbart{width:96px;aspect-ratio:2/3;border-radius:3px;background:var(--art);display:block}
+.label{color:var(--c);font-weight:700;font-size:var(--t-sm)}
+.spot h3,.spot h4{margin:0;font:800 var(--t-xl)/1.05 var(--display);margin-top:var(--s1)}
+.spot h3 a,.spot h4 a{text-decoration:none}
+.spot h3 a:hover,.spot h4 a:hover{text-decoration:underline}
+.spot p:not(.label){color:var(--dim);font-size:var(--t-sm);margin-top:var(--s1)}
+.feed{display:grid;column-gap:var(--s7)}
+@media (min-width:860px){.feed{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.feed li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:var(--s3);align-items:center;padding:var(--s3) 0;border-top:1px solid var(--line)}
+.thumb{width:44px;height:44px;border-radius:3px;display:block;background:var(--art)}
+.feed a{font-weight:500}
+.feed .when{color:var(--dim);font-size:var(--t-xs)}
+.feed .who{color:var(--c);font-weight:700}
+.th-lift{--art:linear-gradient(#1D0F2E 0 0) center/100% 4px no-repeat,linear-gradient(#1D0F2E 0 0) 8px center/7px 24px no-repeat,linear-gradient(#1D0F2E 0 0) 29px center/7px 24px no-repeat,var(--lift)}
+.th-note{--art:repeating-linear-gradient(#1D0F2E 0 3px,transparent 3px 10px) 10px 10px/24px 26px no-repeat,var(--notes)}
+.th-post{--art:linear-gradient(#1D0F2E 0 0) 9px 9px/26px 3px no-repeat,linear-gradient(#1D0F2E 0 0) 9px 16px/16px 3px no-repeat,radial-gradient(circle at 50% 70%,#1D0F2E 0 18%,transparent 18.5%),var(--write)}
+
+/* Media controls */
+.controls{display:flex;flex-wrap:wrap;gap:var(--s3);justify-content:space-between;align-items:center;margin-top:var(--s4)}
+.seg{display:flex;gap:var(--s1);flex-wrap:wrap}
+.seg button{min-height:44px;padding:0 var(--s4);background:transparent;border:1px solid var(--line);border-radius:999px;font-weight:500;font-size:var(--t-sm);cursor:pointer;display:inline-flex;align-items:center;gap:var(--s2);transition:background-color .15s,color .15s,border-color .15s}
+.seg button:hover{border-color:var(--paper)}
+.seg button[aria-pressed=true]{background:var(--paper);border-color:var(--paper);color:var(--night);font-weight:700}
+.seg svg{flex:none}
+
+/* Shelves */
+main{container-type:inline-size}
+.aisle{margin-top:var(--s7);display:flex;flex-direction:column}
+.aisle .head{align-items:baseline;margin-bottom:0}
+.arrows{display:none;margin-left:auto;gap:var(--s1);align-self:center}
+@media (min-width:860px){.js .arrows:not([hidden]){display:flex}}
+.arrows button{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;background:transparent;cursor:pointer;transition:background-color .15s,color .15s,border-color .15s,opacity .15s}
+.arrows button:hover:not(:disabled){background:var(--c);color:var(--night);border-color:var(--c)}
+.arrows button:disabled{opacity:.35;cursor:default}
+.scroller{--edge:max(var(--g),calc((100% - var(--max))/2));overflow-x:auto;padding:var(--s5) var(--edge) 0;scroll-padding-inline:var(--edge);scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.js .scroller{scrollbar-width:none}
+.js .scroller::-webkit-scrollbar{display:none}
+.scroller:focus-visible{outline-offset:-3px}
+.items{display:flex;gap:var(--gap);width:max-content}
+.items>li{flex:none;scroll-snap-align:start}
+.item{--pw:calc((min(100cqw - 2*var(--g),var(--max)) - 5*var(--gap))/6);position:relative;display:block;width:var(--pw);aspect-ratio:2/3;text-decoration:none;transition:transform .22s var(--ease)}
+@media (max-width:979px){.item{--pw:calc((100cqw - 2*var(--g) - 3*var(--gap))/4.3)}}
+@media (max-width:639px){.item{--pw:136px}}
+.item:hover{transform:translateY(-6px)}
+.item:focus-visible{outline:3px solid transparent;transform:translateY(-6px)}
+.item:focus-visible::after{content:"";position:absolute;inset:0;border:3px solid #fff;box-shadow:inset 0 0 0 3px var(--night);border-radius:3px 3px 0 0}
+.art{position:absolute;inset:0;display:block;overflow:hidden;border-radius:3px 3px 0 0;background:var(--art)}
+.item-text{position:absolute;left:0;right:0;padding:var(--s3);background:var(--tb);color:var(--ti)}
+.top .item-text{top:0}.bot .item-text{bottom:0}
+.title{display:block;font:800 var(--t-lg)/1 var(--display)}
+.meta{display:block;font-size:var(--t-xs);margin-top:var(--s1)}
+.sticker{position:absolute;z-index:2;top:-10px;right:-6px;width:60px;height:60px;border-radius:50%;background:var(--arcade);color:var(--night);display:grid;place-items:center;font:700 .75rem/1 var(--body);transform:rotate(8deg)}
+li:nth-child(even) .sticker{transform:rotate(-6deg)}
+.top .sticker{top:auto;bottom:var(--s3)}
+.tagrow{display:flex;justify-content:flex-end}
+
+/* List view */
+.list .scroller{overflow:visible;padding:0;--edge:0}
+.list .items{display:grid;width:auto;column-gap:var(--s7);max-width:calc(var(--max) + 2*var(--g));margin-inline:auto;padding-inline:var(--g)}
+@media (min-width:860px){.list .items{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.list .plank{order:1;margin-top:var(--s3)}
+.list .scroller{order:2;margin-top:var(--s2)}
+.list .tagrow{order:3;margin-top:var(--s3)}
+.list .item{--pw:auto;width:auto;aspect-ratio:auto;display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:var(--s4);align-items:center;padding:var(--s2) 0;border-bottom:1px solid var(--line);transition:none}
+.list .item:hover,.list .item:focus-visible{transform:none}
+.list .item:hover .title{text-decoration:underline}
+.list .art{position:relative;inset:auto;width:44px;height:66px;border-radius:2px}
+.list .item-text,.list .spine .item-text{position:static;padding:0;background:none;color:var(--paper);display:block;width:auto;writing-mode:horizontal-tb}
+.list .title,.list .spine .title{font:700 var(--t-md)/1.25 var(--body);white-space:normal}
+.list .spine .meta{margin-top:0;white-space:normal}
+.list .c-books .item::before{display:none}
+.list .meta{color:var(--dim);display:block}
+.list .items li .sticker{position:static;width:auto;height:auto;background:none;color:var(--c);transform:none;font:800 var(--t-lg)/1 var(--display)}
+
+/* Film posters: bold, one-shot compositions */
+.f1{--tb:#22307A;--ti:#FFF3D6;--art:radial-gradient(circle at 50% 36%,#FF5B3A 0 36%,transparent 36.4%),#22307A}
+.f2{--tb:#FFC629;--ti:#1A1200;--art:repeating-linear-gradient(45deg,#14110A 0 14px,#FFC629 14px 28px)}
+.f3{--tb:#0B3B3C;--ti:#E8FFF8;--art:repeating-radial-gradient(circle at 34% 72%,#0E7C7B 0 12px,#9BE7D8 12px 24px)}
+.f4{--tb:#2A1240;--ti:#FFD7E6;--art:linear-gradient(to top right,#FF3D7F 50%,#2A1240 50.3%)}
+.f5{--tb:#D8F34E;--ti:#1C1C1C;--art:conic-gradient(#1C1C1C 25%,#E9F5DB 0 50%,#1C1C1C 0 75%,#E9F5DB 0) 0 0/44px 44px}
+.f6{--tb:#3B1C8C;--ti:#FFE9A8;--art:radial-gradient(circle at 50% 42%,#FFE17A 0 22%,transparent 22.4%),linear-gradient(#3B1C8C 0 44%,#FF6B4A 44% 56%,#C72C6C 56% 68%,#3B1C8C 68%)}
+.f7{--tb:#101428;--ti:#FFFFFF;--art:linear-gradient(90deg,#F24C3D 0 25%,#F4B400 0 50%,#1E88E5 0 75%,#F7F0FA 0)}
+.f8{--tb:#1B2A8A;--ti:#FFFFFF;--art:radial-gradient(#1B2A8A 38%,transparent 40%) 0 0/16px 16px,#7FD8FF}
+
+/* Anime covers: ink, paper and one spot color, with a vertical title spine */
+.spine .item-text{top:0;bottom:0;left:0;right:auto;width:40px;padding:var(--s3) 0;display:flex;justify-content:space-between;align-items:center;gap:var(--s2);writing-mode:vertical-rl}
+.spine .title{font-size:1.25rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:0}
+.spine .meta{margin:0;white-space:nowrap;flex:none}
+.a1{--tb:#14121F;--ti:#F6F6F6;--art:radial-gradient(circle at 62% 44%,#F6F6F6 0 15%,#14121F 15.4% 17%,transparent 17.4%),repeating-conic-gradient(from 0deg at 62% 44%,#14121F 0 3deg,#F6F6F6 3deg 9deg)}
+.a2{--tb:#D42A5C;--ti:#FFFFFF;--art:radial-gradient(circle at 64% 36%,#FFE5EC 0 24%,transparent 24.4%),radial-gradient(#D42A5C 36%,transparent 38%) 0 0/9px 9px,#FFE5EC}
+.a3{--tb:#F2E6C8;--ti:#14121F;--art:radial-gradient(circle at 64% 30%,#F2E6C8 0 15%,transparent 15.4%),linear-gradient(145deg,transparent 62%,#14121F 62.4%),linear-gradient(215deg,transparent 56%,#0B0A24 56.4%),#2C2A78}
+.a4{--tb:#14121F;--ti:#A6F0FF;--art:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='26'%3E%3Cpath d='M-18 20 0 4 18 20 36 4 54 20' fill='none' stroke='%2314121F' stroke-width='6'/%3E%3C/svg%3E") 0 0/72px 52px,#A6F0FF}
+.a5{--tb:#0D3B66;--ti:#FAF0CA;--art:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='20'%3E%3Ccircle cx='0' cy='-20' r='20' fill='%230D3B66'/%3E%3Ccircle cx='0' cy='-20' r='18.5' fill='%23FAF0CA'/%3E%3Ccircle cx='0' cy='-20' r='15.5' fill='%230D3B66'/%3E%3Ccircle cx='0' cy='-20' r='13.5' fill='%23FAF0CA'/%3E%3Ccircle cx='0' cy='-20' r='10.5' fill='%230D3B66'/%3E%3Ccircle cx='40' cy='-20' r='20' fill='%230D3B66'/%3E%3Ccircle cx='40' cy='-20' r='18.5' fill='%23FAF0CA'/%3E%3Ccircle cx='40' cy='-20' r='15.5' fill='%230D3B66'/%3E%3Ccircle cx='40' cy='-20' r='13.5' fill='%23FAF0CA'/%3E%3Ccircle cx='40' cy='-20' r='10.5' fill='%230D3B66'/%3E%3Ccircle cx='20' cy='-10' r='20' fill='%230D3B66'/%3E%3Ccircle cx='20' cy='-10' r='18.5' fill='%23FAF0CA'/%3E%3Ccircle cx='20' cy='-10' r='15.5' fill='%230D3B66'/%3E%3Ccircle cx='20' cy='-10' r='13.5' fill='%23FAF0CA'/%3E%3Ccircle cx='20' cy='-10' r='10.5' fill='%230D3B66'/%3E%3Ccircle cx='0' cy='0' r='20' fill='%230D3B66'/%3E%3Ccircle cx='0' cy='0' r='18.5' fill='%23FAF0CA'/%3E%3Ccircle cx='0' cy='0' r='15.5' fill='%230D3B66'/%3E%3Ccircle cx='0' cy='0' r='13.5' fill='%23FAF0CA'/%3E%3Ccircle cx='0' cy='0' r='10.5' fill='%230D3B66'/%3E%3Ccircle cx='40' cy='0' r='20' fill='%230D3B66'/%3E%3Ccircle cx='40' cy='0' r='18.5' fill='%23FAF0CA'/%3E%3Ccircle cx='40' cy='0' r='15.5' fill='%230D3B66'/%3E%3Ccircle cx='40' cy='0' r='13.5' fill='%23FAF0CA'/%3E%3Ccircle cx='40' cy='0' r='10.5' fill='%230D3B66'/%3E%3Ccircle cx='20' cy='10' r='20' fill='%230D3B66'/%3E%3Ccircle cx='20' cy='10' r='18.5' fill='%23FAF0CA'/%3E%3Ccircle cx='20' cy='10' r='15.5' fill='%230D3B66'/%3E%3Ccircle cx='20' cy='10' r='13.5' fill='%23FAF0CA'/%3E%3Ccircle cx='20' cy='10' r='10.5' fill='%230D3B66'/%3E%3Ccircle cx='0' cy='20' r='20' fill='%230D3B66'/%3E%3Ccircle cx='0' cy='20' r='18.5' fill='%23FAF0CA'/%3E%3Ccircle cx='0' cy='20' r='15.5' fill='%230D3B66'/%3E%3Ccircle cx='0' cy='20' r='13.5' fill='%23FAF0CA'/%3E%3Ccircle cx='0' cy='20' r='10.5' fill='%230D3B66'/%3E%3Ccircle cx='40' cy='20' r='20' fill='%230D3B66'/%3E%3Ccircle cx='40' cy='20' r='18.5' fill='%23FAF0CA'/%3E%3Ccircle cx='40' cy='20' r='15.5' fill='%230D3B66'/%3E%3Ccircle cx='40' cy='20' r='13.5' fill='%23FAF0CA'/%3E%3Ccircle cx='40' cy='20' r='10.5' fill='%230D3B66'/%3E%3Ccircle cx='20' cy='30' r='20' fill='%230D3B66'/%3E%3Ccircle cx='20' cy='30' r='18.5' fill='%23FAF0CA'/%3E%3Ccircle cx='20' cy='30' r='15.5' fill='%230D3B66'/%3E%3Ccircle cx='20' cy='30' r='13.5' fill='%23FAF0CA'/%3E%3Ccircle cx='20' cy='30' r='10.5' fill='%230D3B66'/%3E%3Ccircle cx='0' cy='40' r='20' fill='%230D3B66'/%3E%3Ccircle cx='0' cy='40' r='18.5' fill='%23FAF0CA'/%3E%3Ccircle cx='0' cy='40' r='15.5' fill='%230D3B66'/%3E%3Ccircle cx='0' cy='40' r='13.5' fill='%23FAF0CA'/%3E%3Ccircle cx='0' cy='40' r='10.5' fill='%230D3B66'/%3E%3Ccircle cx='40' cy='40' r='20' fill='%230D3B66'/%3E%3Ccircle cx='40' cy='40' r='18.5' fill='%23FAF0CA'/%3E%3Ccircle cx='40' cy='40' r='15.5' fill='%230D3B66'/%3E%3Ccircle cx='40' cy='40' r='13.5' fill='%23FAF0CA'/%3E%3Ccircle cx='40' cy='40' r='10.5' fill='%230D3B66'/%3E%3Ccircle cx='20' cy='50' r='20' fill='%230D3B66'/%3E%3Ccircle cx='20' cy='50' r='18.5' fill='%23FAF0CA'/%3E%3Ccircle cx='20' cy='50' r='15.5' fill='%230D3B66'/%3E%3Ccircle cx='20' cy='50' r='13.5' fill='%23FAF0CA'/%3E%3Ccircle cx='20' cy='50' r='10.5' fill='%230D3B66'/%3E%3Ccircle cx='0' cy='60' r='20' fill='%230D3B66'/%3E%3Ccircle cx='0' cy='60' r='18.5' fill='%23FAF0CA'/%3E%3Ccircle cx='0' cy='60' r='15.5' fill='%230D3B66'/%3E%3Ccircle cx='0' cy='60' r='13.5' fill='%23FAF0CA'/%3E%3Ccircle cx='0' cy='60' r='10.5' fill='%230D3B66'/%3E%3Ccircle cx='40' cy='60' r='20' fill='%230D3B66'/%3E%3Ccircle cx='40' cy='60' r='18.5' fill='%23FAF0CA'/%3E%3Ccircle cx='40' cy='60' r='15.5' fill='%230D3B66'/%3E%3Ccircle cx='40' cy='60' r='13.5' fill='%23FAF0CA'/%3E%3Ccircle cx='40' cy='60' r='10.5' fill='%230D3B66'/%3E%3C/svg%3E") 0 0/80px 40px}
+.a6{--tb:#14121F;--ti:#12D6A5;--art:linear-gradient(112deg,#14121F 0 56%,#F6F6F6 56.3% 60%,#12D6A5 60.3%)}
+.a7{--tb:#FF7A00;--ti:#14121F;--art:radial-gradient(circle at 62% 48%,#14121F 0 25%,transparent 25.4%),repeating-linear-gradient(45deg,#FF7A00 0 6px,#FFE2BF 6px 12px)}
+.a8{--tb:#3A0E4F;--ti:#FFE66D;--art:repeating-radial-gradient(circle at 62% 110%,#3A0E4F 0 14px,#FFE66D 14px 28px)}
+
+/* Book covers: quieter paperback colors with a hinge at the left edge */
+.c-books .item::before{content:"";position:absolute;inset:0 auto 0 0;width:7px;background:rgba(0,0,0,.28);z-index:1;border-radius:3px 0 0 0}
+.c-books .item-text{padding-left:calc(var(--s3) + 7px)}
+.book-cover{box-shadow:inset 7px 0 0 rgba(0,0,0,.28)}
+.b0{--art:radial-gradient(circle at 56% 34%,#FFD9C7 0 16%,transparent 16.4%),linear-gradient(transparent 62%,#7C2436 62.3%),#C8553D}
+.b1{--tb:#17402F;--ti:#F4E7C2;--art:radial-gradient(circle at 50% 66%,transparent 0 22%,#E2B94B 22.4% 25%,transparent 25.4%),#17402F}
+.b2{--tb:#D9A62E;--ti:#1E1500;--art:repeating-linear-gradient(120deg,#1E1500 0 3px,#D9A62E 3px 15px)}
+.b3{--tb:#2F3E55;--ti:#E9EEF5;--art:linear-gradient(#E9EEF5 0 0) 28px 26% /60% 12px no-repeat,linear-gradient(#D97A5B 0 0) 28px 38%/42% 12px no-repeat,linear-gradient(#E9EEF5 0 0) 28px 50%/52% 12px no-repeat,#2F3E55}
+.b4{--tb:#F1E7D6;--ti:#3A1F16;--art:radial-gradient(ellipse 34% 26% at 50% 74%,#A63C2E 0 99%,transparent 100%),linear-gradient(#A63C2E 0 0) 50% 100%/68% 26% no-repeat,#F1E7D6}
+.b5{--tb:#6B1D2A;--ti:#F7E6D5;--art:radial-gradient(#E9B9A0 22%,transparent 24%) 0 0/20px 20px,#6B1D2A}
+.b6{--tb:#0F5560;--ti:#EAF7F3;--art:radial-gradient(circle at 100% 100%,#F2B880 0 44%,transparent 44.4%),#0F5560}
+.b7{--tb:#40244F;--ti:#F1DFF5;--art:linear-gradient(#8E5AA8 1px,transparent 1px) 0 0/100% 18px,linear-gradient(90deg,#8E5AA8 1px,transparent 1px) 0 0/18px 100%,#40244F}
+.b8{--tb:#23262B;--ti:#F2F0E8;--art:linear-gradient(#E4572E 0 0) 0 72%/100% 22px no-repeat,#23262B}
+.c-books .title{font:700 var(--t-md)/1.2 var(--body)}
+.reading{margin-top:var(--s4)}
+@media (min-width:860px){.reading{max-width:calc((100% - var(--s7))/2)}}
+.reading.spot{grid-template-columns:112px minmax(0,1fr)}
+.reading .thumbart{width:112px}
+.reading a.more{display:inline-block;margin-top:var(--s2);color:var(--c);font-weight:500;font-size:var(--t-sm);padding-block:var(--s1)}
+
+/* Restaurants */
+.ranks li{display:grid;grid-template-columns:2rem 44px minmax(0,1fr) auto;gap:var(--s3);align-items:center;padding:var(--s3) 0;border-bottom:1px solid var(--line)}
+.rank{font:900 2rem/1 var(--display);color:var(--c);text-align:right;font-variant-numeric:tabular-nums}
+.plate{width:44px;height:44px;border-radius:50%;display:block}
+.p1{background:radial-gradient(circle,#D9412B 0 40%,#fff 41% 66%,#1B6F6A 67% 70%,#fff 71%)}
+.p2{background:radial-gradient(circle,#F0C419 0 30%,#3E8E41 31% 52%,#FBF7EC 53%)}
+.p3{background:radial-gradient(circle at 40% 40%,#7A3E12 0 16%,transparent 17%),radial-gradient(circle at 62% 60%,#7A3E12 0 12%,transparent 13%),radial-gradient(circle,#F2E2C4 0 62%,#2C4A9A 63%)}
+.p4{background:repeating-radial-gradient(circle,#fff 0 3px,#E64A6B 3px 6px)}
+.p5{background:conic-gradient(#F39C12 0 25%,#fff 0 50%,#16A085 0 75%,#fff 0)}
+.p6{background:radial-gradient(circle,#2B2B2B 0 54%,#E8E2D6 55%)}
+.thumb.plate{border-radius:50%}
+.rname{min-width:0}
+.rname a{font-weight:700}
+.rname small{display:block;color:var(--dim);font-size:var(--t-xs)}
+.score{font:800 var(--t-lg)/1 var(--display)}
+
+/* Workouts */
+.totals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4);padding:var(--s5) 0;border-bottom:1px solid var(--line)}
+.totals div{display:flex;flex-direction:column-reverse;justify-content:flex-end}
+.totals dd{font:800 clamp(2rem,4vw,3rem)/1 var(--display)}
+.totals dt{color:var(--dim);font-size:var(--t-xs);margin-top:var(--s1)}
+.prs h3{font:800 var(--t-lg)/1 var(--display);margin:var(--s5) 0 var(--s3)}
+.prs li{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:0 var(--s3);padding:var(--s3) 0;border-top:1px solid var(--line)}
+.prs b{font:800 var(--t-lg)/1.1 var(--display);color:var(--c);display:block}
+.prs small{color:var(--dim);font-size:var(--t-xs)}
+
+/* Writing and notes */
+.post{display:grid;grid-template-columns:72px minmax(0,1fr);gap:var(--s4);padding:var(--s4) 0;border-bottom:1px solid var(--line)}
+.paperback{width:72px;aspect-ratio:2/3;border-radius:2px;display:block}
+.pb1{background:linear-gradient(#1D0F2E 0 0) 10px 12px/52px 4px no-repeat,linear-gradient(#1D0F2E 0 0) 10px 22px/34px 4px no-repeat,radial-gradient(circle at 50% 72%,#1D0F2E 0 22%,transparent 22.4%),var(--write)}
+.pb2{background:repeating-linear-gradient(0deg,#0F5C4A 0 8px,var(--write) 8px 16px)}
+.pb3{background:linear-gradient(135deg,var(--write) 50%,#0F5C4A 50.4%)}
+.post h3{font:800 var(--t-lg)/1.1 var(--display);margin-bottom:var(--s1)}
+.post p{color:var(--dim);font-size:var(--t-sm);max-width:60ch}
+.post a{display:inline-block;margin-top:var(--s1);padding-block:var(--s1);font-weight:500;font-size:var(--t-sm);color:var(--c)}
+.notes li{padding:var(--s3) 0;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:0 var(--s4)}
+.notes a{font-weight:500}
+.notes span{color:var(--dim);font-size:var(--t-xs)}
+
+/* Flash games: the one place the page plays dress-up */
+.cabinet{margin-top:var(--section);padding-block:clamp(var(--s7),6vw,var(--s8));background:#10215A}
+.cabinet h2{font:700 var(--t-2xl)/1 var(--pixel)}
+.cabinet .src{color:#FFD84D}
+.bevel{display:inline-block;background:#C8C8C8;color:#111;border:3px solid;border-color:#FFF #555 #555 #FFF;font:700 var(--t-sm)/1 var(--pixel);padding:var(--s2) var(--s3)}
+.gameshelf{--gw:248px;position:relative;gap:var(--gap)}
+.gameshelf::before{content:"";position:absolute;top:calc(var(--gw)*.75);left:-100vw;right:-100vw;height:10px;background:var(--arcade);border-top:2px solid #FFF0A8}
+@media (min-width:640px){.gameshelf{--gw:calc((min(100cqw - 2*var(--g),var(--max)) - 3*var(--gap))/4)}}
+.game{width:var(--gw)}
+.tile{position:relative;display:grid;place-items:center;aspect-ratio:4/3;border-radius:6px 6px 0 0;text-decoration:none;margin-bottom:10px}
+.tile:hover .bevel{background:#E2E2E2}
+.tile:active .bevel{border-color:#555 #FFF #FFF #555}
+.tile:focus-visible{outline:4px solid #111;outline-offset:-8px}
+.tile .bevel{position:absolute;bottom:var(--s3);left:50%;transform:translateX(-50%)}
+.sprite{position:relative;display:block;margin-bottom:var(--s7)}
+.sprite i{position:absolute;top:0;left:0;width:8px;height:8px}
+.game h3{font:800 var(--t-lg)/1.1 var(--display);margin-top:var(--s4)}
+.by{color:#C9D6F5;font-size:var(--t-xs);margin-top:var(--s1)}
+.why{margin-top:var(--s2);font-size:var(--t-sm);color:#F2F6FF}
+.g1{color:#111;background:linear-gradient(90deg,transparent 28px,#F2A0A0 28px 30px,transparent 30px),repeating-linear-gradient(#FBFBF4 0 22px,#B7D3EE 22px 24px)}
+.g2{color:#3B1C8C;background:linear-gradient(#7DE0FF 0 62%,#6CCB4B 62%)}
+.g3{color:#D8FF4F;background:radial-gradient(#fff 1.5px,transparent 2px) 0 0/28px 28px,#141038}
+.g4{color:#3A0E0E;background:repeating-linear-gradient(90deg,#FF8A3D 0 20px,#FF7A29 20px 40px)}
+.g5{color:#fff;background:repeating-linear-gradient(135deg,#D6246E 0 24px,#B81C5C 24px 48px)}
+.g6{color:#0B3B3C;background:conic-gradient(from 45deg,#8DF2C9 25%,#6FE3B6 0 50%,#8DF2C9 0 75%,#6FE3B6 0) 0 0/36px 36px}
+.s-stick{width:56px;height:80px}.s-stick i{box-shadow:16px 0px,24px 0px,32px 0px,16px 8px,32px 8px,16px 16px,24px 16px,32px 16px,24px 24px,8px 32px,16px 32px,24px 32px,32px 32px,40px 32px,0px 40px,24px 40px,48px 40px,24px 48px,16px 56px,32px 56px,8px 64px,40px 64px,0px 72px,48px 72px}
+.s-tower{width:56px;height:72px}.s-tower i{box-shadow:0px 0px,16px 0px,32px 0px,48px 0px,0px 8px,8px 8px,16px 8px,24px 8px,32px 8px,40px 8px,48px 8px,8px 16px,16px 16px,24px 16px,32px 16px,40px 16px,8px 24px,16px 24px,32px 24px,40px 24px,8px 32px,16px 32px,24px 32px,32px 32px,40px 32px,8px 40px,16px 40px,32px 40px,40px 40px,8px 48px,16px 48px,24px 48px,32px 48px,40px 48px,0px 56px,8px 56px,16px 56px,24px 56px,32px 56px,40px 56px,48px 56px,0px 64px,8px 64px,16px 64px,24px 64px,32px 64px,40px 64px,48px 64px}
+.s-ufo{width:88px;height:72px}.s-ufo i{box-shadow:32px 0px,40px 0px,48px 0px,24px 8px,32px 8px,40px 8px,48px 8px,56px 8px,16px 16px,24px 16px,40px 16px,56px 16px,64px 16px,8px 24px,16px 24px,24px 24px,32px 24px,40px 24px,48px 24px,56px 24px,64px 24px,72px 24px,0px 32px,8px 32px,16px 32px,24px 32px,32px 32px,40px 32px,48px 32px,56px 32px,64px 32px,72px 32px,80px 32px,8px 40px,24px 40px,40px 40px,56px 40px,72px 40px,16px 56px,40px 56px,64px 56px,8px 64px,40px 64px,72px 64px}
+.s-sword{width:88px;height:80px}.s-sword i{box-shadow:72px 0px,80px 0px,64px 8px,72px 8px,80px 8px,56px 16px,64px 16px,72px 16px,48px 24px,56px 24px,64px 24px,0px 32px,40px 32px,48px 32px,56px 32px,0px 40px,8px 40px,32px 40px,40px 40px,48px 40px,8px 48px,16px 48px,24px 48px,32px 48px,40px 48px,16px 56px,24px 56px,32px 56px,8px 64px,16px 64px,24px 64px,32px 64px,40px 64px,0px 72px,8px 72px,40px 72px}
+.s-rocket{width:72px;height:80px}.s-rocket i{box-shadow:32px 0px,24px 8px,32px 8px,40px 8px,24px 16px,32px 16px,40px 16px,16px 24px,24px 24px,40px 24px,48px 24px,16px 32px,24px 32px,40px 32px,48px 32px,16px 40px,24px 40px,32px 40px,40px 40px,48px 40px,8px 48px,16px 48px,24px 48px,32px 48px,40px 48px,48px 48px,56px 48px,0px 56px,8px 56px,24px 56px,32px 56px,40px 56px,56px 56px,64px 56px,0px 64px,24px 64px,32px 64px,40px 64px,64px 64px,24px 72px,40px 72px}
+.s-gem{width:72px;height:64px}.s-gem i{box-shadow:16px 0px,24px 0px,32px 0px,40px 0px,48px 0px,8px 8px,16px 8px,32px 8px,48px 8px,56px 8px,0px 16px,8px 16px,16px 16px,24px 16px,32px 16px,40px 16px,48px 16px,56px 16px,64px 16px,8px 24px,24px 24px,32px 24px,40px 24px,56px 24px,8px 32px,16px 32px,32px 32px,48px 32px,56px 32px,16px 40px,24px 40px,40px 40px,48px 40px,24px 48px,32px 48px,40px 48px,32px 56px}
+
+/* Footer */
+.foot{padding-block:0 var(--s6)}
+.foot-grid{display:grid;gap:var(--s6);padding-top:var(--s7)}
+@media (min-width:860px){.foot-grid{grid-template-columns:repeat(2,minmax(0,1fr)) ;column-gap:var(--s7)}}
+.foot-name{font:900 var(--t-xl)/1 var(--display);text-transform:uppercase}
+.foot-grid p{color:var(--dim);font-size:var(--t-sm);margin-top:var(--s2)}
+.foot-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s5)}
+.foot-links h2{font:700 var(--t-sm)/1.2 var(--body);color:var(--dim);margin-bottom:var(--s2)}
+.foot-links a{display:inline-block;padding-block:var(--s1);font-size:var(--t-sm)}
+.foot-grid a{color:var(--paper)}
+.colophon{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:var(--s2) var(--s5);margin-top:var(--s7);padding-top:var(--s4);border-top:1px solid var(--line);color:var(--dim);font-size:var(--t-xs)}
+.colophon a{color:var(--paper);display:inline-block;padding-block:var(--s1)}
+
+/* Motion */
+@media (prefers-reduced-motion:no-preference){
+  .tags .hang{animation:sway .9s var(--ease) both;transform-origin:50% 0}
+  @keyframes sway{0%{transform:rotate(3deg)}45%{transform:rotate(-1.5deg)}100%{transform:none}}
+  .tile:hover .sprite,.tile:focus-visible .sprite{animation:hop .5s steps(1) infinite}
+  @keyframes hop{0%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .item:hover,.item:focus-visible{transform:none}
+}
+</style>
+</head>
+<body>
+<!--
+  CONTENT GUIDE
+  All content lives in this HTML, between CONTENT: and /CONTENT comments. Search for "CONTENT:" to find each block.
+  Each shelf is a list where one <li> is one item. Replace the [bracketed] text and the href="#", and copy or remove <li>s as needed.
+  The classes on .item pick the artwork: f1-f8 for films, a1-a8 for anime, b1-b8 for books.
+  The Open Graph tags in the head also hold placeholders.
+  Controls and scrolling are added by the small script at the end. Without it, every section still shows in full.
+-->
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- CONTENT: Masthead and section links -->
+<header class="masthead" id="top">
+  <div class="wrap"><h1>Sean Wang</h1></div>
+  <div class="plank"></div>
+  <div class="wrap">
+    <nav aria-label="Sections">
+      <ul class="tags">
+        <li class="c-films"><a class="hang" href="#films">Films</a></li>
+        <li class="c-anime"><a class="hang" href="#anime">Anime</a></li>
+        <li class="c-books"><a class="hang" href="#books">Books</a></li>
+        <li class="c-food"><a class="hang" href="#restaurants">Restaurants</a></li>
+        <li class="c-lift"><a class="hang" href="#workouts">Workouts</a></li>
+        <li class="c-write"><a class="hang" href="#writing">Writing</a></li>
+        <li class="c-notes"><a class="hang" href="#notes">Notes</a></li>
+        <li class="c-arcade"><a class="hang" href="#games">Flash games</a></li>
+      </ul>
+    </nav>
+    <div class="lede">
+      <strong>[One line about you]</strong>
+      <p>I live in New York. This is what I've been watching, reading, eating, lifting, writing and playing, gathered from the apps where it already lives.</p>
+    </div>
+  </div>
+</header>
+<!-- /CONTENT -->
+
+<main id="main">
+
+<!-- CONTENT: Latest activity -->
+<section class="section wrap" aria-labelledby="latest-h">
+  <div class="head"><h2 id="latest-h">Latest</h2></div>
+  <div class="spots">
+    <article class="spot c-films f6"><span class="thumbart" aria-hidden="true"></span><div><p class="label">Last watched</p><h3><a href="#">[Film title]</a></h3><p>Rated [Rating] on [Date]</p></div></article>
+    <article class="spot c-books b0"><span class="thumbart book-cover" aria-hidden="true"></span><div><p class="label">Reading now</p><h3><a href="#">[Book title]</a></h3><p>[Author], started [Date]</p></div></article>
+  </div>
+  <ul class="feed">
+    <li class="c-lift"><span class="thumb th-lift" aria-hidden="true"></span><div><p>New personal record: <a href="#">[Lift] at [Weight]</a></p><p class="when"><span class="who">Hevy</span>, [Date]</p></div></li>
+    <li class="c-notes"><span class="thumb th-note" aria-hidden="true"></span><div><p>Published a note: <a href="#">[Note title]</a></p><p class="when"><span class="who">Notion</span>, [Date]</p></div></li>
+    <li class="c-anime a1"><span class="thumb" aria-hidden="true"></span><div><p>Scored <a href="#">[Anime title]</a> [Score]</p><p class="when"><span class="who">MyAnimeList</span>, [Date]</p></div></li>
+    <li class="c-food"><span class="thumb plate p1" aria-hidden="true"></span><div><p>Ranked <a href="#">[Restaurant]</a> at [Position]</p><p class="when"><span class="who">Beli</span>, [Date]</p></div></li>
+    <li class="c-write"><span class="thumb th-post" aria-hidden="true"></span><div><p>New post: <a href="#">[Post title]</a></p><p class="when"><span class="who">Substack</span>, [Date]</p></div></li>
+    <li class="c-films f2"><span class="thumb" aria-hidden="true"></span><div><p>Rated <a href="#">[Film title]</a> [Rating]</p><p class="when"><span class="who">Letterboxd</span>, [Date]</p></div></li>
+  </ul>
+</section>
+<!-- /CONTENT -->
+
+<section class="section media" id="media" aria-labelledby="media-h" data-view="grid">
+  <div class="wrap">
+    <div class="head"><h2 id="media-h">On the shelf</h2></div>
+    <div class="controls" hidden>
+      <div class="seg" role="group" aria-label="Filter shelves">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="films" aria-pressed="false">Films</button>
+        <button type="button" data-filter="anime" aria-pressed="false">Anime</button>
+        <button type="button" data-filter="books" aria-pressed="false">Books</button>
+      </div>
+      <div class="seg" role="group" aria-label="View">
+        <button type="button" data-view="grid" aria-pressed="true"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M1 1h6v6H1zM9 1h6v6H9zM1 9h6v6H1zM9 9h6v6H9z"/></svg>Grid</button>
+        <button type="button" data-view="list" aria-pressed="false"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M1 2h14v3H1zM1 7h14v3H1zM1 12h14v3H1z"/></svg>List</button>
+      </div>
+    </div>
+    <p class="vh" role="status" id="media-status"></p>
+  </div>
+
+  <!-- CONTENT: Films (Letterboxd) -->
+  <section class="aisle c-films" id="films" data-shelf="films" aria-labelledby="films-h">
+    <div class="wrap"><div class="head"><h3 class="shelf-name" id="films-h">Films</h3><a class="src" href="#">from Letterboxd</a><div class="arrows" hidden><button type="button" data-dir="-1" aria-label="Scroll films back"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button><button type="button" data-dir="1" aria-label="Scroll films forward"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button></div></div></div>
+    <div class="scroller" tabindex="0" role="region" aria-label="Films, scrollable">
+      <ul class="items">
+        <li><a class="item f1 bot" href="#"><span class="art" aria-hidden="true"></span><span class="item-text"><span class="title">[Film title]</span><span class="meta">[Year]</span></span><span class="sticker"><span class="vh">Rated </span>[Rating]</span></a></li>
+        <li><a class="item f2 bot" href="#"><span class="art" aria-hidden="true"></span><span class="item-text"><span class="title">[Film title]</span><span class="meta">[Year]</span></span><span class="sticker"><span class="vh">Rated </span>[Rating]</span></a></li>
+        <li><a class="item f3 bot" href="#"><span class="art" aria-hidden="true"></span><span class="item-text"><span class="title">[Film title]</span><span class="meta">[Year]</span></span><span class="sticker"><span class="vh">Rated </span>[Rating]</span></a></li>
+        <li><a class="item f4 bot" href="#"><span class="art" aria-hidden="true"></span><span class="item-text"><span class="title">[Film title]</span><span class="meta">[Year]</span></span><span class="sticker"><span class="vh">Rated </span>[Rating]</span></a></li>
+        <li><a class="item f5 bot" href="#"><span class="art" aria-hidden="true"></span><span class="item-text"><span class="title">[Film title]</span><span class="meta">[Year]</span></span><span class="sticker"><span class="vh">Rated </span>[Rating]</span></a></li>
+        <li><a class="item f6 bot" href="#"><span class="art" aria-hidden="true"></span><span class="item-text"><span class="title">[Film title]</span><span class="meta">[Year]</span></span><span class="sticker"><span class="vh">Rated </span>[Rating]</span></a></li>
+        <li><a class="item f7 bot" href="#"><span class="art" aria-hidden="true"></span><span class="item-text"><span class="title">[Film title]</span><span class="meta">[Year]</span></span><span class="sticker"><span class="vh">Rated </span>[Rating]</span></a></li>
+        <li><a class="item f8 bot" href="#"><span class="art" aria-hidden="true"></span><span class="item-text"><span class="title">[Film title]</span><span class="meta">[Year]</span></span><span class="sticker"><span class="vh">Rated </span>[Rating]</span></a></li>
+      </ul>
+    </div>
+    <div class="plank"></div>
+    <div class="wrap tagrow"><a class="hang" href="#">All films</a></div>
+  </section>
+  <!-- /CONTENT -->
+
+  <!-- CONTENT: Anime (MyAnimeList) -->
+  <section class="aisle c-anime" id="anime" data-shelf="anime" aria-labelledby="anime-h">
+    <div class="wrap"><div class="head"><h3 class="shelf-name" id="anime-h">Anime</h3><a class="src" href="#">from MyAnimeList</a><div class="arrows" hidden><button type="button" data-dir="-1" aria-label="Scroll anime back"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button><button type="button" data-dir="1" aria-label="Scroll anime forward"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button></div></div></div>
+    <div class="scroller" tabindex="0" role="region" aria-label="Anime, scrollable">
+      <ul class="items">
+        <li><a class="item a1 spine" href="#"><span class="art" aria-hidden="true"></span><span class="item-text"><span class="title">[Anime title]</span><span class="meta">[Episodes]</span></span><span class="sticker"><span class="vh">Scored </span>[Score]</span></a></li>
+        <li><a class="item a2 spine" href="#"><span class="art" aria-hidden="true"></span><span class="item-text"><span class="title">[Anime title]</span><span class="meta">[Episodes]</span></span><span class="sticker"><span class="vh">Scored </span>[Score]</span></a></li>
+        <li><a class="item a3 spine" href="#"><span class="art" aria-hidden="true"></span><span class="item-text"><span class="title">[Anime title]</span><span class="meta">[Episodes]</span></span><span class="sticker"><span class="vh">Scored </span>[Score]</span></a></li>
+        <li><a class="item a4 spine" href="#"><span class="art" aria-hidden="true"></span><span class="item-text"><span class="title">[Anime title]</span><span class="meta">[Episodes]</span></span><span class="sticker"><span class="vh">Scored </span>[Score]</span></a></li>
+        <li><a class="item a5 spine" href="#"><span class="art" aria-hidden="true"></span><span class="item-text"><span class="title">[Anime title]</span><span class="meta">[Episodes]</span></span><span class="sticker"><span class="vh">Scored </span>[Score]</span></a></li>
+        <li><a class="item a6 spine" href="#"><span class="art" aria-hidden="true"></span><span class="item-text"><span class="title">[Anime title]</span><span class="meta">[Episodes]</span></span><span class="sticker"><span class="vh">Scored </span>[Score]</span></a></li>
+        <li><a class="item a7 spine" href="#"><span class="art" aria-hidden="true"></span><span class="item-text"><span class="title">[Anime title]</span><span class="meta">[Episodes]</span></span><span class="sticker"><span class="vh">Scored </span>[Score]</span></a></li>
+        <li><a class="item a8 spine" href="#"><span class="art" aria-hidden="true"></span><span class="item-text"><span class="title">[Anime title]</span><span class="meta">[Episodes]</span></span><span class="sticker"><span class="vh">Scored </span>[Score]</span></a></li>
+      </ul>
+    </div>
+    <div class="plank"></div>
+    <div class="wrap tagrow"><a class="hang" href="#">All anime</a></div>
+  </section>
+  <!-- /CONTENT -->
+
+  <!-- CONTENT: Books (Goodreads) -->
+  <section class="aisle c-books" id="books" data-shelf="books" aria-labelledby="books-h">
+    <div class="wrap">
+      <div class="head"><h3 class="shelf-name" id="books-h">Books</h3><a class="src" href="#">from Goodreads</a><div class="arrows" hidden><button type="button" data-dir="-1" aria-label="Scroll books back"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button><button type="button" data-dir="1" aria-label="Scroll books forward"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button></div></div>
+      <article class="spot reading b0"><span class="thumbart book-cover" aria-hidden="true"></span><div><p class="label">Currently reading</p><h4 class="reading-title"><a href="#">[Book title]</a></h4><p>[Author]. On page [Page] of [Total pages].</p><a class="more" href="#">View on Goodreads<span class="vh">: [Book title]</span></a></div></article>
+    </div>
+    <div class="scroller" tabindex="0" role="region" aria-label="Books, scrollable">
+      <ul class="items">
+        <li><a class="item b1 top" href="#"><span class="art" aria-hidden="true"></span><span class="item-text"><span class="title">[Book title]</span><span class="meta">[Author]</span></span><span class="sticker"><span class="vh">Rated </span>[Rating]</span></a></li>
+        <li><a class="item b2 top" href="#"><span class="art" aria-hidden="true"></span><span class="item-text"><span class="title">[Book title]</span><span class="meta">[Author]</span></span><span class="sticker"><span class="vh">Rated </span>[Rating]</span></a></li>
+        <li><a class="item b3 top" href="#"><span class="art" aria-hidden="true"></span><span class="item-text"><span class="title">[Book title]</span><span class="meta">[Author]</span></span><span class="sticker"><span class="vh">Rated </span>[Rating]</span></a></li>
+        <li><a class="item b4 top" href="#"><span class="art" aria-hidden="true"></span><span class="item-text"><span class="title">[Book title]</span><span class="meta">[Author]</span></span><span class="sticker"><span class="vh">Rated </span>[Rating]</span></a></li>
+        <li><a class="item b5 top" href="#"><span class="art" aria-hidden="true"></span><span class="item-text"><span class="title">[Book title]</span><span class="meta">[Author]</span></span><span class="sticker"><span class="vh">Rated </span>[Rating]</span></a></li>
+        <li><a class="item b6 top" href="#"><span class="art" aria-hidden="true"></span><span class="item-text"><span class="title">[Book title]</span><span class="meta">[Author]</span></span><span class="sticker"><span class="vh">Rated </span>[Rating]</span></a></li>
+        <li><a class="item b7 top" href="#"><span class="art" aria-hidden="true"></span><span class="item-text"><span class="title">[Book title]</span><span class="meta">[Author]</span></span><span class="sticker"><span class="vh">Rated </span>[Rating]</span></a></li>
+        <li><a class="item b8 top" href="#"><span class="art" aria-hidden="true"></span><span class="item-text"><span class="title">[Book title]</span><span class="meta">[Author]</span></span><span class="sticker"><span class="vh">Rated </span>[Rating]</span></a></li>
+      </ul>
+    </div>
+    <div class="plank"></div>
+    <div class="wrap tagrow"><a class="hang" href="#">All books</a></div>
+  </section>
+  <!-- /CONTENT -->
+</section>
+
+<div class="wrap cols stack">
+  <!-- CONTENT: Restaurants (Beli) -->
+  <section id="restaurants" class="section c-food" aria-labelledby="food-h">
+    <div class="head"><h2 id="food-h">Restaurants</h2><a class="src" href="#">from Beli</a></div>
+    <ol class="ranks board" aria-label="Restaurants, best first">
+        <li><span class="rank">1</span><span class="plate p1" aria-hidden="true"></span><span class="rname"><a href="#">[Restaurant]</a><small>[Neighborhood], [Cuisine]</small></span><span class="score"><span class="vh">Score </span>[Score]</span></li>
+        <li><span class="rank">2</span><span class="plate p2" aria-hidden="true"></span><span class="rname"><a href="#">[Restaurant]</a><small>[Neighborhood], [Cuisine]</small></span><span class="score"><span class="vh">Score </span>[Score]</span></li>
+        <li><span class="rank">3</span><span class="plate p3" aria-hidden="true"></span><span class="rname"><a href="#">[Restaurant]</a><small>[Neighborhood], [Cuisine]</small></span><span class="score"><span class="vh">Score </span>[Score]</span></li>
+        <li><span class="rank">4</span><span class="plate p4" aria-hidden="true"></span><span class="rname"><a href="#">[Restaurant]</a><small>[Neighborhood], [Cuisine]</small></span><span class="score"><span class="vh">Score </span>[Score]</span></li>
+        <li><span class="rank">5</span><span class="plate p5" aria-hidden="true"></span><span class="rname"><a href="#">[Restaurant]</a><small>[Neighborhood], [Cuisine]</small></span><span class="score"><span class="vh">Score </span>[Score]</span></li>
+        <li><span class="rank">6</span><span class="plate p6" aria-hidden="true"></span><span class="rname"><a href="#">[Restaurant]</a><small>[Neighborhood], [Cuisine]</small></span><span class="score"><span class="vh">Score </span>[Score]</span></li>
+    </ol>
+  </section>
+  <!-- /CONTENT -->
+
+  <!-- CONTENT: Workouts (Hevy), totals and records only -->
+  <section id="workouts" class="section c-lift" aria-labelledby="lift-h">
+    <div class="head"><h2 id="lift-h">Workouts</h2><a class="src" href="#">from Hevy</a></div>
+    <div class="board">
+      <dl class="totals">
+        <div><dt>workouts</dt><dd>[Total]</dd></div>
+        <div><dt>volume lifted</dt><dd>[Total]</dd></div>
+        <div><dt>hours</dt><dd>[Total]</dd></div>
+      </dl>
+      <div class="prs">
+        <h3>Personal records</h3>
+        <ul>
+          <li><span><b>[Squat PR]</b><small>Squat</small></span><small>[Date]</small></li>
+          <li><span><b>[Bench PR]</b><small>Bench press</small></span><small>[Date]</small></li>
+          <li><span><b>[Deadlift PR]</b><small>Deadlift</small></span><small>[Date]</small></li>
+          <li><span><b>[Overhead press PR]</b><small>Overhead press</small></span><small>[Date]</small></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <!-- /CONTENT -->
+</div>
+
+<div class="wrap cols">
+  <!-- CONTENT: Writing (Substack) -->
+  <section id="writing" class="section c-write" aria-labelledby="write-h">
+    <div class="head"><h2 id="write-h">Writing</h2><a class="src" href="#">from Substack</a></div>
+    <ul class="board">
+        <li class="post"><span class="paperback pb1" aria-hidden="true"></span><div><h3>[Post title]</h3><p>[Opening lines of the post, cut off after a sentence or two.]</p><a href="#">Read on Substack<span class="vh">: [Post title]</span></a></div></li>
+        <li class="post"><span class="paperback pb2" aria-hidden="true"></span><div><h3>[Post title]</h3><p>[Opening lines of the post, cut off after a sentence or two.]</p><a href="#">Read on Substack<span class="vh">: [Post title]</span></a></div></li>
+        <li class="post"><span class="paperback pb3" aria-hidden="true"></span><div><h3>[Post title]</h3><p>[Opening lines of the post, cut off after a sentence or two.]</p><a href="#">Read on Substack<span class="vh">: [Post title]</span></a></div></li>
+    </ul>
+  </section>
+  <!-- /CONTENT -->
+
+  <!-- CONTENT: Notes (Notion) -->
+  <section id="notes" class="section c-notes" aria-labelledby="notes-h">
+    <div class="head"><h2 id="notes-h">Notes</h2><a class="src" href="#">from Notion</a></div>
+    <ul class="notes board">
+        <li><a href="#">[Note title]</a><span>[Date]</span></li>
+        <li><a href="#">[Note title]</a><span>[Date]</span></li>
+        <li><a href="#">[Note title]</a><span>[Date]</span></li>
+        <li><a href="#">[Note title]</a><span>[Date]</span></li>
+        <li><a href="#">[Note title]</a><span>[Date]</span></li>
+        <li><a href="#">[Note title]</a><span>[Date]</span></li>
+    </ul>
+  </section>
+  <!-- /CONTENT -->
+</div>
+
+<!-- CONTENT: Flash games -->
+<section id="games" class="cabinet c-arcade" aria-labelledby="games-h">
+  <div class="wrap"><div class="head"><h2 id="games-h">Flash games I love</h2><span class="src">my own list</span><div class="arrows" hidden><button type="button" data-dir="-1" aria-label="Scroll games back"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button><button type="button" data-dir="1" aria-label="Scroll games forward"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button></div></div></div>
+  <div class="scroller" tabindex="0" role="region" aria-label="Flash games, scrollable">
+    <ul class="items gameshelf">
+        <li class="game"><a class="tile g1" href="#"><span class="sprite s-stick" aria-hidden="true"><i></i></span><span class="bevel"><span class="vh">[Game title]: </span>Play</span></a><h3>[Game title]</h3><p class="by">[Creator], [Year]</p><p class="why">[One line on why you love it]</p></li>
+        <li class="game"><a class="tile g2" href="#"><span class="sprite s-tower" aria-hidden="true"><i></i></span><span class="bevel"><span class="vh">[Game title]: </span>Play</span></a><h3>[Game title]</h3><p class="by">[Creator], [Year]</p><p class="why">[One line on why you love it]</p></li>
+        <li class="game"><a class="tile g3" href="#"><span class="sprite s-ufo" aria-hidden="true"><i></i></span><span class="bevel"><span class="vh">[Game title]: </span>Play</span></a><h3>[Game title]</h3><p class="by">[Creator], [Year]</p><p class="why">[One line on why you love it]</p></li>
+        <li class="game"><a class="tile g4" href="#"><span class="sprite s-sword" aria-hidden="true"><i></i></span><span class="bevel"><span class="vh">[Game title]: </span>Play</span></a><h3>[Game title]</h3><p class="by">[Creator], [Year]</p><p class="why">[One line on why you love it]</p></li>
+        <li class="game"><a class="tile g5" href="#"><span class="sprite s-rocket" aria-hidden="true"><i></i></span><span class="bevel"><span class="vh">[Game title]: </span>Play</span></a><h3>[Game title]</h3><p class="by">[Creator], [Year]</p><p class="why">[One line on why you love it]</p></li>
+        <li class="game"><a class="tile g6" href="#"><span class="sprite s-gem" aria-hidden="true"><i></i></span><span class="bevel"><span class="vh">[Game title]: </span>Play</span></a><h3>[Game title]</h3><p class="by">[Creator], [Year]</p><p class="why">[One line on why you love it]</p></li>
+    </ul>
+  </div>
+</section>
+<!-- /CONTENT -->
+</main>
+
+<!-- CONTENT: Footer -->
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div>
+      <p class="foot-name">Sean Wang</p>
+      <p>New York. [One line about you]</p>
+      <p><a href="#">[Email address]</a></p>
+    </div>
+    <div class="foot-links">
+      <nav aria-labelledby="foot-sections"><h2 id="foot-sections">On this page</h2><ul>
+        <li><a href="#media">On the shelf</a></li><li><a href="#restaurants">Restaurants</a></li><li><a href="#workouts">Workouts</a></li><li><a href="#writing">Writing</a></li><li><a href="#notes">Notes</a></li><li><a href="#games">Flash games</a></li>
+      </ul></nav>
+      <nav aria-labelledby="foot-else"><h2 id="foot-else">Elsewhere</h2><ul>
+        <li><a href="#">Letterboxd</a></li><li><a href="#">MyAnimeList</a></li><li><a href="#">Goodreads</a></li><li><a href="#">Beli</a></li><li><a href="#">Hevy</a></li><li><a href="#">Substack</a></li>
+      </ul></nav>
+    </div>
+  </div>
+  <div class="wrap"><div class="colophon"><span>[Year] Sean Wang. Last updated [Date].</span><a href="#top">Back to top</a></div></div>
+</footer>
+<!-- /CONTENT -->
+
+<script>
+(function(){
+  var calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var media = document.getElementById('media');
+  var shelves = media.querySelectorAll('[data-shelf]');
+  var filterBtns = media.querySelectorAll('[data-filter]');
+  var viewBtns = media.querySelectorAll('button[data-view]');
+  var status = document.getElementById('media-status');
+  var NAMES = {all:'all shelves', films:'films', anime:'anime', books:'books'};
+
+  function store(k, v){ try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+  function press(btns, attr, val){ btns.forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset[attr] === val)); }); }
+  function animate(fn){ if (!calm && document.startViewTransition) document.startViewTransition(fn); else fn(); }
+
+  function setFilter(val, quiet){
+    var run = function(){
+      shelves.forEach(function(s){ s.hidden = val !== 'all' && s.dataset.shelf !== val; });
+      press(filterBtns, 'filter', val);
+      syncArrows();
+    };
+    quiet ? run() : animate(run);
+    if (!quiet) status.textContent = 'Showing ' + NAMES[val];
+  }
+  function setView(val, quiet){
+    var run = function(){
+      media.classList.toggle('list', val === 'list');
+      media.dataset.view = val;
+      press(viewBtns, 'view', val);
+      media.querySelectorAll('.scroller').forEach(function(s){
+        if (val === 'list') { s.removeAttribute('tabindex'); s.removeAttribute('role'); s.removeAttribute('aria-label'); }
+        else { s.setAttribute('tabindex', '0'); s.setAttribute('role', 'region'); s.setAttribute('aria-label', s.dataset.label); }
+      });
+      media.querySelectorAll('.arrows').forEach(function(a){ a.hidden = val === 'list'; });
+      syncArrows();
+    };
+    quiet ? run() : animate(run);
+    if (!quiet) { status.textContent = val === 'list' ? 'Showing a list' : 'Showing a grid'; store('shelf-view', val); }
+  }
+
+  // Arrow buttons
+  function syncArrows(){
+    document.querySelectorAll('.arrows').forEach(function(a){
+      var s = a.closest('[data-shelf], .cabinet').querySelector('.scroller');
+      var b = a.querySelectorAll('button');
+      b[0].disabled = s.scrollLeft <= 1;
+      b[1].disabled = s.scrollLeft + s.clientWidth >= s.scrollWidth - 1;
+    });
+  }
+  document.querySelectorAll('.scroller').forEach(function(s){
+    s.dataset.label = s.getAttribute('aria-label');
+    s.addEventListener('scroll', syncArrows, {passive:true});
+  });
+  document.querySelectorAll('.arrows').forEach(function(a){
+    a.hidden = false;
+    a.addEventListener('click', function(e){
+      var b = e.target.closest('button'); if (!b) return;
+      var s = a.closest('[data-shelf], .cabinet').querySelector('.scroller');
+      s.scrollBy({left: +b.dataset.dir * s.clientWidth * .8, behavior: calm ? 'auto' : 'smooth'});
+    });
+  });
+  addEventListener('resize', syncArrows);
+
+  filterBtns.forEach(function(b){ b.addEventListener('click', function(){ setFilter(b.dataset.filter); }); });
+  viewBtns.forEach(function(b){ b.addEventListener('click', function(){ setView(b.dataset.view); }); });
+  media.querySelector('.controls').hidden = false;
+
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a[href^="#"]'); if (!a) return;
+    var href = a.getAttribute('href');
+    // Placeholder links stay put until real URLs are added
+    if (href === '#') { e.preventDefault(); return; }
+    // A link to a shelf that is filtered out shows all shelves first
+    var t = document.querySelector(href);
+    if (t && t.hidden) setFilter('all', true);
+  });
+
+  setFilter('all', true);
+  setView(store('shelf-view') === 'list' ? 'list' : 'grid', true);
+})();
+</script>
+</body>
+</html>

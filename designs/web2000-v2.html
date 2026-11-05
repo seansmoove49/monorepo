@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sean Wang's homepage</title>
+<meta name="description" content="Sean Wang's homepage: the films, anime, books, restaurants, workouts, notes and writing of one person in New York, plus a wall of favorite Flash games.">
+<meta name="theme-color" content="#1f1cae">
+<!-- BEFORE LAUNCH: replace [your-domain] and add a real share image. -->
+<link rel="canonical" href="https://[your-domain]/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sean Wang">
+<meta property="og:title" content="Sean Wang's homepage">
+<meta property="og:description" content="Films, anime, books, restaurants, workouts, notes, writing and a wall of favorite Flash games.">
+<meta property="og:url" content="https://[your-domain]/">
+<meta property="og:image" content="https://[your-domain]/[share-image].png">
+<meta property="og:image:alt" content="[Describe the share image]">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Cpath fill='%231f1cae' d='M0 0h16v16H0z'/%3E%3Cpath fill='%23ffe600' d='M4 3h8v2H6v2h6v6H4v-2h6V9H4z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=VT323&display=swap" rel="stylesheet">
+<script>document.documentElement.className='js'</script>
+<style>
+/* ==========================================================================
+   Tokens. Spacing is an 8px rhythm. Every raised or sunken edge uses --edge.
+   ========================================================================== */
+:root{
+  --ink:#15103f; --paper:#fffef2; --wash:#f2f4ff; --muted:#3e3880;
+  --royal:#1f1cae; --royal-2:#2522bb;
+  --yellow:#ffe600; --lime:#9dff3a; --cyan:#7fe9ff; --pink:#ff5fb3;
+  --grape:#1d0b4d; --grape-2:#2c1569; --grape-3:#3a1c86;
+  --silver:#d4d3e6; --steel:#55558a; --wood:#8a4b16; --wood-dark:#5a2f0b; --backing:#f6e7c6;
+  --link:#0000cc; --visited:#551a8b;
+  --pixel:"Jersey 15","Courier New",monospace;
+  --led:"VT323","Courier New",monospace;
+  --body:Verdana,Tahoma,Geneva,"DejaVu Sans",sans-serif;
+  /* type scale */
+  --t-meta:18px;   /* VT323 runs small, so 18px reads like 13px */
+  --t-small:14px; --t-base:15px; --t-lead:16px;
+  --t-h4:21px; --t-h3:27px; --t-h2:32px;
+  --s1:8px; --s2:16px; --s3:24px;
+  --edge:3px;
+  --hi:#fff; --lo:var(--steel);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;color-scheme:light}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{
+  margin:0;color:var(--ink);font:var(--t-base)/1.6 var(--body);
+  background:var(--royal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' shape-rendering='crispEdges'%3E%3Cpath fill='%232522bb' d='M24 4h4v4h4v4h4v4h4v4h4v8h-4v4h-4v4h-4v4h-4v4h-8v-4h-4v-4h-4v-4H8v-4H4v-8h4v-4h4v-4h4V8h4V4z'/%3E%3C/svg%3E");
+}
+h1,h2,h3,h4,p,ul,ol,dl,dd{margin:0;padding:0}
+ul,ol{list-style:none}
+svg{display:block}
+[hidden]{display:none!important}
+a{color:var(--link);text-underline-offset:2px}
+a:visited{color:var(--visited)}
+a:hover{background:var(--yellow);color:var(--ink)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 2px var(--yellow),0 0 0 6px var(--yellow)}
+main:focus{outline:none;box-shadow:none}
+.skip{position:absolute;left:16px;top:-80px;z-index:10;background:var(--yellow);color:var(--ink);padding:8px 16px;font-weight:700}
+.skip:visited{color:var(--ink)}
+.skip:focus{top:8px}
+.wrap{max-width:1216px;margin:0 auto;padding:var(--s2)}
+.icon{width:16px;height:16px;flex:none;shape-rendering:crispEdges;fill:currentColor}
+
+/* One bevel. Raised for things that sit on the page, sunken for displays. */
+.raised{border:var(--edge) solid;border-color:var(--hi) var(--lo) var(--lo) var(--hi)}
+.sunken{border:var(--edge) solid;border-color:var(--lo) var(--hi) var(--hi) var(--lo)}
+
+/* --------------------------------------------------------------- panels */
+.panel{--bar:#ff9a1f;--hi:#ffd08a;--lo:#b85a00;background:var(--paper);box-shadow:4px 4px 0 var(--ink);min-width:0;display:flex;flex-direction:column}
+.fam-orange{--bar:#ff9a1f;--hi:#ffd08a;--lo:#b85a00}
+.fam-cyan{--bar:#27d8f5;--hi:#c0f6ff;--lo:#0a7d99}
+.fam-pink{--bar:#ff5fb3;--hi:#ffc2e1;--lo:#b0166e}
+.fam-green{--bar:#9be83a;--hi:#dcffa8;--lo:#4c9a00}
+.fam-gold{--bar:#ffe13a;--hi:#fff8ad;--lo:#a68f00}
+.bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px var(--s2);min-height:44px;padding:4px 12px;background:var(--bar);border-bottom:var(--edge) solid var(--lo)}
+.bar h2{font:400 var(--t-h2)/1.1 var(--pixel)}
+.src{display:inline-block;font:var(--t-meta)/1.1 var(--led);color:var(--ink);background:var(--paper);border:2px solid;border-color:var(--lo) var(--hi) var(--hi) var(--lo);padding:2px 8px;white-space:nowrap}
+a.src,a.src:visited{color:var(--ink)}
+a.src:hover{background:var(--yellow)}
+.meta{font:var(--t-meta)/1.2 var(--led);color:var(--muted)}
+
+/* --------------------------------------------------------------- banner */
+.masthead{box-shadow:4px 4px 0 var(--ink)}
+.banner{
+  --hi:#ffc2e1;--lo:#b0166e;
+  position:relative;overflow:hidden;color:#fff;
+  display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:var(--s2) var(--s3);
+  padding:var(--s3) var(--s3) 124px;
+  border-bottom:0;
+  background:
+    linear-gradient(#1a1270 0 56%,#3a1a99 56% 68%,#8a22a8 68% 78%,#e5388f 78% 88%,#ff9a1f 88%);
+}
+.banner::before{content:"";position:absolute;top:0;right:0;width:50%;height:56%;background:radial-gradient(circle,#fff 0 1px,transparent 1.5px) 0 0/53px 41px}
+.banner>*{position:relative}
+.banner>.skyline{position:absolute}
+.banner h1{font:400 clamp(72px,10vw,128px)/.85 var(--pixel);color:var(--yellow);text-shadow:3px 3px 0 #ff3fa4,6px 6px 0 var(--ink)}
+.intro{margin-top:var(--s2);max-width:46ch;font-size:var(--t-lead);line-height:1.55}
+.intro strong{font:400 var(--t-h3)/1.2 var(--pixel);display:block;margin-bottom:2px}
+.skyline{position:absolute;left:0;right:0;bottom:0;width:100%;height:100px;pointer-events:none}
+.counter{--hi:#fff;--lo:var(--steel);position:relative;z-index:1;background:var(--ink);color:#fff;padding:var(--s1) 12px;font:var(--t-meta)/1.2 var(--led);text-align:center}
+.counter b{display:block;margin-top:4px;padding:3px 8px 1px 12px;font:400 36px/1 var(--led);letter-spacing:.14em;color:var(--lime);background:#000}
+
+/* --------------------------------------------------------------- ticker */
+.ticker{--hi:#55558a;--lo:#0a0726;display:flex;align-items:stretch;background:var(--ink);color:var(--yellow);font:20px/1.3 var(--led)}
+.ticker-view{flex:1;min-width:0;overflow:hidden;padding:4px 0}
+.ticker-track{display:block}
+.ticker-track ul{display:flex;flex-wrap:wrap;gap:0 var(--s2);padding:0 12px}
+.ticker-track li{white-space:nowrap}
+.ticker-pause{--hi:#fff;--lo:var(--steel);flex:none;font:20px/1 var(--led);color:var(--ink);background:var(--silver);padding:2px 12px;cursor:pointer}
+.ticker-pause:hover{background:var(--yellow)}
+.ticker-pause:active{border-color:var(--lo) var(--hi) var(--hi) var(--lo)}
+@media (prefers-reduced-motion:no-preference){
+  .js .ticker-track{display:flex;width:max-content;animation:tick 60s linear infinite}
+  .js .ticker-track ul{flex-wrap:nowrap;gap:0;padding:0}
+  .js .ticker-track li{display:flex;align-items:center;padding-left:var(--s3)}
+  .js .ticker-track li::after{content:"";width:8px;height:8px;margin-left:var(--s3);background:var(--pink);transform:rotate(45deg)}
+  .ticker:hover .ticker-track,.ticker:focus-within .ticker-track,.ticker.paused .ticker-track{animation-play-state:paused}
+}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* --------------------------------------------------------------- frame */
+.frame{display:grid;gap:var(--s3) var(--s2);grid-template-columns:minmax(0,1fr);margin-top:var(--s3)}
+.main{display:grid;gap:var(--s3);min-width:0;grid-template-columns:minmax(0,1fr)}
+.two{display:grid;gap:var(--s3) var(--s2);grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr))}
+[id]{scroll-margin-top:16px}
+
+/* sidebar buttons */
+.side-nav{--hi:#fff;--lo:var(--steel);background:var(--silver);box-shadow:4px 4px 0 var(--ink);padding:var(--s1)}
+.nav-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s1)}
+.nav-list a{--hi:#fff;--lo:var(--steel);display:flex;align-items:center;gap:var(--s1);min-height:44px;padding:4px var(--s1);font:400 var(--t-h4)/1.05 var(--pixel);color:var(--ink);text-decoration:none;background:#f0effa}
+.nav-list a:hover{background:var(--cyan)}
+.nav-list a:active{border-color:var(--lo) var(--hi) var(--hi) var(--lo)}
+.nav-list a.star{background:var(--yellow)}
+.nav-list a.star:hover{background:var(--lime)}
+
+/* --------------------------------------------------------------- now + feed */
+.now{display:grid;grid-template-columns:auto minmax(0,1fr);margin:0 var(--s2) var(--s2)}
+.now-month{margin:0 var(--s2);font:400 var(--t-h3)/1.2 var(--pixel);padding:var(--s1) 0}
+.now dt,.now dd{padding:8px 0;border-top:2px dotted #a68f00}
+.now dt{padding-right:var(--s2)}
+.now dt{font:var(--t-meta)/1.45 var(--led);color:var(--muted)}
+.feed{flex:1}
+.feed li{display:grid;grid-template-columns:16px minmax(0,1fr);gap:0 12px;padding:9px var(--s2);border-bottom:2px dotted #e8b878}
+.feed li:last-child{border-bottom:0}
+.feed .icon{margin-top:4px;color:#b85a00}
+.feed .meta{grid-column:2}
+
+/* --------------------------------------------------------------- THE ARCADE */
+.arcade{--hi:#c9a8ff;--lo:#0e0733;background:var(--grape);color:#f4f1ff;box-shadow:6px 6px 0 var(--pink)}
+.arcade a{color:var(--cyan)}
+.arcade a:visited{color:var(--cyan)}
+.arcade a:hover{background:var(--yellow);color:var(--ink)}
+.bulbs{position:relative;height:16px;background:#6a1ab0}
+.bulbs::before,.bulbs::after{content:"";position:absolute;inset:0;background-size:24px 16px;background-repeat:repeat-x}
+.bulbs::before{background-image:radial-gradient(circle at 6px 8px,var(--yellow) 0 4px,transparent 4.5px)}
+.bulbs::after{background-image:radial-gradient(circle at 18px 8px,#ff9fd3 0 4px,transparent 4.5px)}
+.arcade.is-picking .bulbs::before{animation:bulb .34s steps(1) infinite}
+.arcade.is-picking .bulbs::after{animation:bulb .34s steps(1) infinite .17s}
+@keyframes bulb{50%{opacity:.2}}
+.marquee{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:var(--s1) var(--s2);padding:var(--s2) var(--s3);background:var(--grape-2);border-bottom:4px solid var(--pink)}
+.marquee h2{font:400 clamp(68px,9vw,112px)/.85 var(--pixel);color:var(--lime);text-shadow:4px 4px 0 #b0166e}
+.marquee p{font-size:var(--t-lead);line-height:1.4;margin-top:var(--s1);color:#fff}
+.arcade .src{background:var(--ink);color:var(--yellow);border-color:#55558a #c9a8ff #c9a8ff #55558a}
+
+/* the cabinet */
+.stage{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s3);padding:var(--s3)}
+.bezel{--hi:#8c8cab;--lo:#0a0726;background:#34345a;padding:12px 12px 0;border-radius:8px 8px 0 0}
+.screen{position:relative;aspect-ratio:16/10;overflow:hidden;border-radius:10px;border:2px solid #000;background:#000}
+.scene{position:absolute;inset:0}
+.screen::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:repeating-linear-gradient(transparent 0 2px,rgba(0,0,0,.2) 2px 4px)}
+.scene.crt-on{animation:crt .46s steps(9) both}
+@keyframes crt{0%{transform:scaleY(.015)}45%{transform:scaleY(.015)}70%{transform:scaleY(1.05)}100%{transform:none}}
+.loader{position:absolute;inset:0;z-index:1;display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--ink);color:#fff;font:28px/1 var(--led)}
+.is-picking .loader{display:flex}
+.loader-bar{width:68%;height:22px;border:2px solid #fff;padding:2px}
+.loader-bar i{display:block;height:100%;width:0;background:repeating-linear-gradient(90deg,var(--lime) 0 12px,transparent 12px 15px)}
+.deck{--hi:#ff9fd3;--lo:#7a0f4c;display:flex;align-items:center;justify-content:space-between;gap:var(--s2);margin-top:12px;margin-inline:-12px;padding:12px var(--s2);background:#b0166e;border-radius:0}
+.pick{display:inline-flex;align-items:center;gap:12px;padding:0;background:none;border:0;cursor:pointer;color:#fff;font:400 var(--t-h3)/1.1 var(--pixel);text-align:left}
+.pick .cap{width:52px;height:52px;flex:none;border-radius:50%;background:radial-gradient(circle at 38% 32%,#fff6a0 0 12%,var(--yellow) 13% 58%,#c9a800 59%);border:3px solid var(--ink);box-shadow:0 5px 0 var(--ink)}
+.pick:hover .cap{background:radial-gradient(circle at 38% 32%,#fff 0 12%,var(--lime) 13% 58%,#57a80f 59%)}
+.pick:active .cap,.pick[aria-disabled=true] .cap{transform:translateY(4px);box-shadow:0 1px 0 var(--ink)}
+.pick[aria-disabled=true]{cursor:progress}
+.coin{flex:none;width:18px;height:40px;background:#1a0a30;border:3px solid;border-color:var(--lo) var(--hi) var(--hi) var(--lo);position:relative}
+.coin::after{content:"";position:absolute;left:5px;right:5px;top:5px;bottom:5px;background:var(--yellow)}
+.stage-info{display:flex;flex-direction:column;align-items:flex-start;gap:var(--s1);min-width:0}
+.stage-label{font:var(--t-meta)/1.2 var(--led);color:var(--yellow)}
+.stage-info h3{font:400 clamp(38px,4vw,52px)/1 var(--pixel);color:#fff}
+.by{font:var(--t-meta)/1.2 var(--led);color:var(--cyan)}
+.stage-why{font-size:var(--t-lead);line-height:1.55;max-width:42ch}
+.play{--hi:#dcffa8;--lo:#4c9a00;display:inline-block;margin-top:var(--s1);padding:var(--s1) var(--s2);font:400 var(--t-h4)/1.1 var(--pixel);text-decoration:none;background:var(--lime)}
+.arcade a.play,.arcade a.play:visited{color:var(--ink)}
+.arcade a.play:hover{background:var(--yellow)}
+.pick-status{margin-top:auto;min-height:44px;font:var(--t-meta)/1.2 var(--led);color:var(--yellow)}
+.stamp{display:none;position:absolute;right:12px;top:12px;z-index:3;padding:2px 12px;font:400 var(--t-h3)/1.2 var(--pixel);color:var(--ink);background:var(--lime);border:3px solid var(--ink);transform:rotate(-5deg)}
+.has-pick .stamp{display:block}
+.stamp.pop{animation:pop .3s steps(5) .3s both}
+@keyframes pop{0%{transform:rotate(-5deg) scale(2.2);opacity:0}100%{transform:rotate(-5deg) scale(1);opacity:1}}
+
+/* the collage wall: a six-column grid with mixed tile sizes */
+.wall{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--s2);padding:var(--s3);background:radial-gradient(circle,#3a1c86 0 1px,transparent 1.5px) 0 0/8px 8px,var(--grape);border-top:4px solid var(--grape-3)}
+.tile{--hi:#a98cff;--lo:#0e0733;position:relative;display:flex;flex-direction:column;min-width:0;background:var(--grape-2);grid-column:span 2}
+.t-big{grid-column:span 3}
+.t-wide{grid-column:span 4;flex-direction:row}
+.tile .art{position:relative;aspect-ratio:16/10;border-bottom:var(--edge) solid #0e0733;overflow:hidden}
+.t-big .art{aspect-ratio:16/8}
+.t-wide .art{aspect-ratio:auto;flex:0 0 48%;min-height:168px;border-bottom:0;border-right:var(--edge) solid #0e0733}
+.tile-text{padding:var(--s1) 12px 12px;min-width:0}
+.t-wide .tile-text{align-self:center}
+.tile h3{font:400 var(--t-h3)/1.1 var(--pixel)}
+.t-big h3{font-size:var(--t-h2)}
+.tile h3 a,.tile h3 a:visited{color:var(--yellow);text-underline-offset:3px}
+.tile h3 a::after{content:"";position:absolute;inset:0;z-index:1}
+.tile h3 a:hover{background:none;color:var(--yellow)}
+.tile:hover{--hi:var(--yellow);--lo:var(--yellow)}
+.tile h3 a:focus-visible{outline:none;box-shadow:none}
+.tile h3 a:focus-visible::after{outline:2px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 2px var(--yellow),0 0 0 6px var(--yellow)}
+.tile .by{margin-top:4px}
+.tile-why{margin-top:4px;font-size:var(--t-small);line-height:1.5}
+.tile.is-lit{--hi:var(--lime);--lo:var(--lime);box-shadow:0 0 0 3px var(--lime)}
+.tile.picked{--hi:var(--lime);--lo:var(--lime);box-shadow:0 0 0 3px var(--lime)}
+.chip{position:absolute;left:8px;bottom:8px;padding:0 8px;font:var(--t-meta)/1.3 var(--led);color:var(--ink);background:var(--paper);border:2px solid var(--ink);transform:rotate(-2deg)}
+.scene .chip{display:none}
+.tile:nth-child(3n+2) .chip{transform:rotate(2deg);background:var(--yellow)}
+.sprite{position:absolute;width:32%;max-width:96px;aspect-ratio:1;shape-rendering:crispEdges;left:var(--x,50%);top:var(--y,50%);transform:translate(-50%,-50%)}
+.t-big .sprite{width:22%}
+.scene .sprite{width:18%;max-width:none}
+.flyer{--hi:#fff;--lo:#a68f00;grid-column:span 2;display:flex;flex-direction:column;justify-content:center;gap:var(--s1);padding:var(--s2);background:var(--yellow);color:var(--ink);box-shadow:4px 4px 0 #0e0733;transform:rotate(-1.2deg)}
+.flyer.alt{--hi:#ffe3f2;--lo:#b0166e;background:#ffb0da;transform:rotate(1.2deg)}
+.flyer h3{font:400 var(--t-h3)/1.1 var(--pixel)}
+.flyer p{font-size:var(--t-small);line-height:1.5}
+.arcade .flyer a,.arcade .flyer a:visited{color:var(--ink)}
+.scores li{display:flex;justify-content:space-between;gap:var(--s1);font:var(--t-meta)/1.5 var(--led);border-bottom:2px dotted var(--ink)}
+.scores li:last-child{border-bottom:0}
+
+/* art, CSS only */
+.g1{background:linear-gradient(#7a3b10 0 0) 12% 70%/34% 7% no-repeat,linear-gradient(#7a3b10 0 0) 84% 42%/34% 7% no-repeat,linear-gradient(#35b33a 0 0) bottom/100% 18% no-repeat,radial-gradient(circle at 90% 16%,#ffe600 0 8%,transparent 8.5%),#2fc6ff}
+.g2{background:repeating-radial-gradient(circle at 50% 54%,#e8232a 0 22px,#fff 22px 44px)}
+.g3{background:repeating-conic-gradient(#15103f 0 25%,#38f0a0 0 50%) 0 0/28px 28px}
+.g4{background:linear-gradient(#e0bd76 0 0) 0 36%/72% 16% no-repeat,linear-gradient(#e0bd76 0 0) 62% 100%/13% 58% no-repeat,#3f9e3a}
+.g5{background:radial-gradient(circle at 20% 30%,#ff5fb3 0 11%,transparent 11.5%),radial-gradient(circle at 82% 26%,#27d8f5 0 15%,transparent 15.5%),radial-gradient(circle,#fff 0 1px,transparent 1.5px) 0 0/17px 19px,#2b1a8c}
+.g6{background:repeating-linear-gradient(135deg,#ff5fb3 0 15px,#ffe600 15px 30px)}
+.g7{background:radial-gradient(ellipse 70% 62% at 26% 108%,#1f8a3a 0 99%,transparent),radial-gradient(ellipse 70% 50% at 82% 112%,#35b33a 0 99%,transparent),radial-gradient(circle at 66% 34%,#ffe600 0 10%,transparent 10.5%),linear-gradient(#ff5f8f,#ffb35c)}
+.g8{background:radial-gradient(circle at 50% 44%,#ff9a1f 0 16%,transparent 16.5%),repeating-linear-gradient(90deg,#ff3fa4 0 2px,transparent 2px 24px) bottom/100% 46% no-repeat,repeating-linear-gradient(#ff3fa4 0 2px,transparent 2px 14px) bottom/100% 46% no-repeat,linear-gradient(#22085e 54%,#0e0733 54%)}
+.g9{background:linear-gradient(to top right,#fff 49.5%,transparent 50%) 0 100%/50% 62% no-repeat,linear-gradient(to top left,#dfeaff 49.5%,transparent 50%) 50% 100%/50% 62% no-repeat,radial-gradient(circle,#fff 0 1.5px,transparent 2px) 0 0/19px 17px,#2f6fe0}
+.g10{background:linear-gradient(90deg,#5a1a0a 3px,transparent 3px) 0 0/40px 20px,linear-gradient(#5a1a0a 3px,transparent 3px) 0 0/20px 20px,#d85c2c}
+.g11{background:repeating-conic-gradient(from 0deg at 50% 60%,#ff9a1f 0 15deg,#ffe600 15deg 30deg)}
+.g12{background:radial-gradient(circle,#fff 0 1px,transparent 1.5px) 0 0/23px 29px,radial-gradient(circle,#ffe600 0 1px,transparent 1.5px) 9px 11px/41px 37px,#160a4a}
+
+/* --------------------------------------------------------------- media shelves */
+.filters{display:flex;flex-wrap:wrap;align-items:flex-end;gap:var(--s1) 4px;padding:var(--s1) 12px 0;background:var(--wash);border-bottom:var(--edge) solid var(--lo)}
+.filter{--hi:#fff;--lo:var(--steel);min-height:40px;margin-bottom:calc(var(--edge) * -1);padding:4px var(--s2);font:400 var(--t-h4)/1 var(--pixel);color:var(--ink);background:var(--silver);border-bottom-color:var(--lo);cursor:pointer}
+.filter:hover{background:var(--cyan)}
+.filter[aria-pressed=true]{background:var(--paper);border-bottom-color:var(--paper);--hi:var(--lo)}
+.filter-count{margin-left:auto;padding:0 0 var(--s1) var(--s1);font:var(--t-meta)/1.2 var(--led);color:var(--muted)}
+.shelf-group+.shelf-group{border-top:var(--edge) solid var(--lo)}
+.shelf-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px var(--s2);padding:var(--s1) var(--s2)}
+.shelf-head h3{font:400 var(--t-h3)/1.2 var(--pixel)}
+.shelf{display:flex;align-items:stretch;overflow-x:auto;background:var(--backing);box-shadow:inset 0 3px 0 #e6d3a8;scrollbar-color:var(--wood) var(--backing)}
+.shelf li{flex:none;display:flex;align-items:flex-end;padding:var(--s2) 7px 0;border-bottom:13px solid var(--wood)}
+.shelf li:first-child{padding-left:var(--s2)}
+.shelf::after{content:"";flex:1 0 var(--s2);border-bottom:13px solid var(--wood)}
+.is-filtered .shelf{
+  --rowh:233px;
+  flex-wrap:wrap;overflow:visible;padding-inline:9px;box-shadow:none;
+  background:repeating-linear-gradient(var(--backing) 0 calc(var(--rowh) - 13px),var(--wood) calc(var(--rowh) - 13px) var(--rowh));
+}
+.is-filtered #anime .shelf{--rowh:207px}
+.is-filtered .shelf li,.is-filtered .shelf li:first-child{height:var(--rowh);padding:var(--s2) 7px 13px;border-bottom:0}
+.is-filtered .shelf::after{display:none}
+.shelf a,.shelf a:visited{display:block;text-decoration:none;color:var(--ink)}
+.shelf a:hover{background:none;color:var(--ink)}
+.shelf a:hover>span{transform:translateY(-6px)}
+.shelf a:focus-visible{outline:none;box-shadow:none}
+.shelf a:focus-visible>span{transform:translateY(-8px);outline:2px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 2px var(--yellow),0 0 0 6px var(--yellow)}
+.poster,.cover,.spine{display:flex;border:2px solid var(--ink);box-shadow:4px 0 0 rgba(21,16,63,.32)}
+.poster{flex-direction:column;justify-content:flex-end;width:136px;height:204px}
+.cap-label{display:block;background:var(--paper);border-top:2px solid var(--ink);padding:4px 8px 5px;font-size:13px;line-height:1.3;font-weight:700}
+.cap-label span{display:block;font:var(--t-meta)/1.1 var(--led);font-weight:400}
+.p1{background:radial-gradient(circle at 50% 30%,#ffe600 0 28%,transparent 28.5%),#e8232a}
+.p2{background:repeating-linear-gradient(0deg,#15103f 0 12px,#27d8f5 12px 24px)}
+.p3{background:linear-gradient(to top right,#ff9a1f 49.5%,transparent 50%),#2b1a8c}
+.p4{background:radial-gradient(circle at 34% 26%,#fff 0 18%,transparent 18.5%),radial-gradient(circle at 44% 22%,#14306e 0 17%,transparent 17.5%),#14306e}
+.p5{background:repeating-linear-gradient(90deg,#ff5fb3 0 22px,#fff 22px 44px)}
+.p6{background:linear-gradient(135deg,#35b33a 50%,#ffe600 50%)}
+.p7{background:repeating-radial-gradient(circle at 50% 110%,#7c1fd0 0 16px,#ff9a1f 16px 32px)}
+.p8{background:repeating-conic-gradient(#15103f 0 25%,#f4f1ff 0 50%) 0 0/34px 34px}
+.cover{flex-direction:column;justify-content:space-between;width:124px;height:178px}
+.cover-label{background:var(--yellow);border-bottom:2px solid var(--ink);padding:4px 8px;font-size:13px;line-height:1.3;font-weight:700}
+.cover-score{align-self:flex-end;background:var(--ink);color:#fff;font:var(--t-meta)/1.15 var(--led);padding:1px 8px}
+.a1{background:radial-gradient(circle,#15103f 0 2.5px,transparent 3px) 0 0/9px 9px,#ff5fb3}
+.a2{background:repeating-conic-gradient(from 0deg at 50% 62%,#fff 0 6deg,#27d8f5 6deg 18deg)}
+.a3{background:radial-gradient(circle,#fff 0 3px,transparent 3.5px) 0 0/11px 11px,#7c1fd0}
+.a4{background:repeating-conic-gradient(from 0deg at 50% 62%,#e8232a 0 7deg,#fff 7deg 16deg)}
+.a5{background:radial-gradient(circle,#15103f 0 2px,transparent 2.5px) 0 0/7px 7px,#9be83a}
+.a6{background:linear-gradient(160deg,#ff9a1f 50%,transparent 50.5%),radial-gradient(circle,#fff 0 2px,transparent 2.5px) 0 0/8px 8px,#14306e}
+.a7{background:repeating-conic-gradient(from 0deg at 28% 68%,#ffe600 0 8deg,#ff5fb3 8deg 20deg)}
+/* books stand spine-out */
+.books-layout{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr)}
+.reading{--hi:var(--paper);--lo:var(--paper);padding:var(--s1) var(--s2) var(--s2);display:flex;gap:12px;background:var(--paper);border-width:0;border-right:var(--edge) solid #0a7d99;border-style:solid}
+.reading-cover{flex:none;width:76px;height:114px;border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);background:linear-gradient(90deg,rgba(21,16,63,.35) 0 6px,transparent 6px),radial-gradient(circle at 60% 40%,#ffe600 0 22%,transparent 22.5%),#b0166e}
+.reading h4{font:400 var(--t-h4)/1.15 var(--pixel);margin-bottom:4px}
+.reading .meta{margin-top:2px}
+.books-layout .shelf{min-width:0}
+.spine{align-items:stretch;justify-content:center;width:var(--w,44px);height:var(--h,196px);padding:var(--s1) 0}
+.spine-text{writing-mode:vertical-rl;padding:6px 3px;background:var(--paper);border:2px solid var(--ink);font-size:12.5px;line-height:1.2;font-weight:700;white-space:nowrap}
+.b1{background:#14306e}.b2{background:#e8232a}.b3{background:repeating-linear-gradient(0deg,#27d8f5 0 8px,#15103f 8px 16px)}.b4{background:#35b33a}.b5{background:#ff9a1f}.b6{background:repeating-linear-gradient(0deg,#7c1fd0 0 12px,#ff5fb3 12px 24px)}.b7{background:#ffe600}.b8{background:#2b1a8c}.b9{background:radial-gradient(circle,#fff 0 2px,transparent 2.5px) 0 0/9px 9px,#0a7d99}.b10{background:#8a4b16}
+
+/* --------------------------------------------------------------- lists */
+.ranked{counter-reset:r;flex:1}
+.ranked li{counter-increment:r;display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:0 var(--s1);align-items:center;padding:var(--s1) 12px var(--s1) 4px;border-bottom:2px solid #ffc2e1}
+.ranked li:last-child{border-bottom:0}
+.ranked li::before{content:counter(r);grid-row:1 / 3;font:400 var(--t-h2)/1 var(--pixel);text-align:center;color:#b0166e}
+.ranked li:first-child{background:var(--yellow)}
+.ranked li:first-child::before{font-size:40px;color:var(--ink)}
+.ranked li:first-child .meta{color:var(--ink)}
+.ranked .name{font-weight:700}
+.ranked .meta{grid-column:2}
+.ranked .score{grid-column:3;grid-row:1 / 3;font:var(--t-meta)/1 var(--led);background:var(--ink);color:var(--lime);padding:4px var(--s1)}
+.totals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s1);padding:12px 12px var(--s1)}
+.led{--hi:#dcffa8;--lo:#55558a;background:var(--ink);padding:var(--s1);min-width:0}
+.led b{display:block;font:400 24px/1 var(--led);color:var(--lime);overflow-wrap:anywhere}
+.led span{display:block;margin-top:4px;font-size:13px;line-height:1.3;color:#fff}
+.prs{padding:0 12px}
+.prs div{display:flex;align-items:center;gap:var(--s1);padding:8px 2px;border-bottom:2px dotted #4c9a00}
+.prs dt{flex:1;display:flex;align-items:center;gap:var(--s1);font-weight:700}
+.prs .icon{color:#7a5a00}
+.prs dd{font:var(--t-meta)/1 var(--led)}
+.foot-note{padding:var(--s1) 14px 12px;font-size:var(--t-small);line-height:1.5}
+.notes{flex:1}
+.notes li{display:flex;gap:12px;padding:10px var(--s2);border-bottom:2px dotted #0a7d99}
+.notes li:last-child{border-bottom:0}
+.notes .icon{margin-top:4px;color:#0a7d99}
+.notes .meta{display:block}
+.more{padding:var(--s1) var(--s2) var(--s2);font-size:var(--t-small)}
+.post{padding:12px var(--s2) var(--s2);border-bottom:2px dotted #b85a00}
+.post:last-child{border-bottom:0}
+.post h3{font:400 var(--t-h3)/1.2 var(--pixel)}
+.post h3 a,.post h3 a:visited{color:var(--ink)}
+.post p:not(.meta){max-width:62ch;margin-top:4px}
+.out{display:inline-flex;align-items:center;gap:6px;margin-top:6px;font-weight:700;font-size:var(--t-small)}
+.out .icon{width:12px;height:12px}
+
+/* --------------------------------------------------------------- footer */
+.site-foot{--hi:#8c8cab;--lo:#0a0726;margin-top:var(--s3);background:var(--ink);color:#fff;box-shadow:4px 4px 0 #0a0726}
+.foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:var(--s3);padding:var(--s3)}
+.site-foot h2{font:400 var(--t-h3)/1.2 var(--pixel);color:var(--yellow);margin-bottom:var(--s1)}
+.site-foot a,.site-foot a:visited{color:var(--cyan)}
+.site-foot a:hover{background:var(--yellow);color:var(--ink)}
+.site-foot p{font-size:var(--t-small);line-height:1.5}
+.elsewhere{columns:2;column-gap:var(--s2);font-size:var(--t-small);line-height:1.9}
+.ring-links{display:flex;flex-wrap:wrap;gap:var(--s1);margin-top:var(--s1)}
+.ring-links a,.ring-links a:visited{--hi:#fff;--lo:var(--steel);display:inline-block;padding:4px 12px;font:var(--t-meta)/1.2 var(--led);color:var(--ink);background:var(--silver);text-decoration:none}
+.ring-links a:hover{background:var(--yellow);color:var(--ink)}
+.badges{display:flex;flex-wrap:wrap;gap:var(--s1)}
+.badge{display:flex;align-items:center;justify-content:center;width:88px;height:31px;font:17px/1 var(--led);text-decoration:none;border:2px solid;border-color:#fff #55558a #55558a #fff}
+.site-foot a.badge,.site-foot a.badge:visited{color:var(--ink)}
+.site-foot a.badge:hover{background:#fff;color:var(--ink)}
+.bg1{background:var(--lime)}.bg2{background:var(--cyan)}.bg3{background:var(--pink)}.bg4{background:var(--yellow)}.bg5{background:#ffb35c}.bg6{background:#f0effa}
+.foot-base{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px var(--s3);padding:var(--s1) var(--s3);border-top:2px solid var(--steel);font:var(--t-meta)/1.4 var(--led)}
+
+/* --------------------------------------------------------------- layout */
+@media (min-width:900px){
+  .frame{grid-template-columns:192px minmax(0,1fr)}
+  .side-nav{grid-column:1;align-self:start;position:sticky;top:16px}
+  .main{grid-column:2}
+  .nav-list{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .banner{padding:var(--s2) var(--s2) 112px}
+  .banner::before{display:none}
+  .stage{grid-template-columns:minmax(0,1fr);padding:var(--s2) 12px}
+  .marquee{padding:var(--s2) 12px}
+  .wall{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:var(--s2) 12px}
+  .tile{grid-column:span 1}
+  .t-big,.t-wide,.t-solo,.flyer{grid-column:span 2}
+  .tile .art{aspect-ratio:4/3}
+  .t-big .art,.t-solo .art{aspect-ratio:16/8}
+  .chip{left:4px;bottom:4px;padding:0 5px;font-size:16px}
+  .t-solo .sprite{width:20%}
+  .t-wide{flex-direction:column}
+  .t-wide .tile-text{align-self:stretch}
+  .tile.t-wide .art{flex:none;aspect-ratio:16/8;min-height:0;border-right:0;border-bottom:var(--edge) solid #0e0733}
+  .sprite{width:34%}
+  .t-big .sprite,.t-wide .sprite{width:20%}
+  .tile-text{padding:var(--s1) 10px 10px}
+  .books-layout{grid-template-columns:minmax(0,1fr)}
+  .reading{border-right:0;border-bottom:var(--edge) solid #0a7d99}
+  .filter-count{flex-basis:100%;margin-left:0;padding:0 0 4px;order:-1}
+  .filter{flex:1;padding:4px var(--s1)}
+  .foot-grid{padding:var(--s2)}
+  .foot-base{padding:var(--s1) var(--s2)}
+}
+@media (max-width:420px){
+  .totals{grid-template-columns:minmax(0,1fr)}
+  .led{display:flex;align-items:baseline;justify-content:space-between;gap:var(--s1)}
+  .led span{margin:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .shelf a:hover>span,.shelf a:focus-visible>span{transform:none}
+  .scene.crt-on,.stamp.pop,.arcade.is-picking .bulbs::before,.arcade.is-picking .bulbs::after{animation:none}
+}
+</style>
+</head>
+<body>
+<!--
+  CONTENT MAP. All page content lives in the HTML below, in blocks marked
+  "CONTENT: name". Replace each [bracketed placeholder] and each href="#".
+  Repeat or delete the <li> items in a block as needed; the script adapts:
+  the picker reads games from the wall and the shelf count comes from the lists.
+
+  Intro        header, block "intro"           Restaurants  Beli
+  Ticker       block "ticker"                  Workouts     Hevy, totals and PRs only
+  Now          written by hand each month      Notes        Notion
+  Activity     mixed feed                      Writing      Substack, excerpt plus link out
+  Arcade       big screen and wall             Footer       elsewhere, webring, badges
+  Shelves      Letterboxd, MyAnimeList, Goodreads
+-->
+<a class="skip" href="#main">Skip to the page</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-game" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M3 4h10v1h1v1h1v5h-1v1h-3v-1h-1v-1H6v1H5v1H2v-1H1V6h1V5h1zM4 6v1H3v1h1v1h1V8h1V7H5V6zM11 6v2h2V6z"/></symbol>
+  <symbol id="i-film" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 2h14v12H1zM2 3v2h2V3zM2 7v2h2V7zM2 11v2h2v-2zM12 3v2h2V3zM12 7v2h2V7zM12 11v2h2v-2zM5 3v4h6V3zM5 9v4h6V9z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 16 16"><path d="M7 1h2v4h6v2h-1v1h-1v1h-1v1h1v4h-1v-1h-1v-1H9v-1H7v1H6v1H5v1H4v-4h1V9H4V8H3V7H2V6H1V5h6z"/></symbol>
+  <symbol id="i-book" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2 2h5v1h2V2h5v12H9v1H7v-1H2zM4 5v1h3V5zM9 5v1h3V5zM4 8v1h3V8zM9 8v1h3V8z"/></symbol>
+  <symbol id="i-fork" viewBox="0 0 16 16"><path d="M3 1h1v4h1V1h1v4h1V1h1v6H7v8H5V7H3zM11 1h2v14h-2v-5h-1V3h1z"/></symbol>
+  <symbol id="i-lift" viewBox="0 0 16 16"><path d="M1 6h1V4h2v3h8V4h2v2h1v4h-1v2h-2V9H4v3H2v-2H1z"/></symbol>
+  <symbol id="i-note" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M3 1h7v1h1v1h1v1h1v11H3zM5 6v1h6V6zM5 9v1h6V9zM5 12v1h4v-1z"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 16 16"><path d="M11 1h2v1h1v1h1v2h-1v1h-1v1h-1v1h-1v1H9v1H8v1H7v1H6v1H5v1H1v-4h1v-1h1V9h1V8h1V7h1V6h1V5h1V4h1V3h1V2h1z"/></symbol>
+  <symbol id="i-cup" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M3 1h10v2h2v4h-1v1h-2v1h-1v1H9v2h2v2H5v-2h2v-2H5V9H4V8H2V7H1V3h2zM2 4v2h1V4zM13 4v2h1V4z"/></symbol>
+  <symbol id="i-out" viewBox="0 0 16 16"><path d="M8 1h7v7h-2V5h-1v1h-1v1h-1v1H9v1H8v1H7v1H6v1H5v-2h1V9h1V8h1V7h1V6h1V5h1V4H8zM1 3h5v2H3v8h8v-3h2v5H1z"/></symbol>
+  <symbol id="s-stick" viewBox="0 0 12 12"><path fill="#ffffff" d="M4 0h3v1h-3zM4 1h3v1h-3zM5 2h1v1h-1zM2 3h7v1h-7zM1 4h1v1h-1zM5 4h1v1h-1zM9 4h1v1h-1zM5 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1zM6 7h1v1h-1zM3 8h1v1h-1zM7 8h1v1h-1zM2 9h1v1h-1zM8 9h1v1h-1zM1 10h2v1h-2zM8 10h2v1h-2z"/></symbol>
+  <symbol id="s-coin" viewBox="0 0 12 12"><path fill="#15103f" d="M4 0h4v1h-4zM2 1h2v1h-2zM8 1h2v1h-2zM1 2h1v1h-1zM10 2h1v1h-1zM1 3h1v1h-1zM10 3h1v1h-1zM0 4h1v1h-1zM11 4h1v1h-1zM0 5h1v1h-1zM11 5h1v1h-1zM0 6h1v1h-1zM11 6h1v1h-1zM0 7h1v1h-1zM11 7h1v1h-1zM1 8h1v1h-1zM10 8h1v1h-1zM1 9h1v1h-1zM10 9h1v1h-1zM2 10h2v1h-2zM8 10h2v1h-2zM4 11h4v1h-4z"/><path fill="#ffe600" d="M4 1h4v1h-4zM2 2h8v1h-8zM2 3h2v1h-2zM5 3h5v1h-5zM1 4h3v1h-3zM5 4h6v1h-6zM1 5h3v1h-3zM5 5h6v1h-6zM1 6h3v1h-3zM5 6h6v1h-6zM1 7h3v1h-3zM5 7h6v1h-6zM2 8h2v1h-2zM5 8h5v1h-5zM2 9h8v1h-8zM4 10h4v1h-4z"/><path fill="#ff9a1f" d="M4 3h1v1h-1zM4 4h1v1h-1zM4 5h1v1h-1zM4 6h1v1h-1zM4 7h1v1h-1zM4 8h1v1h-1z"/></symbol>
+  <symbol id="s-ship" viewBox="0 0 12 12"><path fill="#7fe9ff" d="M5 0h2v1h-2zM5 1h2v1h-2zM4 2h1v1h-1zM7 2h1v1h-1zM4 3h1v1h-1zM7 3h1v1h-1zM3 4h2v1h-2zM7 4h2v1h-2zM2 5h3v1h-3zM7 5h3v1h-3zM2 6h8v1h-8zM3 7h7v1h-7zM4 8h4v1h-4z"/><path fill="#ffffff" d="M5 2h2v1h-2zM5 3h2v1h-2z"/><path fill="#15103f" d="M5 4h2v1h-2zM5 5h2v1h-2z"/><path fill="#ff5fb3" d="M1 6h1v1h-1zM10 6h1v1h-1zM0 7h2v1h-2zM11 7h1v1h-1zM0 8h1v1h-1zM11 8h1v1h-1z"/><path fill="#e8232a" d="M4 9h1v1h-1zM7 9h1v1h-1zM3 10h1v1h-1zM8 10h1v1h-1z"/><path fill="#ff9a1f" d="M4 10h1v1h-1zM7 10h1v1h-1zM4 11h1v1h-1zM7 11h1v1h-1z"/></symbol>
+  <symbol id="s-alien" viewBox="0 0 12 12"><path fill="#7fe9ff" d="M4 1h4v1h-4zM3 2h1v1h-1zM8 2h1v1h-1zM3 3h1v1h-1zM8 3h1v1h-1zM3 4h1v1h-1zM8 4h1v1h-1z"/><path fill="#ffffff" d="M4 2h4v1h-4zM4 3h1v1h-1zM7 3h1v1h-1zM4 4h4v1h-4z"/><path fill="#15103f" d="M5 3h2v1h-2zM2 6h1v1h-1zM5 6h1v1h-1zM8 6h1v1h-1z"/><path fill="#9dff3a" d="M1 5h10v1h-10zM0 6h2v1h-2zM3 6h2v1h-2zM6 6h2v1h-2zM9 6h3v1h-3zM0 7h12v1h-12zM1 8h10v1h-10z"/><path fill="#ffe600" d="M3 9h2v1h-2zM7 9h2v1h-2zM2 10h2v1h-2zM8 10h2v1h-2z"/></symbol>
+  <symbol id="s-bomb" viewBox="0 0 12 12"><path fill="#ff9a1f" d="M8 0h1v1h-1zM7 1h1v1h-1z"/><path fill="#ffe600" d="M9 0h1v1h-1z"/><path fill="#15103f" d="M6 2h2v1h-2zM4 3h6v1h-6zM3 4h8v1h-8zM2 5h2v1h-2zM5 5h7v1h-7zM2 6h1v1h-1zM4 6h8v1h-8zM2 7h10v1h-10zM2 8h10v1h-10zM3 9h8v1h-8zM4 10h6v1h-6z"/><path fill="#ffffff" d="M4 5h1v1h-1zM3 6h1v1h-1z"/></symbol>
+  <symbol id="s-tank" viewBox="0 0 12 12"><path fill="#15103f" d="M8 2h4v1h-4zM4 3h5v1h-5zM3 4h6v1h-6zM3 5h6v1h-6zM1 6h10v1h-10zM0 7h12v1h-12zM0 8h1v1h-1zM2 8h2v1h-2zM5 8h2v1h-2zM8 8h2v1h-2zM11 8h1v1h-1zM0 9h12v1h-12zM1 10h10v1h-10z"/><path fill="#ffffff" d="M1 8h1v1h-1zM4 8h1v1h-1zM7 8h1v1h-1zM10 8h1v1h-1z"/></symbol>
+  <symbol id="s-heart" viewBox="0 0 12 12"><path fill="#e8232a" d="M2 0h2v1h-2zM8 0h2v1h-2zM1 1h4v1h-4zM7 1h4v1h-4zM0 2h2v1h-2zM3 2h9v1h-9zM0 3h1v1h-1zM2 3h10v1h-10zM0 4h12v1h-12zM0 5h12v1h-12zM1 6h10v1h-10zM2 7h8v1h-8zM3 8h6v1h-6zM4 9h4v1h-4zM5 10h2v1h-2z"/><path fill="#ffffff" d="M2 2h1v1h-1zM1 3h1v1h-1z"/></symbol>
+  <symbol id="s-key" viewBox="0 0 12 12"><path fill="#ffe600" d="M2 0h4v1h-4zM1 1h2v1h-2zM5 1h2v1h-2zM1 2h1v1h-1zM6 2h1v1h-1zM1 3h2v1h-2zM5 3h2v1h-2zM2 4h5v1h-5zM4 5h8v1h-8zM4 6h8v1h-8zM9 7h1v1h-1zM11 7h1v1h-1zM9 8h1v1h-1zM11 8h1v1h-1z"/><path fill="#15103f" d="M3 1h2v1h-2zM2 2h4v1h-4zM3 3h2v1h-2z"/></symbol>
+  <symbol id="s-tower" viewBox="0 0 12 12"><path fill="#15103f" d="M2 0h1v1h-1zM5 0h2v1h-2zM9 0h1v1h-1zM2 1h8v1h-8zM2 2h8v1h-8zM3 3h1v1h-1zM5 3h2v1h-2zM8 3h1v1h-1zM3 4h6v1h-6zM3 5h6v1h-6zM3 6h1v1h-1zM5 6h2v1h-2zM8 6h1v1h-1zM3 7h6v1h-6zM2 8h8v1h-8zM2 9h8v1h-8zM1 10h10v1h-10zM1 11h10v1h-10z"/><path fill="#ffe600" d="M4 3h1v1h-1zM7 3h1v1h-1zM4 6h1v1h-1zM7 6h1v1h-1z"/></symbol>
+  <symbol id="s-skull" viewBox="0 0 12 12"><path fill="#ffffff" d="M3 0h6v1h-6zM2 1h8v1h-8zM1 2h10v1h-10zM1 3h1v1h-1zM4 3h2v1h-2zM8 3h3v1h-3zM1 4h1v1h-1zM4 4h2v1h-2zM8 4h3v1h-3zM1 5h5v1h-5zM7 5h4v1h-4zM2 6h8v1h-8zM3 7h1v1h-1zM5 7h1v1h-1zM7 7h1v1h-1zM3 8h1v1h-1zM5 8h1v1h-1zM7 8h1v1h-1z"/><path fill="#15103f" d="M2 3h2v1h-2zM6 3h2v1h-2zM2 4h2v1h-2zM6 4h2v1h-2zM6 5h1v1h-1zM4 7h1v1h-1zM6 7h1v1h-1zM8 7h1v1h-1zM4 8h1v1h-1zM6 8h1v1h-1zM8 8h1v1h-1z"/></symbol>
+</svg>
+
+<div class="wrap" id="top">
+
+  <header class="masthead">
+    <div class="banner raised">
+      <div>
+        <h1>Sean Wang</h1>
+        <!-- CONTENT: intro -->
+        <p class="intro"><strong>Hi, I'm Sean. I live in New York.</strong>[One line about you]</p>
+      </div>
+      <p class="counter raised">Visitor number<b>[000000]</b></p>
+      <svg class="skyline" viewBox="0 0 1200 100" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false" shape-rendering="crispEdges">
+        <defs>
+          <pattern id="win" width="10" height="12" patternUnits="userSpaceOnUse"><rect width="10" height="12" fill="#15103f"/><rect x="3" y="3" width="4" height="5" fill="#ffe600"/></pattern>
+          <pattern id="win2" width="12" height="10" patternUnits="userSpaceOnUse"><rect width="12" height="10" fill="#15103f"/><rect x="2" y="2" width="3" height="4" fill="#7fe9ff"/></pattern>
+        </defs>
+        <rect x="0" y="62" width="70" height="38" fill="url(#win)"/><rect x="70" y="40" width="60" height="60" fill="url(#win2)"/><rect x="130" y="70" width="50" height="30" fill="url(#win)"/><rect x="180" y="28" width="56" height="72" fill="url(#win)"/><rect x="236" y="56" width="80" height="44" fill="url(#win2)"/><rect x="316" y="44" width="44" height="56" fill="url(#win)"/><rect x="360" y="66" width="70" height="34" fill="url(#win2)"/><rect x="430" y="38" width="60" height="62" fill="url(#win)"/><rect x="490" y="60" width="50" height="40" fill="url(#win2)"/><rect x="540" y="44" width="70" height="56" fill="url(#win)"/><rect x="552" y="30" width="46" height="14" fill="#15103f"/><rect x="562" y="18" width="26" height="12" fill="#15103f"/><rect x="572" y="2" width="6" height="16" fill="#15103f"/><rect x="610" y="64" width="60" height="36" fill="url(#win2)"/><rect x="670" y="34" width="50" height="66" fill="url(#win)"/><rect x="720" y="58" width="78" height="42" fill="url(#win)"/><rect x="798" y="24" width="40" height="76" fill="url(#win2)"/><rect x="838" y="68" width="64" height="32" fill="url(#win)"/><rect x="902" y="42" width="66" height="58" fill="url(#win2)"/><rect x="968" y="60" width="52" height="40" fill="url(#win)"/><rect x="1020" y="32" width="58" height="68" fill="url(#win)"/><rect x="1078" y="66" width="52" height="34" fill="url(#win2)"/><rect x="1130" y="48" width="70" height="52" fill="url(#win)"/>
+      </svg>
+    </div>
+    <!-- CONTENT: ticker -->
+    <div class="ticker raised" id="ticker" role="region" aria-label="Latest updates">
+      <div class="ticker-view"><div class="ticker-track"><ul>
+        <li>Last rated: [Film title]</li>
+        <li>New record: [Deadlift PR]</li>
+        <li>Now reading: [Book title]</li>
+        <li>On Substack: [Post title]</li>
+      </ul></div></div>
+      <button type="button" class="ticker-pause raised" id="tickerPause" hidden>Pause</button>
+    </div>
+  </header>
+
+  <div class="frame">
+    <nav class="side-nav raised" aria-label="Sections on this page">
+      <ul class="nav-list">
+        <li><a class="raised star" href="#arcade"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-game"/></svg>The Arcade</a></li>
+        <li><a class="raised" href="#films"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-film"/></svg>Films</a></li>
+        <li><a class="raised" href="#anime"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-star"/></svg>Anime</a></li>
+        <li><a class="raised" href="#books"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-book"/></svg>Books</a></li>
+        <li><a class="raised" href="#restaurants"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-fork"/></svg>Restaurants</a></li>
+        <li><a class="raised" href="#workouts"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-lift"/></svg>Workouts</a></li>
+        <li><a class="raised" href="#notes"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-note"/></svg>Notes</a></li>
+        <li><a class="raised" href="#writing"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pen"/></svg>Writing</a></li>
+      </ul>
+    </nav>
+
+    <main class="main" id="main" tabindex="-1">
+      <div class="two">
+        <!-- CONTENT: Now. Rewrite by hand each month. -->
+        <section class="panel raised fam-gold" aria-labelledby="h-now">
+          <div class="bar"><h2 id="h-now">Now</h2><span class="src">Source: updated monthly</span></div>
+          <p class="now-month">[Month Year]</p>
+          <dl class="now">
+            <dt>Watching</dt><dd>[Film or anime title]</dd>
+            <dt>Reading</dt><dd>[Book title]</dd>
+            <dt>Eating</dt><dd>[Restaurant]</dd>
+            <dt>Training</dt><dd>[Current goal]</dd>
+            <dt>Thinking about</dt><dd>[One line]</dd>
+          </dl>
+        </section>
+
+        <!-- CONTENT: mixed activity feed, newest first -->
+        <section class="panel raised fam-orange" aria-labelledby="h-feed">
+          <div class="bar"><h2 id="h-feed">Latest activity</h2><span class="src">Source: all feeds</span></div>
+          <ul class="feed">
+            <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-film"/></svg><span>Rated <a href="#">[Film title]</a> [Rating]</span><span class="meta">Letterboxd, [Date]</span></li>
+            <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-lift"/></svg><span>New personal record: [Deadlift PR]</span><span class="meta">Hevy, [Date]</span></li>
+            <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-note"/></svg><span>Published <a href="#">[Note title]</a></span><span class="meta">Notion, [Date]</span></li>
+            <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-book"/></svg><span>Finished <a href="#">[Book title]</a></span><span class="meta">Goodreads, [Date]</span></li>
+            <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-fork"/></svg><span>Ranked <a href="#">[Restaurant]</a> [Score]</span><span class="meta">Beli, [Date]</span></li>
+          </ul>
+        </section>
+      </div>
+
+      <section class="arcade raised" id="arcade" aria-labelledby="h-arcade">
+        <div class="bulbs" aria-hidden="true"></div>
+        <div class="marquee">
+          <div>
+            <h2 id="h-arcade">The Arcade</h2>
+            <p>The Flash games I love, and why each one earned its slot.</p>
+          </div>
+          <span class="src">Source: picked by Sean</span>
+        </div>
+
+        <div class="stage">
+          <div>
+            <div class="bezel raised">
+              <div class="screen">
+                <!-- The big screen starts on game 1. Keep it in step with the first tile. -->
+                <div class="scene g1" id="scene"><svg class="sprite" style="--x:27%;--y:50%" aria-hidden="true" focusable="false"><use href="#s-stick"/></svg></div>
+                <div class="loader" aria-hidden="true"><span id="loaderPct">Loading 0%</span><div class="loader-bar"><i id="loaderBar"></i></div></div>
+                <span class="stamp" id="stamp" aria-hidden="true">Picked!</span>
+              </div>
+              <div class="deck raised">
+                <button class="pick" id="pick" type="button" hidden><span class="cap" aria-hidden="true"></span><span id="pickLabel">Pick a game for me</span></button>
+                <span class="coin" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+          <div class="stage-info">
+            <p class="stage-label">On the big screen</p>
+            <h3 id="stageTitle">[Game title 1]</h3>
+            <p class="by" id="stageBy">[Creator 1], [Year]</p>
+            <p class="stage-why" id="stageWhy">[One line on why game 1 earned its slot]</p>
+            <a class="play raised" id="stagePlay" href="#">Play [Game title 1]</a>
+            <p class="pick-status" id="pickStatus" role="status"></p>
+          </div>
+        </div>
+
+        <!-- CONTENT: games. Title, creator, year, one-line reason, and the link. Art is CSS, classes g1 to g12. -->
+        <ul class="wall" id="wall">
+          <li class="tile raised t-big">
+            <div class="art g1"><svg class="sprite" style="--x:27%;--y:50%" aria-hidden="true" focusable="false"><use href="#s-stick"/></svg><span class="chip">[Genre]</span></div>
+            <div class="tile-text"><h3><a href="#">[Game title 1]</a></h3><p class="by">[Creator 1], [Year]</p><p class="tile-why">[One line on why game 1 earned its slot]</p></div>
+          </li>
+          <li class="tile raised t-big">
+            <div class="art g8"><svg class="sprite" style="--x:50%;--y:72%" aria-hidden="true" focusable="false"><use href="#s-ship"/></svg><span class="chip">[Genre]</span></div>
+            <div class="tile-text"><h3><a href="#">[Game title 2]</a></h3><p class="by">[Creator 2], [Year]</p><p class="tile-why">[One line on why game 2 earned its slot]</p></div>
+          </li>
+          <li class="tile raised">
+            <div class="art g2"><svg class="sprite" style="--x:50%;--y:54%" aria-hidden="true" focusable="false"><use href="#s-bomb"/></svg><span class="chip">[Genre]</span></div>
+            <div class="tile-text"><h3><a href="#">[Game title 3]</a></h3><p class="by">[Creator 3], [Year]</p><p class="tile-why">[One line on why game 3 earned its slot]</p></div>
+          </li>
+          <li class="tile raised">
+            <div class="art g3"><svg class="sprite" style="--x:50%;--y:50%" aria-hidden="true" focusable="false"><use href="#s-coin"/></svg><span class="chip">[Genre]</span></div>
+            <div class="tile-text"><h3><a href="#">[Game title 4]</a></h3><p class="by">[Creator 4], [Year]</p><p class="tile-why">[One line on why game 4 earned its slot]</p></div>
+          </li>
+          <li class="tile raised t-solo">
+            <div class="art g5"><svg class="sprite" style="--x:50%;--y:62%" aria-hidden="true" focusable="false"><use href="#s-alien"/></svg><span class="chip">[Genre]</span></div>
+            <div class="tile-text"><h3><a href="#">[Game title 5]</a></h3><p class="by">[Creator 5], [Year]</p><p class="tile-why">[One line on why game 5 earned its slot]</p></div>
+          </li>
+          <li class="tile raised t-wide">
+            <div class="art g4"><svg class="sprite" style="--x:72%;--y:26%" aria-hidden="true" focusable="false"><use href="#s-tower"/></svg><span class="chip">[Genre]</span></div>
+            <div class="tile-text"><h3><a href="#">[Game title 6]</a></h3><p class="by">[Creator 6], [Year]</p><p class="tile-why">[One line on why game 6 earned its slot]</p></div>
+          </li>
+          <li class="flyer raised">
+            <h3>How to play these</h3>
+            <p>Browsers dropped Flash at the end of 2020. Each game here opens in <a href="#">[Emulator or archive]</a>.</p>
+          </li>
+          <li class="tile raised">
+            <div class="art g6"><svg class="sprite" style="--x:50%;--y:50%" aria-hidden="true" focusable="false"><use href="#s-heart"/></svg><span class="chip">[Genre]</span></div>
+            <div class="tile-text"><h3><a href="#">[Game title 7]</a></h3><p class="by">[Creator 7], [Year]</p><p class="tile-why">[One line on why game 7 earned its slot]</p></div>
+          </li>
+          <li class="tile raised">
+            <div class="art g7"><svg class="sprite" style="--x:34%;--y:44%" aria-hidden="true" focusable="false"><use href="#s-stick"/></svg><span class="chip">[Genre]</span></div>
+            <div class="tile-text"><h3><a href="#">[Game title 8]</a></h3><p class="by">[Creator 8], [Year]</p><p class="tile-why">[One line on why game 8 earned its slot]</p></div>
+          </li>
+          <li class="tile raised t-solo">
+            <div class="art g9"><svg class="sprite" style="--x:74%;--y:30%" aria-hidden="true" focusable="false"><use href="#s-skull"/></svg><span class="chip">[Genre]</span></div>
+            <div class="tile-text"><h3><a href="#">[Game title 9]</a></h3><p class="by">[Creator 9], [Year]</p><p class="tile-why">[One line on why game 9 earned its slot]</p></div>
+          </li>
+          <li class="flyer alt raised">
+            <h3>My high scores</h3>
+            <ul class="scores">
+              <li><span>[Game title]</span><span>[Score]</span></li>
+              <li><span>[Game title]</span><span>[Score]</span></li>
+              <li><span>[Game title]</span><span>[Score]</span></li>
+            </ul>
+          </li>
+          <li class="tile raised t-wide">
+            <div class="art g10"><svg class="sprite" style="--x:50%;--y:50%" aria-hidden="true" focusable="false"><use href="#s-key"/></svg><span class="chip">[Genre]</span></div>
+            <div class="tile-text"><h3><a href="#">[Game title 10]</a></h3><p class="by">[Creator 10], [Year]</p><p class="tile-why">[One line on why game 10 earned its slot]</p></div>
+          </li>
+          <li class="tile raised t-big">
+            <div class="art g11"><svg class="sprite" style="--x:50%;--y:66%" aria-hidden="true" focusable="false"><use href="#s-tank"/></svg><span class="chip">[Genre]</span></div>
+            <div class="tile-text"><h3><a href="#">[Game title 11]</a></h3><p class="by">[Creator 11], [Year]</p><p class="tile-why">[One line on why game 11 earned its slot]</p></div>
+          </li>
+          <li class="tile raised t-big">
+            <div class="art g12"><svg class="sprite" style="--x:50%;--y:46%" aria-hidden="true" focusable="false"><use href="#s-alien"/></svg><span class="chip">[Genre]</span></div>
+            <div class="tile-text"><h3><a href="#">[Game title 12]</a></h3><p class="by">[Creator 12], [Year]</p><p class="tile-why">[One line on why game 12 earned its slot]</p></div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="panel raised fam-cyan" id="media" aria-labelledby="h-media">
+        <div class="bar"><h2 id="h-media">On the shelves</h2></div>
+        <div class="filters" id="filters" role="group" aria-label="Filter the shelves" hidden>
+          <button type="button" class="filter raised" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="filter raised" data-filter="films" aria-pressed="false">Films</button>
+          <button type="button" class="filter raised" data-filter="anime" aria-pressed="false">Anime</button>
+          <button type="button" class="filter raised" data-filter="books" aria-pressed="false">Books</button>
+          <p class="filter-count" id="filterCount" role="status"></p>
+        </div>
+
+        <!-- CONTENT: films -->
+        <section class="shelf-group" id="films" aria-labelledby="h-films">
+          <div class="shelf-head"><h3 id="h-films">Films</h3><a class="src" href="#">Source: Letterboxd</a></div>
+          <ul class="shelf">
+          <li><a href="#"><span class="poster p1"><span class="cap-label">[Film title]<span>[Rating]</span></span></span></a></li>
+          <li><a href="#"><span class="poster p2"><span class="cap-label">[Film title]<span>[Rating]</span></span></span></a></li>
+          <li><a href="#"><span class="poster p3"><span class="cap-label">[Film title]<span>[Rating]</span></span></span></a></li>
+          <li><a href="#"><span class="poster p4"><span class="cap-label">[Film title]<span>[Rating]</span></span></span></a></li>
+          <li><a href="#"><span class="poster p5"><span class="cap-label">[Film title]<span>[Rating]</span></span></span></a></li>
+          <li><a href="#"><span class="poster p6"><span class="cap-label">[Film title]<span>[Rating]</span></span></span></a></li>
+          <li><a href="#"><span class="poster p7"><span class="cap-label">[Film title]<span>[Rating]</span></span></span></a></li>
+          <li><a href="#"><span class="poster p8"><span class="cap-label">[Film title]<span>[Rating]</span></span></span></a></li>
+          </ul>
+        </section>
+
+        <!-- CONTENT: anime -->
+        <section class="shelf-group" id="anime" aria-labelledby="h-anime">
+          <div class="shelf-head"><h3 id="h-anime">Anime</h3><a class="src" href="#">Source: MyAnimeList</a></div>
+          <ul class="shelf">
+          <li><a href="#"><span class="cover a1"><span class="cover-label">[Anime title]</span><span class="cover-score">[Score]</span></span></a></li>
+          <li><a href="#"><span class="cover a2"><span class="cover-label">[Anime title]</span><span class="cover-score">[Score]</span></span></a></li>
+          <li><a href="#"><span class="cover a3"><span class="cover-label">[Anime title]</span><span class="cover-score">[Score]</span></span></a></li>
+          <li><a href="#"><span class="cover a4"><span class="cover-label">[Anime title]</span><span class="cover-score">[Score]</span></span></a></li>
+          <li><a href="#"><span class="cover a5"><span class="cover-label">[Anime title]</span><span class="cover-score">[Score]</span></span></a></li>
+          <li><a href="#"><span class="cover a6"><span class="cover-label">[Anime title]</span><span class="cover-score">[Score]</span></span></a></li>
+          <li><a href="#"><span class="cover a7"><span class="cover-label">[Anime title]</span><span class="cover-score">[Score]</span></span></a></li>
+          </ul>
+        </section>
+
+        <!-- CONTENT: books, currently reading first -->
+        <section class="shelf-group" id="books" aria-labelledby="h-books">
+          <div class="shelf-head"><h3 id="h-books">Books</h3><a class="src" href="#">Source: Goodreads</a></div>
+          <div class="books-layout">
+            <div class="reading">
+              <div class="reading-cover" aria-hidden="true"></div>
+              <div>
+                <h4>Currently reading</h4>
+                <a href="#">[Book title]</a>
+                <p class="meta">[Author]</p>
+                <p class="meta">Page [Page] of [Pages]</p>
+              </div>
+            </div>
+            <ul class="shelf">
+            <li><a href="#"><span class="spine b1" style="--w:46px;--h:196px"><span class="spine-text">[Book title]</span></span></a></li>
+            <li><a href="#"><span class="spine b2" style="--w:38px;--h:176px"><span class="spine-text">[Book title]</span></span></a></li>
+            <li><a href="#"><span class="spine b3" style="--w:54px;--h:204px"><span class="spine-text">[Book title]</span></span></a></li>
+            <li><a href="#"><span class="spine b4" style="--w:42px;--h:186px"><span class="spine-text">[Book title]</span></span></a></li>
+            <li><a href="#"><span class="spine b5" style="--w:36px;--h:168px"><span class="spine-text">[Book title]</span></span></a></li>
+            <li><a href="#"><span class="spine b6" style="--w:50px;--h:200px"><span class="spine-text">[Book title]</span></span></a></li>
+            <li><a href="#"><span class="spine b7" style="--w:44px;--h:180px"><span class="spine-text">[Book title]</span></span></a></li>
+            <li><a href="#"><span class="spine b8" style="--w:40px;--h:192px"><span class="spine-text">[Book title]</span></span></a></li>
+            <li><a href="#"><span class="spine b9" style="--w:52px;--h:172px"><span class="spine-text">[Book title]</span></span></a></li>
+            <li><a href="#"><span class="spine b10" style="--w:42px;--h:198px"><span class="spine-text">[Book title]</span></span></a></li>
+            </ul>
+          </div>
+        </section>
+      </section>
+
+      <div class="two">
+        <!-- CONTENT: restaurants, best first -->
+        <section class="panel raised fam-pink" id="restaurants" aria-labelledby="h-rest">
+          <div class="bar"><h2 id="h-rest">Restaurants, ranked</h2><a class="src" href="#">Source: Beli</a></div>
+          <ol class="ranked">
+          <li><a class="name" href="#">[Restaurant]</a><span class="meta">[Neighborhood], [Cuisine]</span><span class="score">[Score]</span></li>
+          <li><a class="name" href="#">[Restaurant]</a><span class="meta">[Neighborhood], [Cuisine]</span><span class="score">[Score]</span></li>
+          <li><a class="name" href="#">[Restaurant]</a><span class="meta">[Neighborhood], [Cuisine]</span><span class="score">[Score]</span></li>
+          <li><a class="name" href="#">[Restaurant]</a><span class="meta">[Neighborhood], [Cuisine]</span><span class="score">[Score]</span></li>
+          <li><a class="name" href="#">[Restaurant]</a><span class="meta">[Neighborhood], [Cuisine]</span><span class="score">[Score]</span></li>
+          <li><a class="name" href="#">[Restaurant]</a><span class="meta">[Neighborhood], [Cuisine]</span><span class="score">[Score]</span></li>
+          </ol>
+        </section>
+
+        <!-- CONTENT: workouts, totals and records only -->
+        <section class="panel raised fam-green" id="workouts" aria-labelledby="h-work">
+          <div class="bar"><h2 id="h-work">Workouts</h2><a class="src" href="#">Source: Hevy</a></div>
+          <div class="totals">
+            <p class="led sunken"><b>[Workouts]</b><span>workouts logged</span></p>
+            <p class="led sunken"><b>[Volume]</b><span>total volume</span></p>
+            <p class="led sunken"><b>[Hours]</b><span>hours trained</span></p>
+          </div>
+          <dl class="prs">
+            <div><dt><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-cup"/></svg>Deadlift</dt><dd>[Deadlift PR]</dd></div>
+            <div><dt><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-cup"/></svg>Squat</dt><dd>[Squat PR]</dd></div>
+            <div><dt><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-cup"/></svg>Bench press</dt><dd>[Bench PR]</dd></div>
+            <div><dt><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-cup"/></svg>Overhead press</dt><dd>[Press PR]</dd></div>
+          </dl>
+          <p class="foot-note">Totals and records only. The session log stays in Hevy.</p>
+        </section>
+      </div>
+
+      <div class="two">
+        <!-- CONTENT: notes -->
+        <section class="panel raised fam-cyan" id="notes" aria-labelledby="h-notes">
+          <div class="bar"><h2 id="h-notes">Notes</h2><a class="src" href="#">Source: Notion</a></div>
+          <ul class="notes">
+            <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-note"/></svg><span><a href="#">[Note title]</a><span class="meta">[Date]</span></span></li>
+            <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-note"/></svg><span><a href="#">[Note title]</a><span class="meta">[Date]</span></span></li>
+            <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-note"/></svg><span><a href="#">[Note title]</a><span class="meta">[Date]</span></span></li>
+            <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-note"/></svg><span><a href="#">[Note title]</a><span class="meta">[Date]</span></span></li>
+          </ul>
+          <p class="more"><a href="#">See all notes</a></p>
+        </section>
+
+        <!-- CONTENT: writing, excerpt plus link out -->
+        <section class="panel raised fam-orange" id="writing" aria-labelledby="h-writing">
+          <div class="bar"><h2 id="h-writing">Writing</h2><a class="src" href="#">Source: Substack</a></div>
+          <article class="post">
+            <h3><a href="#">[Post title]</a></h3>
+            <p class="meta">[Date]</p>
+            <p>[Two-line excerpt from the post]</p>
+            <a class="out" href="#">Read on Substack<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-out"/></svg></a>
+          </article>
+          <article class="post">
+            <h3><a href="#">[Post title]</a></h3>
+            <p class="meta">[Date]</p>
+            <p>[Two-line excerpt from the post]</p>
+            <a class="out" href="#">Read on Substack<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-out"/></svg></a>
+          </article>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- CONTENT: footer -->
+  <footer class="site-foot raised">
+    <div class="foot-grid">
+      <div>
+        <h2>Elsewhere</h2>
+        <ul class="elsewhere">
+          <li><a href="#">Letterboxd</a></li><li><a href="#">MyAnimeList</a></li><li><a href="#">Goodreads</a></li><li><a href="#">Beli</a></li><li><a href="#">Hevy</a></li><li><a href="#">Notion</a></li><li><a href="#">Substack</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Webring</h2>
+        <p>Part of [Webring name].</p>
+        <ul class="ring-links">
+          <li><a class="raised" href="#">Previous</a></li><li><a class="raised" href="#">Random</a></li><li><a class="raised" href="#">Next</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Friends</h2>
+        <ul class="badges">
+          <li><a class="badge bg1" href="#">[Friend]</a></li><li><a class="badge bg2" href="#">[Friend]</a></li><li><a class="badge bg3" href="#">[Friend]</a></li><li><a class="badge bg4" href="#">[Friend]</a></li><li><a class="badge bg5" href="#">[Friend]</a></li><li><a class="badge bg6" href="#">[My badge]</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>Sean Wang, New York</span>
+      <span>Last updated [Date]</span>
+      <a href="#top">Back to the top</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  // Placeholder links (href="#") stay put until real URLs are filled in.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href="#"]');
+    if (a) e.preventDefault();
+  });
+
+  /* Ticker: duplicate the list for a seamless loop and reveal Pause. */
+  var ticker = document.getElementById('ticker');
+  var pauseBtn = document.getElementById('tickerPause');
+  if (!reduce.matches) {
+    var track = ticker.querySelector('.ticker-track');
+    var copy = track.querySelector('ul').cloneNode(true);
+    copy.setAttribute('aria-hidden', 'true');
+    track.appendChild(copy);
+    pauseBtn.hidden = false;
+    pauseBtn.addEventListener('click', function () {
+      var paused = ticker.classList.toggle('paused');
+      pauseBtn.textContent = paused ? 'Play' : 'Pause';
+    });
+  }
+
+  /* Shelf filter. Deep links such as #films or #books select their shelf. */
+  var media = document.getElementById('media');
+  var filterRow = document.getElementById('filters');
+  var filters = [].slice.call(filterRow.querySelectorAll('.filter'));
+  var groups = [].slice.call(media.querySelectorAll('.shelf-group'));
+  var countEl = document.getElementById('filterCount');
+  filterRow.hidden = false;
+
+  function applyFilter(name) {
+    filters.forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.filter === name));
+    });
+    var shown = 0;
+    groups.forEach(function (g) {
+      var on = name === 'all' || g.id === name;
+      g.hidden = !on;
+      if (on) shown += g.querySelectorAll('.shelf li').length;
+    });
+    media.classList.toggle('is-filtered', name !== 'all');
+    countEl.textContent = 'Showing ' + shown + ' ' + (name === 'all' ? 'items' : name);
+  }
+  filters.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var name = b.dataset.filter;
+      applyFilter(name);
+      try { history.replaceState(null, '', name === 'all' ? location.pathname + location.search : '#' + name); } catch (err) {}
+    });
+  });
+  function fromHash() {
+    var name = location.hash.slice(1);
+    if (!filters.some(function (b) { return b.dataset.filter === name && name !== 'all'; })) return;
+    applyFilter(name);
+    document.getElementById(name).scrollIntoView({ block: 'start', behavior: reduce.matches ? 'auto' : 'smooth' });
+  }
+  window.addEventListener('hashchange', fromHash);
+  applyFilter('all');
+  fromHash();
+
+  /* Arcade picker. The highlight chases round the wall, slows, and lands.
+     Everything on the big screen is read from the chosen tile's own markup. */
+  var arcade = document.getElementById('arcade');
+  var pick = document.getElementById('pick');
+  var pickLabel = document.getElementById('pickLabel');
+  var scene = document.getElementById('scene');
+  var bar = document.getElementById('loaderBar');
+  var pct = document.getElementById('loaderPct');
+  var status = document.getElementById('pickStatus');
+  var stamp = document.getElementById('stamp');
+  var stageTitle = document.getElementById('stageTitle');
+  var stageBy = document.getElementById('stageBy');
+  var stageWhy = document.getElementById('stageWhy');
+  var stagePlay = document.getElementById('stagePlay');
+  var tiles = [].slice.call(document.querySelectorAll('#wall .tile'));
+  var current = 0;
+  var busy = false;
+  pick.hidden = false;
+
+  function clearLit() { tiles.forEach(function (t) { t.classList.remove('is-lit'); }); }
+
+  function land(i) {
+    var tile = tiles[i];
+    var art = tile.querySelector('.art');
+    var link = tile.querySelector('h3 a');
+    clearLit();
+    tiles.forEach(function (t) { t.classList.remove('picked'); });
+    tile.classList.add('picked');
+    arcade.classList.remove('is-picking');
+    arcade.classList.add('has-pick');
+
+    scene.className = 'scene ' + art.className.replace('art', '').trim();
+    scene.innerHTML = art.innerHTML;
+    stageTitle.textContent = link.textContent;
+    stageBy.textContent = tile.querySelector('.by').textContent;
+    stageWhy.textContent = tile.querySelector('.tile-why').textContent;
+    stagePlay.textContent = 'Play ' + link.textContent;
+    stagePlay.href = link.getAttribute('href');
+
+    if (!reduce.matches) {
+      void scene.offsetWidth;
+      scene.classList.add('crt-on');
+      stamp.classList.remove('pop');
+      void stamp.offsetWidth;
+      stamp.classList.add('pop');
+    }
+    busy = false;
+    pick.removeAttribute('aria-disabled');
+    pickLabel.textContent = 'Pick another game';
+    status.textContent = 'Now on the big screen: ' + link.textContent + '.';
+    current = i;
+  }
+
+  pick.addEventListener('click', function () {
+    if (busy) return;
+    var target;
+    do { target = Math.floor(Math.random() * tiles.length); } while (target === current);
+    if (reduce.matches) { land(target); return; }
+
+    busy = true;
+    pick.setAttribute('aria-disabled', 'true');
+    status.textContent = 'Picking a game.';
+    arcade.classList.add('is-picking');
+    arcade.classList.remove('has-pick');
+    tiles.forEach(function (t) { t.classList.remove('picked'); });
+    bar.style.width = '0';
+    pct.textContent = 'Loading 0%';
+
+    var dist = (target - current + tiles.length) % tiles.length;
+    var total = tiles.length + dist;
+    var step = 0;
+    (function tick() {
+      step += 1;
+      clearLit();
+      tiles[(current + step) % tiles.length].classList.add('is-lit');
+      var done = step / total;
+      var shown = Math.round(done * 100);
+      bar.style.width = shown + '%';
+      pct.textContent = 'Loading ' + shown + '%';
+      if (step >= total) { setTimeout(function () { land(target); }, 320); return; }
+      setTimeout(tick, 70 + 300 * done * done * done);
+    })();
+  });
+})();
+</script>
+</body>
+</html>
