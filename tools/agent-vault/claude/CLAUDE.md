@@ -19,7 +19,7 @@ Every commit, in every repo, follows the `git-commit` skill (`~/.claude/skills/g
 
 Don't create a branch unless I say so, even on the default branch. Commit to the branch that's checked out.
 
-After every change in `agent-vault` (`~/workspace/dev/monorepo/agent-vault`), commit it with the `git-commit` skill and push it, without asking first.
+After every change in `agent-vault` (`~/workspace/dev/monorepo/tools/agent-vault`), commit it with the `git-commit` skill and push it, without asking first.
 
 # Drafting messages
 
