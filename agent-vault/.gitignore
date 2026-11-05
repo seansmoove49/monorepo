@@ -1,0 +1,13 @@
+.DS_Store
+**/settings.local.json
+.credentials.json
+.claude.json
+*.env
+.env*
+**/auth.json
+mcp.json
+!claude/mcp.template.json
+__pycache__/
+*.bak
+*.backup*
+history.jsonl
