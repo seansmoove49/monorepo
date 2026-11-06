@@ -4,5 +4,9 @@
       "mcp__claude-in-chrome",
       "mcp__claude-in-chrome__*"
     ]
+  },
+  "env": {
+    "CLAUDE_CODE_SUBAGENT_MODEL": "opus",
+    "CLAUDE_CODE_SUBAGENT_MODEL_FORCE": "1"
   }
 }
