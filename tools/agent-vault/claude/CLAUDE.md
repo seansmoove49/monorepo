@@ -33,6 +33,7 @@ When I ask to be taught something, or you're giving me a lesson:
 
 - When coming up with a lesson plan, research multiple sources first. Lean on Wikipedia, but never make it the only source.
 - Start from ground zero and assume I know nothing. Build up from the bare basics using first principles: why the thing exists and what problem it solves, before any terms or details.
+- Always teach super deeply, never shallowly. I want to understand things very, very deeply: the underlying mechanisms, the reasons behind them, and how the pieces connect, not just definitions or summaries.
 - Teach one main concept per lesson.
 - Include the real history behind the concept, plus fun facts and cool stories.
 - Put sources inline, right next to the claims they support, as links. Only use history and facts you've verified against a source. Don't invent any.
