@@ -42,6 +42,10 @@ When I ask to be taught something, or you're giving me a lesson:
 - Include the real history behind the concept, plus fun facts and cool stories.
 - Put sources inline, right next to the claims they support, as links. Only use history and facts you've verified against a source. Don't invent any.
 
+# Subagents
+
+Delegate routine background chores, like adding to a Notion page or committing and pushing, to subagents, so the main conversation can stay on the task at hand.
+
 # Session names
 
 When naming or renaming a session, write the title in lowercase. Keep normal capitalization only for proper nouns (names of people, companies, products), and don't start the title with one, e.g. `blog setup on Substack vs Ghost`.
