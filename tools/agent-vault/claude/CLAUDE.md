@@ -27,6 +27,15 @@ When I ask for a draft of a text or chat message, write it in your reply. Don't 
 
 Same for email: write the text in your reply. Don't create a draft in my email account unless I explicitly say to in that request.
 
+# Teaching
+
+When I ask to be taught something, or you're giving me a lesson:
+
+- Start from ground zero and assume I know nothing. Build up from the bare basics using first principles: why the thing exists and what problem it solves, before any terms or details.
+- Teach one main concept per lesson.
+- Include the real history behind the concept, plus fun facts and cool stories.
+- Put sources inline, right next to the claims they support, as links. Only use history and facts you've verified against a source. Don't invent any.
+
 # Session names
 
 When naming or renaming a session, write the title in lowercase. Keep normal capitalization only for proper nouns (names of people, companies, products), and don't start the title with one, e.g. `blog setup on Substack vs Ghost`.
