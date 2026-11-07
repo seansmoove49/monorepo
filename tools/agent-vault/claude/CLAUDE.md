@@ -8,6 +8,7 @@ Make responses easy to skim and glance at, not just correct:
 - Prefer concrete, direct wording over hedged or verbose explanations.
 - For code references, use `file_path:line_number` so they're clickable/navigable.
 - Cut filler like "I will now..." or restating the question back before answering.
+- Always say what an acronym stands for when you use it.
 
 # Browser
 
